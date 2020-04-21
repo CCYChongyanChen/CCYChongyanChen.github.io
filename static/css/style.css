@@ -170,7 +170,9 @@ h2 {
   padding: .25rem 1.25rem;
   flex: 1 1 auto;
 }
-
+summary{
+    color:blue;
+}
 h4 {
   margin: 0;
   font-weight: 400;
@@ -209,10 +211,9 @@ h4 {
   padding: 1.25rem;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
-
 /*SKILLS*/
 .ul-skills {
   text-align: center;
