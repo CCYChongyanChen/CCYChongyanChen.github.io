@@ -5,7 +5,7 @@
     
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="static/css/style.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -42,13 +42,24 @@
                     </div>
             </div>
             
-            <img id="IMAGE" name="IMAGE" src="" >
+            <!-- <img id="IMAGE" name="IMAGE" src="" > -->
         </div>
         <!-- panel-heading -->
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
             <br>
-
+            <div id="wrapper" id="canvaswrapper" style="position:relative;width:500px; height:500px;">
+                <canvas id="zoom" width="200" height="200" 
+                style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+                <canvas id="canvas" width="500" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                <canvas id="myCanvas" width="500" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 1; border:1px solid #c3c3c3;"></canvas>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="DelteAllCanvas()">Clear Canvas</button>
+            <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="ctrl+z" data-placement="ctrl+z" title="ctrl+z">UnDo</button>
+            <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
+            <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
             <div>
                 <h2>Question 1: What external Knowledge are required in the image?</h2>
 
