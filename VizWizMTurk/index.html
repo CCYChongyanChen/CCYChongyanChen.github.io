@@ -84,9 +84,9 @@
             </div>
 
             <h3 class="text-secondary"> Task 1: Please ground the item in the image according to the existing 10 answers</h3>
-
-
-            <div>
+            <input type="hidden" id="task1forsubmit" name="task1forsubmit">
+            <p id="task1forsubmit2" name="task1forsubmit2"></p>
+            <div id="task2">
                 <h3 class="text-secondary">Task 2: What external Knowledge are required in the image?</h3>
 
             </div>
@@ -126,7 +126,7 @@
             <div id= "ReportProblemDIV" style="display: none" >
                 
             <form method="POST" action="https://formspree.io/chongyanchen_hci@utexas.edu">
-                <textarea name="Feedback" rows="5" cols="100">You don't have to fill this comment box unless you would like to leave your comment or feedback.</textarea>
+                <textarea name="Feedback" rows="5" cols="100" placeholder="You don't have to fill this comment box unless you would like to leave your comment or feedback."></textarea>
                 <button type="submit">Send</button>
                 <br><br>
             </form>
