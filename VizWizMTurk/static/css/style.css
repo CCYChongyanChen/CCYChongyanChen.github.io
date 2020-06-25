@@ -3,3 +3,12 @@
     border:1px black solid;
     box-shadow: 5px 5px 10px #1e1e1e;
  }
+
+ button.link{
+     background:none;
+     border:none;
+ }
+
+ /* #ReportProblemDIV {
+     margin-top:20px;
+} */
