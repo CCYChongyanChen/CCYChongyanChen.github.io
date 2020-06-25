@@ -7,6 +7,8 @@ var clickTimeId;
 var newLineFlag=0;
 var n=1;//n ^th path
 var magnifyFlag=false;
+var task1=document.getElementById("task1forsubmit2")
+
 // draw a small rectangular
 function smallRec(canvas,mousePos){
     var context_r = canvas.getContext('2d');
@@ -14,7 +16,7 @@ function smallRec(canvas,mousePos){
 }
 
 // draw line
-function draw_line(canvas,xycoor){
+function draw_line(canvas){
     var ctx=canvas.getContext("2d");
     var i;
     clearCanvas(canvas);
@@ -22,11 +24,11 @@ function draw_line(canvas,xycoor){
     
     for (k=0;k<xycoordinates.length;k++){
         ctx.beginPath();
-        for (i=0;i<xycoor[k].length;i++){
+        for (i=0;i<xycoordinates[k].length;i++){
             if (i==0){
-                ctx.moveTo(xycoor[k][i].x,xycoor[k][i].y);
+                ctx.moveTo(xycoordinates[k][i].x,xycoordinates[k][i].y);
             } else {
-                ctx.lineTo(xycoor[k][i].x,xycoor[k][i].y);
+                ctx.lineTo(xycoordinates[k][i].x,xycoordinates[k][i].y);
             }
         }
         ctx.strokeStyle= "green";
@@ -104,7 +106,7 @@ function scaleimage (sourceimage, imagecanvas){
             xycoordinates[n-1].push(mousePos);
             // var message = 'Mouse position: ' + mousePos.x+',' + mousePos.y;
             // writeMessage(canvas, message);
-            draw_line(canvas,xycoordinates);   
+            draw_line(canvas);   
             smallRec(canvas,mousePos);
         }
         else if (n==xycoordinates.length+1){
@@ -112,10 +114,11 @@ function scaleimage (sourceimage, imagecanvas){
             xycoordinates[n-1].push(mousePos);
             // var message = 'Mouse position: ' + mousePos.x+',' + mousePos.y;
             // writeMessage(canvas, message);
-            draw_line(canvas,xycoordinates);   
+            draw_line(canvas);   
             smallRec(canvas,mousePos);
         }
-        else{alert("wrong")};
+        else{alert("wrong, please report the problem to us")};
+        // updatetask1();
 
       }, 250);
     
@@ -132,6 +135,7 @@ function scaleimage (sourceimage, imagecanvas){
         ctx.closePath();
         ctx.stroke();
         n=xycoordinates.length+1;};
+    updatetask1();
   }, false);
 
 
@@ -140,6 +144,7 @@ function scaleimage (sourceimage, imagecanvas){
   window.addEventListener("keydown", function(event){
     if (event.ctrlKey && event.key === 'z') {
         UnDo();
+        // updatetask1();
       }
     else if (event.keyCode === 13) {   
         var ctx=canvas.getContext("2d");
@@ -150,24 +155,26 @@ function scaleimage (sourceimage, imagecanvas){
             ctx.closePath();
             ctx.stroke();
             n=xycoordinates.length+1;};
+        updatetask1();
        }
    },false);
 
 function UnDo(){
     if (xycoordinates[xycoordinates.length-1].length>0){
         xycoordinates[xycoordinates.length-1].pop();
-        draw_line(canvas,xycoordinates);
+        draw_line(canvas);
     }
     else {
         xycoordinates.pop();
         n=xycoordinates.length;
-        draw_line(canvas,xycoordinates);
+        draw_line(canvas);
     }
 }
 function DelteAllCanvas(){
     clearCanvas(canvas);
     xycoordinates=[];
     n=1;
+    //placeholder
 }
 function MouseMovefunction(e){
     var zoom = document.getElementById("zoom");
@@ -187,12 +194,31 @@ function MouseMovefunction(e){
 function Mouseoutfunction(){
     zoom.style.display = "none";
 }
+function updatetask1(){
+    document.getElementById("task1forsubmit").value=xycoordinates;
+    var temptext=""
 
+    for (k=0;k<xycoordinates.length;k++){
+        // temptext+="<br>"+k+"labels"
+        
+        var x = document.createElement("INPUT");
+        x.setAttribute("type", "text");
+        x.setAttribute("value", "");
+        x.setAttribute("id","groundlabel"+k);
+
+        task1.appendChild(x);
+        // for (i=0;i<xycoordinates[k].length;i++){
+        //     temptext+="x:"+xycoordinates[k][i].x+"y:"+xycoordinates[k][i].y;
+        //     } 
+    }
+    document.getElementById("task1forsubmit2").innerHTML="you have labeled " + xycoordinates.length+" items<br>";
+
+    
+}
 function Magnify(){
     if (magnifyFlag==false){
         magnifyFlag=true;
         canvas.addEventListener("mousemove", MouseMovefunction);
-
         canvas.addEventListener("mouseout", Mouseoutfunction);}
     else{magnifyFlag=false;
         canvas.removeEventListener("mousemove",MouseMovefunction);
