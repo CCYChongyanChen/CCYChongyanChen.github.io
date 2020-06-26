@@ -4,13 +4,13 @@
     <head>
     
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/style.css">
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="static/js/jquery.min.js"></script>
     <script type="text/javascript" src="static/QA_annotations/test.json"></script>
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
     </head>
     <body>
@@ -61,18 +61,19 @@
             <br>
                 
             <button type="button" class="btn btn-secondary" onclick="DelteAllCanvas()">Clear Canvas</button>
-            <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="ctrl+z" data-placement="ctrl+z" title="ctrl+z">UnDo</button>
+            <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
             <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
-       
+            <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
+        
             <div class="row">
                 <div  class ="col-md-6">
                     <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
                         <canvas id="zoom" width="200" height="200" 
-                        style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
+                        style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
                         <canvas id="canvas" width="500" height="500" 
                         style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
                         <canvas id="myCanvas" width="500" height="500" 
-                        style="position: absolute; left: 0; top: 0; z-index: 1; border:1px solid #c3c3c3;"></canvas>
+                        style="position: absolute; left: 0; top: 0; z-index: 2; border:1px solid #c3c3c3;"></canvas>
                      <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
                     </div>
                 </div>
@@ -96,7 +97,8 @@
                 <input type="checkbox" id="EK1" name="EK1" value="Common_Sense">
                 <label for="EK1"> This image needs common sense</label><br>
                 <input type="checkbox" id="EK2" name="EK2" value="Expertise_Knowledge" onclick="PartialExpertiseChecked()">
-                <label for="EK2"> This image needs expertise knowledge</label><br>
+                <label for="EK2"> This image needs expertise knowledge</label>
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i><br>
                 <input type="checkbox" id="EK3" name="EK3" value="Partial_Knowledge" onclick="PartialExpertiseChecked()">
                 <label for="EK3"> This image needs partial knowledge</label><br>
                 <input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure">
