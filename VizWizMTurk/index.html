@@ -32,8 +32,9 @@
                             We ask you to: 
                                 carefully review the question and image as well as the existing 10 answers, read the taxonomy of perception and other 3 external knowledge categories,  and then: 
                                 <br>(1) Ground the item in the image according to the existing answers
-                                <br>(2) Identify if the question is a perception question (doesn't need any external knowledge) or identify which external knowledge(s) are needed in the image.
-                                <br>(3) If the image requires partial knowledge or expertise knowledge and you think you can answer the visual question better than the existing 10 answers, then answer it, we will give your bonus. You can search for Internet for the answer
+                                <br>(2) Choose the correct object category accordingly to the question and image.
+                                <br>(3) Identify if the question is a perception question (doesn't need any external knowledge) or identify which external knowledge(s) are needed in the image.
+                                <br>(4) If the image requires partial knowledge or expertise knowledge and you think you can answer the visual question better than the existing 10 answers, then answer it, we will give your bonus. You can search for Internet for the answer
                                 <br>
                                 <br>PLEASE NOTE: It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task.
                                 <br>IMPORTANT: Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.                 
@@ -70,44 +71,99 @@
                     <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
                         <canvas id="zoom" width="200" height="200" 
                         style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
-                        <canvas id="canvas" width="500" height="500" 
+                        <canvas id="canvas" width="400" height="500" 
                         style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-                        <canvas id="myCanvas" width="500" height="500" 
-                        style="position: absolute; left: 0; top: 0; z-index: 2; border:1px solid #c3c3c3;"></canvas>
+                        <canvas id="myCanvas" width="400" height="500" 
+                        style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
                      <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <p>placeholder</p>
+                    <h3 class="text-secondary" id="question"></h3>
+                    <p id="answers"></p>
                 </div>
             </div>
 
-            <h3 class="text-secondary" id="question"></h3>
-            <p id="answers"></p>
-            
-            <h3 class="text-secondary"> Task 1: Please ground the item in the image according to the existing 10 answers</h3>
+            <h3 class="text-secondary"> Task 1: Trace polygons around the borders of the object(s) according to the answer.</h3>
             <input type="hidden" id="task1forsubmit" name="task1forsubmit">
             <p id="task1forsubmit2" name="task1forsubmit2"></p>
+
             <div id="task2">
-                <h3 class="text-secondary">Task 2: What external Knowledge are required in the image?</h3>
+                    <h3 class="text-secondary">Task 2: What is the question asking about? Choose the correct object category accordingly. </h3>
+                </div>
+                <div>
+
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                    cooking and food
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Retail goods
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                    people
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                    plants and animals
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
+                    material and clothing
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios6" value="option6">
+                    book, poster, and covers
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios7" value="option7">
+                    Others
+                    </label>
+                </div>
+            </div>
+ 
+ 
+            <div id="task3">
+                <h3 class="text-secondary">Task 3: What external Knowledge are required in the image?</h3>
 
             </div>
             <div>
-                <input type="checkbox" id="Perception" name="Perception" value="perception">
-                <label for="Perception"> This image doesn't need any external knowledge</label><br>
-                <input type="checkbox" id="EK1" name="EK1" value="Common_Sense">
+                <div class="checkbox"><label for="Perception"><input type="checkbox" id="Perception" value="perception" onclick="DisableOther_P()">This image doesn't need any external knowledge</label></div>
+                <div class="checkbox"><label for="EK1"><input type="checkbox" id="EK1" value="EK1">This image needs common sense</label></div>
+                <div class="checkbox"><label for="EK2"><input type="checkbox" id="EK2" value="EK2" onclick="PartialExpertiseChecked()">This image needs expertise knowledge</label></div>
+                <div class="checkbox"><label for="EK3"><input type="checkbox" id="EK3" value="EK3" onclick="PartialExpertiseChecked()">This image needs partial knowledge</label></div>
+                <div class="checkbox"><label for="NotSure"><input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure" onclick="DisableOther_NS()">I am not sure</label></div>
+                 
+                <!-- <input type="checkbox" id="Perception" name="Perception" value="perception"> -->
+                <!-- <label for="Perception"> This image doesn't need any external knowledge</label><br>
+                <input type="checkbox" id="EK1" value="Common_Sense">
                 <label for="EK1"> This image needs common sense</label><br>
                 <input type="checkbox" id="EK2" name="EK2" value="Expertise_Knowledge" onclick="PartialExpertiseChecked()">
                 <label for="EK2"> This image needs expertise knowledge</label><br>
                 <input type="checkbox" id="EK3" name="EK3" value="Partial_Knowledge" onclick="PartialExpertiseChecked()">
                 <label for="EK3"> This image needs partial knowledge</label><br>
-                <input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure">
-                <label for="EK3"> I am not sure</label>
+                <input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure"> -->
+                <!-- <label for="NotSure"> I am not sure</label> -->
             </div>
             
-            <div id="task3" style="display: none">
+            <div id="task4" style="display: none">
                 <h3 class="text-secondary">
-                    Task 3: Do you agree with the existing 10 answers? If not and you think you can answer it better, please answer it. You can search Internet for the answer. 
+                    Task 4: Do you agree with the existing 10 answers? If not and you think you can answer it better, please answer it. You can search Internet for the answer. 
                 </h3>
 
                 <div>
