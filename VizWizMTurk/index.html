@@ -4,7 +4,8 @@
     <head>
     
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
     <link rel="stylesheet" href="static/css/style.css">
     <!-- jQuery library -->
     <script src="static/js/jquery.min.js"></script>
@@ -18,18 +19,13 @@
         
         <!-- <p id="demo">Click the button to change the text in this paragraph.</p> -->
         <div class="container">
-            <a href="#motivations" class="btn btn-info" data-toggle="collapse">Motivation</a>
-            <div id="motivations" class="collapse">
-                    <div class="well">
-                            <br>Motivation: The image and question you will see are all from visually impaired people. Our aim is to build a smart system to automatically answer their visual question.
-           
-                    </div>
-            </div>
 
             <a href="#instructions" class="btn btn-info" data-toggle="collapse">Instructions</a>
-            <div id="instructions" class="collapse">
+            <div id="instructions" class="collapse in">
                     <div class="well">
-                            We ask you to: 
+                            <br><strong>Motivation:</strong> The image and question you will see are all from visually impaired people. Our aim is to build a smart system to automatically answer their visual question.
+                            <br><br>
+                            <strong>We ask you to: </strong>
                                 carefully review the question and image as well as the existing 10 answers, read the taxonomy of perception and other 3 external knowledge categories,  and then: 
                                 <br>(1) Ground the item in the image according to the existing answers
                                 <br>(2) Choose the correct object category accordingly to the question and image.
@@ -41,55 +37,38 @@
                                 
                     </div>
             </div>
-            
-
-
-            
-            <a href="#Taxonomy" class="btn btn-info" data-toggle="collapse">External Knowledge Taxonomy</a>
-            <div id="Taxonomy" class="collapse">
-                    <div class="well">
-                            Since some images captured from blind people don’t include sufficient information for a computer to answer, we need you to help us to identify if the visual question requires external knowledge to be answered and what kinds of external knowledge are needed.
-                            <br>(1) Label as <strong>Perception Question</strong> if you think the question can be answered directly based on the information provided by the image without any kind of external knowledge.
-                            <br>(2) Label as <strong>common sense</strong> if you think this question can be answered by most of the normal people. Click here to see some examples. 
-                            <br>(3) Label a question as <strong>Expertise Knowledge</strong> if you can answer the question but think this question is too hard or is not common sense, OR if you cannot answer the question but thinking some expert of can answer it. Click here to see some examples.
-                            <br>(4) Label a question as needing <strong>partial knowledge</strong> if you think the image doesn't include the whole object and you need to interpret it or need external information to complement it. Click here to see some examples.                            
-                    </div>
-            </div>
         </div>
         <!-- panel-heading -->
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
             <br>
-                
+            
+            <h3 class="text-secondary"> Task 1: The image shown below is taken from visually impaired people and the question they ask is </h3>
+            <h3 class="text-secondary" id="question" style="color:rgb(121, 94, 172)"></h3>
+            <h3>Here are some existing answers to this question</h3>
+            <h3 id="answers" style="color:orchid"></h3>
+            <h3>Your task is tracing polygons around the borders of the object(s) according to the answer(s) by clicking on the image. Since there maybe more than one answer, you can just use the best one you think.</h3>
+            <input type="hidden" id="task1forsubmit" name="task1forsubmit">
+            <p id="task1forsubmit2" name="task1forsubmit2"></p>
+    
+
+            <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
+                <canvas id="zoom" width="200" height="200" 
+                style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+                <canvas id="canvas" width="400" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                <canvas id="myCanvas" width="400" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
+                <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
+            </div>
             <button type="button" class="btn btn-secondary" onclick="DelteAllCanvas()">Clear Canvas</button>
             <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
             <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
             <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
         
-            <div class="row">
-                <div  class ="col-md-6">
-                    <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
-                        <canvas id="zoom" width="200" height="200" 
-                        style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
-                        <canvas id="canvas" width="400" height="500" 
-                        style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-                        <canvas id="myCanvas" width="400" height="500" 
-                        style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
-                     <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3 class="text-secondary" id="question"></h3>
-                    <p id="answers"></p>
-                </div>
-            </div>
 
-            <h3 class="text-secondary"> Task 1: Trace polygons around the borders of the object(s) according to the answer.</h3>
-            <input type="hidden" id="task1forsubmit" name="task1forsubmit">
-            <p id="task1forsubmit2" name="task1forsubmit2"></p>
-
-            <div id="task2">
-                    <h3 class="text-secondary">Task 2: What is the question asking about? Choose the correct object category accordingly. </h3>
+            <div id="task2">                    
+                    <h3> Task 2: What is the question asking about? Choose the correct object category accordingly. </h3>
                 </div>
                 <div>
 
@@ -139,31 +118,48 @@
  
  
             <div id="task3">
-                <h3 class="text-secondary">Task 3: What external Knowledge are required in the image?</h3>
 
+
+                <div>  
+                    <h3 class="text-secondary">Task 3: What external Knowledge are required in the image?</h3>
+
+                    <a href="#Taxonomy" class="btn btn-light" data-toggle="collapse">Click to see what is external Knowledge</a>
+                    <div id="Taxonomy" class="collapse">
+                            <div class="well">
+                                    Since some images captured from blind people don’t include sufficient information for a computer to answer, we need you to help us to identify if the visual question requires external knowledge to be answered and what kinds of external knowledge are needed.
+                                    <br>(1) Label as <strong>Perception Question</strong> if you think the question can be answered directly based on the information provided by the image without any kind of external knowledge.
+                                    <br>(2) Label as <strong>common sense</strong> if you think this question can be answered by most of the normal people. Click here to see some examples. 
+                                    <br>(3) Label a question as <strong>Expertise Knowledge</strong> if you can answer the question but think this question is too hard or is not common sense, OR if you cannot answer the question but thinking some expert of can answer it. Click here to see some examples.
+                                    <br>(4) Label a question as needing <strong>partial knowledge</strong> if you think the image doesn't include the whole object and you need to interpret it or need external information to complement it. Click here to see some examples.                            
+                            </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="checkbox"><label for="Perception"><input type="checkbox" id="Perception" value="perception" onclick="DisableOther_P()">This image doesn't need any external knowledge</label></div>
+                    <div class="checkbox"><label for="EK1"><input type="checkbox" id="EK1" value="EK1">This image needs common sense</label></div>
+                    <div class="checkbox"><label for="EK2"><input type="checkbox" id="EK2" value="EK2" onclick="PartialExpertiseChecked()">This image needs expertise knowledge</label></div>
+                    <div class="checkbox"><label for="EK3"><input type="checkbox" id="EK3" value="EK3" onclick="PartialExpertiseChecked()">This image needs partial knowledge</label></div>
+                    <div class="checkbox"><label for="NotSure"><input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure" onclick="DisableOther_NS()">I am not sure</label></div>
+                    
+                    <!-- <input type="checkbox" id="Perception" name="Perception" value="perception"> -->
+                    <!-- <label for="Perception"> This image doesn't need any external knowledge</label><br>
+                    <input type="checkbox" id="EK1" value="Common_Sense">
+                    <label for="EK1"> This image needs common sense</label><br>
+                    <input type="checkbox" id="EK2" name="EK2" value="Expertise_Knowledge" onclick="PartialExpertiseChecked()">
+                    <label for="EK2"> This image needs expertise knowledge</label><br>
+                    <input type="checkbox" id="EK3" name="EK3" value="Partial_Knowledge" onclick="PartialExpertiseChecked()">
+                    <label for="EK3"> This image needs partial knowledge</label><br>
+                    <input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure"> -->
+                    <!-- <label for="NotSure"> I am not sure</label> -->
+                </div>
+            
             </div>
-            <div>
-                <div class="checkbox"><label for="Perception"><input type="checkbox" id="Perception" value="perception" onclick="DisableOther_P()">This image doesn't need any external knowledge</label></div>
-                <div class="checkbox"><label for="EK1"><input type="checkbox" id="EK1" value="EK1">This image needs common sense</label></div>
-                <div class="checkbox"><label for="EK2"><input type="checkbox" id="EK2" value="EK2" onclick="PartialExpertiseChecked()">This image needs expertise knowledge</label></div>
-                <div class="checkbox"><label for="EK3"><input type="checkbox" id="EK3" value="EK3" onclick="PartialExpertiseChecked()">This image needs partial knowledge</label></div>
-                <div class="checkbox"><label for="NotSure"><input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure" onclick="DisableOther_NS()">I am not sure</label></div>
-                 
-                <!-- <input type="checkbox" id="Perception" name="Perception" value="perception"> -->
-                <!-- <label for="Perception"> This image doesn't need any external knowledge</label><br>
-                <input type="checkbox" id="EK1" value="Common_Sense">
-                <label for="EK1"> This image needs common sense</label><br>
-                <input type="checkbox" id="EK2" name="EK2" value="Expertise_Knowledge" onclick="PartialExpertiseChecked()">
-                <label for="EK2"> This image needs expertise knowledge</label><br>
-                <input type="checkbox" id="EK3" name="EK3" value="Partial_Knowledge" onclick="PartialExpertiseChecked()">
-                <label for="EK3"> This image needs partial knowledge</label><br>
-                <input type="checkbox" id="NotSure" name="NotSure" value="Not_Sure"> -->
-                <!-- <label for="NotSure"> I am not sure</label> -->
-            </div>
+            
             
             <div id="task4" style="display: none">
                 <h3 class="text-secondary">
-                    Task 4: Do you agree with the existing 10 answers? If not and you think you can answer it better, please answer it. You can search Internet for the answer. 
+                    Task 4: The existing answers are answered without Internet's help. Since expertise knowledge/partial knowledge is needed for answering this question, we assume that the existing answers are not good enough.
+                    <br> Could you try answer the question with the Internet help? You don't have to do this task if you agree with the existing answers. 
                 </h3>
 
                 <div>
