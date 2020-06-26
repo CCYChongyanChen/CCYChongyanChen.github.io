@@ -127,15 +127,7 @@ function scaleimage (sourceimage, imagecanvas){
 // double click to finish one label
   canvas.addEventListener('dblclick', function(evt) {
     clearTimeout(clickTimeId);
-    var ctx=canvas.getContext("2d");
-    if (xycoordinates[xycoordinates.length-1].length==1){
-            xycoordinates.pop();
-    }
-    else{
-        ctx.closePath();
-        ctx.stroke();
-        n=xycoordinates.length+1;};
-    updatetask1();
+    finishOne();
   }, false);
 
 
@@ -147,15 +139,7 @@ function scaleimage (sourceimage, imagecanvas){
         // updatetask1();
       }
     else if (event.keyCode === 13) {   
-        var ctx=canvas.getContext("2d");
-        if (xycoordinates[xycoordinates.length-1].length<2){
-            xycoordinates.pop();
-        }
-        else{
-            ctx.closePath();
-            ctx.stroke();
-            n=xycoordinates.length+1;};
-        updatetask1();
+        finishOne();
        }
    },false);
 
@@ -176,6 +160,17 @@ function DelteAllCanvas(){
     n=1;
     //placeholder
 }
+function finishOne(){
+    var ctx=canvas.getContext("2d");
+    if (xycoordinates[xycoordinates.length-1].length<2){
+        xycoordinates.pop();
+    }
+    else{
+        ctx.closePath();
+        ctx.stroke();
+        n=xycoordinates.length+1;};
+    updatetask1();
+}
 function MouseMovefunction(e){
     var zoom = document.getElementById("zoom");
     var zoomCtx = zoom.getContext("2d");
@@ -195,11 +190,10 @@ function Mouseoutfunction(){
     zoom.style.display = "none";
 }
 function updatetask1(){
-    document.getElementById("task1forsubmit").value=xycoordinates;
     var temptext=""
 
     for (k=0;k<xycoordinates.length;k++){
-        // temptext+="<br>"+k+"labels"
+        temptext+="<br>"+k+"labels"
         
         var x = document.createElement("INPUT");
         x.setAttribute("type", "text");
@@ -207,16 +201,18 @@ function updatetask1(){
         x.setAttribute("id","groundlabel"+k);
 
         task1.appendChild(x);
-        // for (i=0;i<xycoordinates[k].length;i++){
-        //     temptext+="x:"+xycoordinates[k][i].x+"y:"+xycoordinates[k][i].y;
-        //     } 
+        for (i=0;i<xycoordinates[k].length;i++){
+            temptext+="x:"+xycoordinates[k][i].x+"y:"+xycoordinates[k][i].y;
+            } 
     }
+    document.getElementById("task1forsubmit").value=temptext;
     document.getElementById("task1forsubmit2").innerHTML="you have labeled " + xycoordinates.length+" items<br>";
 
     
 }
 function Magnify(){
     if (magnifyFlag==false){
+
         magnifyFlag=true;
         canvas.addEventListener("mousemove", MouseMovefunction);
         canvas.addEventListener("mouseout", Mouseoutfunction);}
