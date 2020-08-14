@@ -22,7 +22,7 @@
         <!-- <p id="demo">Click the button to change the text in this paragraph.</p> -->
         <div class="container">
 
-            <a href="#instructions" class="btn btn-info" data-toggle="collapse">Instructions</a>
+            <a href="#instructions" class="btn btn-light" data-toggle="collapse">Instructions</a>
             <div id="instructions" class="collapse in">
                     <div class="well">
                             <br><strong>Motivation:</strong> The image and question you will see are all from visually impaired people. Our aim is to build a smart system to automatically answer their visual question.
@@ -56,8 +56,14 @@
             <h3>Your task is tracing polygons around the borders of the object(s) according to the answer(s) by clicking on the image. Since there maybe more than one answer, you can just use the best one you think.</h3>
             
             <input type="hidden" id="task1forsubmit" name="task1forsubmit">
+
+            <p id="answerID" name="answerID">0</p>
+
             <p id="task1forsubmit2" name="task1forsubmit2"></p>
     
+            <div id="task1forsubmit3">
+            
+            </div>
 
             <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
                 <canvas id="zoom" width="200" height="200" 
@@ -68,7 +74,7 @@
                 style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
                 <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
             </div>
-            <button type="button" class="btn btn-secondary" onclick="DelteAllCanvas()">Clear Canvas</button>
+            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear Canvas</button>
             <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
             <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
             <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 

@@ -7,9 +7,8 @@ var clickTimeId;
 var newLineFlag=0;
 var n=1;//n ^th path
 var magnifyFlag=false;
-var task1=document.getElementById("task1forsubmit2")
 
-
+var answerID_p = document.getElementById('answerID');
 // init canvas
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -91,7 +90,7 @@ canvas.addEventListener('click', function(evt) {
             smallRec(canvas,mousePos);
         }
         else{alert("wrong, please report the problem to us")};
-        // updatetask1();
+
 
       }, 250);
     
@@ -180,7 +179,6 @@ canvas.addEventListener('dblclick', function(evt) {
 window.addEventListener("keydown", function(event){
     if (event.ctrlKey && event.key === 'z') {
         UnDo();
-        // updatetask1();
       }
     else if (event.keyCode === 13) {   
         finishOne();
@@ -196,11 +194,13 @@ function clearCanvas(canvas){
 }
 
 
-function DelteAllCanvas(){
-    clearCanvas(canvas);
+function DeleteAllThenInit(){
+    //delete xy, storedxy, n,canvas,button according to xycoord list
     xycoordinates=[];
+    xyToStoredxy();
     n=1;
-    //placeholder
+    clearCanvas(canvas);
+    deleteAllTrashButton()
 }
 function finishOne(){
     var ctx=canvas.getContext("2d");
@@ -211,7 +211,7 @@ function finishOne(){
         ctx.closePath();
         ctx.stroke();
         n=xycoordinates.length+1;};
-    updatetask1();
+    updateStoredxyButton();// refresh storedxy and button according to xycoord list
 }
 
 
@@ -220,61 +220,74 @@ function finishOne(){
 
 //delete trash button
 function ClickTrash(clicked_id){
-    var trash=document.getElementById(clicked_id);
     var id=clicked_id.slice(5,6);
-    var xycoors=document.getElementById("task1forsubmit").value;
-    var obj=JSON.parse(xycoors);
-    delete obj["label_"+id]
-    // alert(c.length)
-    // xycoordinates=xycoordinates.slice(parseInt(id),1)
-
-    xycoordinates.splice(parseInt(id),1);
-    draw_canvas(canvas);
-    n=n-1;
-    trash.remove();
-    document.getElementById("task1forsubmit").value=JSON.stringify(obj);
-    document.getElementById("task1forsubmit2").innerHTML=JSON.stringify(obj);
+    xycoordinates.splice(parseInt(id),1); //delete region from xy
+    xyToStoredxy();    
+    refreshAll();
+}
+function deleteAllTrashButton(){
+    selectareas=document.getElementById("selectareas");
+    selectareas.querySelectorAll('*').forEach(n => n.remove());
 }
 
-//=========================================================================================
-
-
-function updatetask1(){
-    var temptext=""
-    var tempjson='{'
-    for (k=0;k<xycoordinates.length;k++){
-        temptext+="<br>"+k+"labels"
-        tempjson+='"label_'+k.toString()+'":['
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", "text");
-        x.setAttribute("value", "");
-        x.setAttribute("id","groundlabel"+k);
-
-        task1.appendChild(x);
-        for (i=0;i<xycoordinates[k].length;i++){
-            temptext+="x:"+xycoordinates[k][i].x+"y:"+xycoordinates[k][i].y;
-            tempjson+='{"x":' + xycoordinates[k][i].x +',"y":'+ xycoordinates[k][i].y+'},'
-            } 
-        tempjson=tempjson.substr(0,tempjson.length-1);
-        tempjson+='],';
-    }
-    
-    tempjson=tempjson.substr(0,tempjson.length-1);
-    tempjson+='}'
-    document.getElementById("task1forsubmit").value=tempjson;
-    document.getElementById("task1forsubmit2").innerHTML=tempjson;
-    // "you have labeled " + xycoordinates.length+" items<br>";
-
-    selectareas=document.getElementById("selectareas");
-
-    
-    selectareas.querySelectorAll('*').forEach(n => n.remove());
+function updateTrashButton(){
+    deleteAllTrashButton()
     for (i=0;i<xycoordinates.length;i++){
         selectareas.insertAdjacentHTML('beforeend','<button class="btn" type="button" id="trash'+ i.toString() +'" onclick=ClickTrash(this.id)><i class="fa fa-trash"></i>'+(i+1).toString()+'</button>');
     }
-    
-     
-    
+
+}
+//========================================================================================
+function xyToStoredxy(){ 
+    document.getElementById("xycoor"+answerID_p.innerHTML).innerHTML=JSON.stringify(xycoordinates);  //xycorr->stored
+  
+}
+function StoredxyToxy(){
+    xycoordinates=JSON.parse(document.getElementById("xycoor"+answerID_p.innerHTML).innerHTML);//stored->xycorr
 }
 
+//=========================================================================================
+function refreshAll(){
+    //refresh n,canvas,button
+    draw_canvas(canvas); //clear previous and draw
+    updateTrashButton();   //clear previous and add
+    n=xycoordinates.length+1;
+}
 
+function updateStoredxyButton(){
+    // refresh storedxy and button 
+    xyToStoredxy();
+    updateTrashButton();
+}
+
+//============================================================================================
+
+// Select the node that will be observed for mutations
+
+// Options for the observer (which mutations to observe)
+var config = { childList: true };
+
+// Callback function to execute when mutations are observed
+var callback = function(mutationsList, observer) {
+    for(var mutation of mutationsList) {
+        if (mutation.type == 'childList') {
+
+            if (document.getElementById("xycoor"+answerID_p.innerHTML).innerHTML==""){
+                DeleteAllThenInit();
+
+            }
+            else{
+                //if has stored xycoord list:
+                //refresh xy,n,canvas,button according to xycoord list
+                StoredxyToxy();
+                refreshAll();
+            }
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+var observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(answerID_p, config);
