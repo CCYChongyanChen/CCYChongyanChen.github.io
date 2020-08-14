@@ -6,6 +6,8 @@
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/style.css">
     <!-- jQuery library -->
     <script src="static/js/jquery.min.js"></script>
@@ -42,12 +44,17 @@
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
             <br>
-            
+
             <h3 class="text-secondary"> Task 1: The image shown below is taken from visually impaired people and the question they ask is </h3>
-            <h3 class="text-secondary" id="question" style="color:rgb(121, 94, 172)"></h3>
+            <h3 class="text-secondary" id="question" style="color:mediumturquoise"></h3>
             <h3>Here are some existing answers to this question</h3>
-            <h3 id="answers" style="color:orchid"></h3>
+            <div id="Answers"></div>
+            <div id="selectareas"></div>
+            
+
+            <div></div>
             <h3>Your task is tracing polygons around the borders of the object(s) according to the answer(s) by clicking on the image. Since there maybe more than one answer, you can just use the best one you think.</h3>
+            
             <input type="hidden" id="task1forsubmit" name="task1forsubmit">
             <p id="task1forsubmit2" name="task1forsubmit2"></p>
     
@@ -66,11 +73,13 @@
             <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
             <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
         
-
-            <div id="task2">                    
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="card" id="task2">                    
                     <h3> Task 2: What is the question asking about? Choose the correct object category accordingly. </h3>
-                </div>
-                <div>
+
 
                 <div class="radio">
                     <label>
@@ -187,7 +196,6 @@
             </div>
             
         </div>
-
         <script src="static/js/Whole_HTML.js"></script>
         
         <script language='Javascript'>turkSetAssignmentID();</script>

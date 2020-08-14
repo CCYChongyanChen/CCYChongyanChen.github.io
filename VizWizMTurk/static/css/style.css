@@ -12,3 +12,24 @@
  /* #ReportProblemDIV {
      margin-top:20px;
 } */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    background-color: #f1f1f1;
+}
+
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+.active, .btn:hover {
+background-color: #666;
+color: white;
+}
