@@ -1,7 +1,9 @@
+
 var searchParams = new URLSearchParams(window.location.search);
 var img_id = searchParams.get("img1");
 var dataset=img_id.split("_")
 var answer_element=document.getElementById("Answers")
+var task1forsubmit3=document.getElementById("task1forsubmit3")
 function getUnique(array){
     var uniqueArray = [];
     // Loop through array values
@@ -29,7 +31,10 @@ $.ajax({
                     }
                     else{
                     answer_element.insertAdjacentHTML('beforeend','<button class="btn" type="button" id=answer'+j.toString()+'>'+Answers[j]+'</button>')
-                }
+                    }
+                    task1forsubmit3.insertAdjacentHTML('beforeend','<p id=xycoor'+j.toString()+'></p>')
+
+
                 }
                 }
 
@@ -37,7 +42,6 @@ $.ajax({
 
         var answers=document.getElementById("Answers")
         var btns =answers.getElementsByTagName("button")
-        var count = btns.length
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function() {
             var current = document.getElementsByClassName("active");
@@ -45,6 +49,8 @@ $.ajax({
             if (whichbutton=="answer"){
                 current[0].className = current[0].className.replace(" active", "");
                 this.className += " active";
+                document.getElementById("answerID").innerHTML=this.id.slice(6,7);
+                
             }
             
             });

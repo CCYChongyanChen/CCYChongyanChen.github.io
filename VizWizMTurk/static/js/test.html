@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div>
+  <p>This paragraph is not being watched.</p>
+  <p id="watch">This paragraph is being watched.</p>
+</div>
+
+<button id="change-text">Change watch paragraph text</button>
+<br><br>
+<button id="add-span">Add span element to watch paragraph</button>
+<script>
+// Select the node that will be observed for mutations
+var targetNode = document.getElementById('watch');
+
+// Options for the observer (which mutations to observe)
+var config = { childList: true };
+
+// Callback function to execute when mutations are observed
+var callback = function(mutationsList, observer) {
+    for(var mutation of mutationsList) {
+        if (mutation.type == 'childList') {
+            alert('watch paragraph has changed or child has been added/removed');
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+var observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+document.getElementById('change-text').addEventListener('click', function(){
+  targetNode.textContent = 'new text';
+});
+
+document.getElementById('add-span').addEventListener('click', function(){
+  var node = document.createElement('SPAN');                 // Create a <li> node
+  var textnode = document.createTextNode('My Span');         // Create a text node
+  node.appendChild(textnode);                              // Append the text to <li>
+  targetNode.appendChild(node); 
+});
+</script>
+
+</body>
+</html>
+
