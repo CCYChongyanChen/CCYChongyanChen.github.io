@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="./css/animate.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    
+    <!-- jQuery steps CSS -->
+    <link rel="stylesheet" href="static/css/jquery.steps.css"/>
+    <!-- jQuery library -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/jquery.js"></script> 
+    <script src="static/js/jquery.steps.js"></script>
+    <script type="text/javascript" src="static/QA_annotations/test.json"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+    </head>
+    <body>
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+            <div class="container-fluid" style="padding: 0 7%">
+
+                    <!---------- header area ------------>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!--h3 style="text-align: center"><?=$title?></h3-->
+                            <br/>
+                            <!-- Button open collapse -->
+                            <button type="button" id="showDtl"
+                                    data-toggle="collapse" data-target="#dtlPane"
+                                    class="btn btn-default btn-sm center-block" >
+                                Hide / Show Details
+                            </button>
+            
+                            <!-- task details -->
+                            <div class="collapse in" id="dtlPane">
+                                <div class="alert alert-warning motivation">
+            
+                                    <p>
+                                        <strong>Motivation:</strong>
+                                        Your work will help to build smart systems that can automatically answer the question from people who are blind.
+                                        The questions you see are collected from visually impaired people.
+                                    </p>
+            
+            
+                                    <p>
+                                        <strong>We ask you to:</strong>
+                                        Answer Yes or No to the question “If the given question is asking more than one thing/aspect?”
+                                        <br>
+                                        <strong>Examples:</strong>
+                                        <br>
+                                        The answer to “what do you see in this picture? Can you please describe?"” should be “No”. 
+                                        <br>The answer to “what color furniture is that? And is that nice table and chairs” should be “Yes”
+     
+            
+                                    </p>
+                                    <p>
+                                        IMPORTANT: Please do not refresh the webpage once you have started
+                                        working, as you will lose all your progress, and have to start at the beginning.
+                                    </p>
+            
+            
+                                    <button id="hideDtl" type="button" class="btn btn-warning btn-sm center-block">
+                                        Hide
+                                    </button>
+            
+                                    <small style="display: block; text-align: center; font-size: 13px; margin-top: 5px; font-style: italic">
+                                        You can see this information anytime by clicking "Hide / Show Details" button above.
+                                    </small>
+                                </div>
+            
+                            </div>
+            
+                        </div>
+                    </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                    <div class="col-sm-offset-2 col-sm-8">
+        
+                        <div class="well well-sm" style="padding: 1px 5px 0px 20px; margin-top: 10px;">
+        
+                            <h4 style="margin-bottom: 5px; font-weight: bold; font-size: 16px;">
+                                Instructions:
+                            </h4>
+        
+                            
+                            <ol start="0" class="ins-steps" style="padding-left: 18px;">
+
+                                    <p>
+                                            
+                                    Click previous/next button to go back and forth.
+                                    Or click number i to go to the ith question.  
+                                    Use the keyboard shor cut ←→ or your mouse to move the cursor. 
+                                    Use “Enter” key to insert a new line .
+                                    </p>
+
+        
+                            </ol>
+                            <h4 style="margin-bottom: 5px; font-weight: bold; font-size: 16px;">
+                             
+                                keyboard short cut:
+                            </h4>
+                            <ol start="0" class="ins-steps" style="padding-left: 18px;">
+
+                                    
+                                    <p>
+                                            Y         :   asking more than one question and needed to be separated
+                                    </p>
+
+                                    
+                                    <p>
+                                            N         :   asking one question, no need to separate the question
+                                    </p>
+
+
+
+                                
+                                    <p>
+                                            ←:  previous question
+                                    </p>
+
+                                          
+                                    <p>
+                                        →:  next question
+                                    </p>
+                     
+                  
+        
+        
+                            </ol>
+                        </div>
+        
+        
+                    </div>
+                </div>
+        
+
+                
+
+
+
+
+
+
+    </div>
+        <!-- panel-heading -->
+        <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+            <div class="container">
+            <br>
+
+            
+            <div id="example-basic">
+                <h3>Question 1</h3>
+                <section>
+                    <h3 style="text-align:center">Is the following asking more than one question?</h3>
+                    <h3 style="text-align:center" class="text-secondary" id="question" ></h3> 
+
+                    <div style="text-align:center">
+
+                        <button type="button" class="btn btn-info">Yes</button>
+                        <button type="button" class="btn btn-info">No</button>                
+                    </div>
+                </section>
+                <h3>Question 2</h3>
+                <section>
+                    <h3 style="text-align:center">Is the following asking more than one question?</h3>
+                    <h3 style="text-align:center" > What is it?</h3> 
+
+                    <div style="text-align:center">        
+
+                        <button type="button" class="btn btn-info">Yes</button>
+                        <button type="button" class="btn btn-info">No</button>
+                    </div>
+                </section>
+                <h3>Question 3</h3>
+                <section>
+                    <h3 style="text-align:center">Is the following asking more than one question?</h3>
+                    <h3 style="text-align:center" > What is it?</h3> 
+
+                    <div style="text-align:center">
+                        
+                        <button type="button" class="btn btn-info">Yes</button>
+                        <button type="button" class="btn btn-info">No</button>             
+                    </div>
+                </section>
+            </div>
+
+            
+
+            <p><input type='submit' id='submitButton' value='Submit' /></p>
+
+            <script src="static/js/QA_annotations.js"></script>
+        </div>
+
+        </form>
+        <button type="button" class="link" id="reportProblem" onclick="ReportProblem()" >Report problems</button>
+        
+        <div class="container">
+            <div id= "ReportProblemDIV" style="display: none" >
+            
+                
+            <form method="POST" action="https://formspree.io/chongyanchen_hci@utexas.edu">
+                <textarea name="Feedback" rows="5" cols="100" placeholder="You don't have to fill this comment box unless you would like to leave your comment or feedback."></textarea>
+                <button type="submit">Send</button>
+                <br><br>
+            </form>
+            </div>
+            
+        </div>
+        
+        <script src="static/js/Whole_HTML.js"></script>
+        
+        <script language='Javascript'>turkSetAssignmentID();</script>
+    </body>
+</html>
