@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- jQuery library -->
+    <script src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/QA_annotations/test.json"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+    </head>
+    <body>
+        
+        
+        <!-- <p id="demo">Click the button to change the text in this paragraph.</p> -->
+        <div class="container">
+
+            <a href="#instructions" class="btn btn-light" data-toggle="collapse">Instructions</a>
+            <div id="instructions" class="collapse in">
+                    <div class="well">
+                            <br><strong>Motivation:</strong> The image and question you will see are all from visually impaired people. Our aim is to build a smart system to automatically answer their visual question.
+                            <br><br>
+                            <strong>We ask you to: </strong>
+                                carefully review the question and image as well as the existing 10 answers: 
+                                <br>If the question is asking more than one thing, check the box under the question.
+                                <br>Draw ONE region to ground object that each answer is referring to. In other words, trace one polygon around the borders of the object(s) according to each answer by clicking on the image.
+                                
+                                
+                              
+                                <br>
+                                <br>PLEASE NOTE: It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task.
+                                <br>IMPORTANT: Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.                 
+                                
+                    </div>
+            </div>
+        </div>
+        <!-- panel-heading -->
+        <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+            <div class="container">
+            <br>
+            
+            <h3 class="text-secondary" id="question"></h3>
+            <div id="Answers"></div>
+            <div id="selectareas"></div>
+            
+
+            <div></div>
+            
+            <input type="hidden" id="task1forsubmit" name="task1forsubmit">
+
+            <p id="answerID" name="answerID">0</p>
+
+            <p id="task1forsubmit2" name="task1forsubmit2"></p>
+    
+            <div id="task1forsubmit3">
+            
+            </div>
+
+            <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
+                <canvas id="zoom" width="200" height="200" 
+                style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+                <canvas id="canvas" width="400" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                <canvas id="myCanvas" width="400" height="500" 
+                style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
+                <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear Canvas</button>
+            <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
+            <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
+            <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
+        
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <div class="container">
+
+            </div>
+
+
+            <label style="margin-bottom: 5px">
+                Do you have any suggestions, feedback, or general comments for us?
+                <span class="text-muted">(optional)</span>
+            </label>
+    
+            <textarea name="WORKER_COMMENTS" class="form-control" rows="4"></textarea>
+            
+
+            <p><input type='submit' id='submitButton' value='Submit' /></p>
+
+            <script src="static/js/QA_annotations.js"></script>
+            <script src="static/js/Image_related.js"></script>
+        </div>
+        </form>
+    
+
+
+        <script src="static/js/Whole_HTML.js"></script>
+        
+        <script language='Javascript'>turkSetAssignmentID();</script>
+    </body>
+</html>

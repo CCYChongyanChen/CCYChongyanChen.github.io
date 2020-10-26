@@ -44,13 +44,24 @@
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
             <br>
-
+            
             <h3 class="text-secondary"> Task 1: The image shown below is taken from visually impaired people and the question they ask is </h3>
             <h3 class="text-secondary" id="question" style="color:mediumturquoise"></h3>
             <h3>Here are some existing answers to this question</h3>
             <div id="Answers"></div>
             <div id="selectareas"></div>
             
+            <div class="container">
+                <div id= "ReportProblemDIV" style="display: none" >
+                    
+                <form method="POST" action="https://formspree.io/chongyanchen_hci@utexas.edu">
+                    <textarea name="Feedback" rows="5" cols="100" placeholder="You don't have to fill this comment box unless you would like to leave your comment or feedback."></textarea>
+                    <button type="submit">Send</button>
+                    <br><br>
+                </form>
+                </div>
+                
+            </div>
 
             <div></div>
             <h3>Your task is tracing polygons around the borders of the object(s) according to the answer(s) by clicking on the image. Since there maybe more than one answer, you can just use the best one you think.</h3>
