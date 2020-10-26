@@ -1,0 +1,26 @@
+train_clean: Previous: Delete duplicate answers & unanswerable QA pairs
+
+train_uniques:10/19/2020-Delete the QA pairs if it only contain 1 answer
+
+train_subquestions_v0: 
+
+
+
+
+
+
+
+（1）
+Delete duplicate answers & unanswerable QA pairs & Delete the QA pairs if it only contain 1 answer
+（2）去除more than one questions
+
+_clean: 没打乱的做了（1）的
+_clean_wo_sub: 没打乱的做了（1）（2）的
+_randomized: 打乱了的做了（1）（2）数据
+_randomized_index: 打乱的做了（1）（2）的image id
+
+
+
+remove_duplicate.py:
+output: val/train_clean.json
+Delete duplicate answers & unanswerable QA pairs & Delete the QA pairs if it only contain 1 answer

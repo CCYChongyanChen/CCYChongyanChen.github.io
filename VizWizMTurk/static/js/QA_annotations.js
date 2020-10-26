@@ -17,7 +17,7 @@ function getUnique(array){
 
 $.ajax({
     type:'get',
-    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/VizWizMTurk/static/QA_annotations/"+dataset[1]+"_clean.json",
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/VizWizMTurk/static/QA_annotations/"+dataset[1]+"_randomized.json",
     dataType:'json',
     success:function(data){
 
