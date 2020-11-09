@@ -9,8 +9,13 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/style.css">
+    
+    <!-- jQuery steps CSS -->
+    <link rel="stylesheet" href="static/css/jquery.steps.css"/>
     <!-- jQuery library -->
     <script src="static/js/jquery.min.js"></script>
+    <!-- <script src="static/js/jquery.js"></script>  -->
+    <script src="static/js/jquery.steps.js"></script>
     <script type="text/javascript" src="static/QA_annotations/test.json"></script>
     <!-- Latest compiled JavaScript -->
     <script src="static/js/bootstrap.min.js"></script>
@@ -44,14 +49,10 @@
         <!-- panel-heading -->
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
-            <br>
-            
             <h3 class="text-secondary" id="question"></h3>
             <div id="Answers"></div>
             <div id="selectareas"></div>
             
-
-            <div></div>
             
             <input type="hidden" id="task1forsubmit" name="task1forsubmit">
 
@@ -77,16 +78,10 @@
             <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
             <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
         
-            <br>
-            <br>
-            <br>
-            <br>
 
 
-            <div class="container">
-
-            </div>
-
+            <br>
+            <br>
 
             <label style="margin-bottom: 5px">
                 Do you have any suggestions, feedback, or general comments for us?
