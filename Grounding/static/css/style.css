@@ -33,3 +33,10 @@
 background-color: #666;
 color: white;
 }
+
+div.border-around{
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
