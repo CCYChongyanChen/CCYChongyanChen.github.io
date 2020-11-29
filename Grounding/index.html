@@ -30,15 +30,25 @@
             <a href="#instructions" class="btn btn-light" data-toggle="collapse">Instructions</a>
             <div id="instructions" class="collapse in">
                     <div class="well">
-                            <br><strong>Motivation:</strong> The image and question you will see are all from visually impaired people. Our aim is to build a smart system to automatically answer their visual question.
+                            <br><strong>Motivation:</strong> We aim to build a smart system that can automatically answer visual questions from blind people. The images and questions you will see are from visually impaired people and the answer are from crowd workers. To improve the performance of our artificial intelligence algorithm, we need your help to visually around each answer. This helps the model learn which region of the image it should pay attention in order to get the answer.
                             <br><br>
                             <strong>We ask you to: </strong>
                                 carefully review the question and image as well as the existing 10 answers: 
-                                <br>If the question is asking more than one thing, check the box under the question.
-                                <br>Draw ONE region to ground object that each answer is referring to. In other words, trace one polygon around the borders of the object(s) according to each answer by clicking on the image.
+                                Carefully review the question, image, and the answer provided, and then (1) indicate if there is more than one question (2) indicate if the answer is referring to more than one region/object. Step 3 will be activated after finishing step 1 and step 2.  (3) Draw the region where the answer is referring to. You may select "nothing to draw" option. (4) Indicate if the region is totally visible or indicate the reason why you cannot ground the answer for this image. You will annotate for five image-question pairs in one HIT. 
+                            
+                            <br>
+                            <br>
                                 
                                 
-                              
+                            <strong>Task examples </strong>
+                            
+                                Example 1 Example 2
+
+                            <br>
+                            <br>
+                                
+                            
+                            <strong>Difficult examples for step 3</strong>
                                 <br>
                                 <br>PLEASE NOTE: It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task.
                                 <br>IMPORTANT: Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.                 
@@ -49,55 +59,369 @@
         <!-- panel-heading -->
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
             <div class="container">
-            <h3 class="text-secondary" id="question"></h3>
-            <div id="Answers"></div>
-            <div id="selectareas"></div>
-            
-            
-            <input type="hidden" id="task1forsubmit" name="task1forsubmit">
 
-            <p id="answerID" name="answerID">0</p>
 
-            <p id="task1forsubmit2" name="task1forsubmit2"></p>
+
+                            <!-------- main content ---------->
+                            <div class="row">
+
+                                <!------- image column ------->
+                                <div class="col-sm-6">
+
+                                    <!---------- Image ---------->
+                                    <div class="image_wrap" style="overflow: hidden">
+
+                                        <div class="viewer" style="
+                                            height: 700px;
+                                            width: 100%;
+                                            border: 1px solid black;
+                                            position: relative;
+                                        ">
+
+                                        <h3 class="text-secondary" id="question"></h3>
+                                        <div id="Answers"></div>
+                                        <div id="selectareas"></div>
+
+
+                                        <input type="hidden" id="task1forsubmit" name="task1forsubmit">
+
+                                        <p id="answerID" name="answerID">0</p>
+
+                                        <p id="task1forsubmit2" name="task1forsubmit2"></p>
+
+                                        <div id="task1forsubmit3">
+
+                                        </div>
+
+                                        <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
+                                            <canvas id="zoom" width="200" height="200" 
+                                            style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+                                            <canvas id="canvas" width="400" height="500" 
+                                            style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
+                                            <canvas id="myCanvas" width="400" height="500" 
+                                            style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
+                                            <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear Canvas</button>
+                                        <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
+                                        <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
+                                        <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
+                                         </div>
+
+
+                                    </div>
+                                </div>
+
+                                <!----------- all tasks column ----------->
+                                <div class="col-sm-6">
+
+
+                                    <!----------  Step: Visual Grounding ------------>
+                                    <!-- <div class="row border-around caption-area" style=""> -->
+
+                                        <div class="col-lg-12">
+                                            <h4 style="
+                                                text-align: left;
+                                                font-weight: bold;
+                                                padding: 5px;
+                                                margin: 0px 0px 15px;
+                                            ">
+                                               Please read the following question and answer about the image to the left and finish the 3 steps below 
+                                            </h4>
+                                        <!-- </div> -->
+
+                                    </div><!----------  Step: Image Caption ------------>
+
+
+
+
+                                    <!----------  Step: Text Detection ------------>
+                                    <div class="row">
+                                        <div class="col-lg-12 text_detect border-around" style="margin-top: 30px;">
+
+                                            <table class="ansChoices table table-condensed"
+                                                   style="">
+                                                <thead>
+                                                <tr>
+                                                    <th colspan="4" class="text-center" style="">
+                                                        <h4 style="font-weight: bold; margin: 2px auto">
+                                                            Step 1: Is there more than one question asked?
+                                                        </h4>
+
+                                                    </th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <tr>
+                                                    <!-- Col 1 -->
+                                                    <td style="width: 50%; padding-left: 0px">
+
+                                                        <div class="radio ans_choice pull-right">
+                                                            <label>
+                                                                <input name="TEXT_DETECT" type="checkbox" value="Y">
+                                                                <strong>YES:</strong>
+                                                                More than one questions asked.
+                                                            </label>
+                                                        </div>
+                                                    </td>
+
+                                                    <!-- Col 2 -->
+                                                    <td style="width: 50%; padding-right: 0px">
+
+                                                        <div class="radio ans_choice pull-left">
+                                                            <label>
+                                                                <input name="TEXT_DETECT" type="checkbox" value="N">
+                                                                <strong>NO:</strong>
+                                                                Just one question asked.
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div><!----------  Step: Text Detection ------------>
+
+
+                                    <!---------- Step: Multi-focus ---------->
+                                    <div class="row">
+
+                                        <div class="col-sm-12 quality_issues border-around" style="margin-top: 30px;">
+
+                                            <table class="ansChoices table table-condensed" style="">
+                                                <thead>
+                                                <tr>
+                                                    <th colspan="4" class="text-center" style="">
+                                                        <h4 style="font-weight: bold; margin: 2px auto">
+                                                            Step 2: Does the answer have multi-focus?
+                                                        </h4>
+
+                                                    </th>
+                                                </tr>
+                                                </thead>
+
+              
+
+
+                                                <tbody>
+                                                    <tr>
+                                                        <!-- Col 1 -->
+                                                        <td style="width: 50%; padding-left: 0px">
     
-            <div id="task1forsubmit3">
-            
-            </div>
+                                                            <div class="radio ans_choice pull-right">
+                                                                <label>
+                                                                    <input name="MULTI_FOCUS_DETECT" type="checkbox" value="Y">
+                                                                    <strong>YES:</strong>
+                                                                    The answer focus on multi-objects.
+                                                                </label>
+                                                            </div>
+                                                        </td>
+    
+                                                        <!-- Col 2 -->
+                                                        <td style="width: 50%; padding-right: 0px">
+    
+                                                            <div class="radio ans_choice pull-left">
+                                                                <label>
+                                                                    <input name="MULTI_FOCUS_DETECT" type="checkbox" value="N">
+                                                                    <strong>NO:</strong>
+                                                                    It just refers to one object.
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
 
-            <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
-                <canvas id="zoom" width="200" height="200" 
-                style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
-                <canvas id="canvas" width="400" height="500" 
-                style="position: absolute; left: 0; top: 0; z-index: 0;"></canvas>
-                <canvas id="myCanvas" width="400" height="500" 
-                style="position: absolute; left: 0; top: 0; z-index: 2; "></canvas>
-                <!-- <canvas id="canvas" width="1000" height="1000" style="border:1px solid #c3c3c3;"></canvas> -->
-            </div>
-            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear Canvas</button>
-            <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
-            <button type="button" class="btn btn-secondary" onclick="Magnify()">Magnifying glass</button>
-            <button type="button" class="btn btn-secondary" onclick="finishOne()" data-toggle="tooltip"  data-placement="top" title="Double Click/ENTER key">Finish labeling</button> 
+
+
+                                            </table>
+
+
+                                        </div>
+                                    </div> <!---------- Step: Multi-focus ---------->
+
+
+
+                                    <!---------- Step: Draw polygon ---------->
+                                    <div class="row">
+
+                                        <div class="col-sm-12 quality_issues border-around" style="margin-top: 30px;">
+
+                                            <table class="ansChoices table table-condensed" style="">
+                                                <thead>
+                                                <tr>
+                                                    <th colspan="4" class="text-center" style="">
+                                                        <h4 style="font-weight: bold; margin: 2px auto">
+                                                            Step 3: Draw one closed polygon to ground region that each answer is referring to by clicking on the image.
+                                                        </h4>
+
+                                                    </th>
+                                                </tr>
+                                                </thead>
+
+
+
+                                            </table>
+
+                                            <p style="text-align: center; font-weight: bold;
+                                            margin: 10px 0px; font-size: 18px;">
+                                        OR
+                                            </p>
+
+
+
+
+                                            <div class="checkbox ans_choice"
+                                            style="width: 85%; margin: 0 auto; text-align: center">
+                                           <label>
+                                               <input name="Q_ISSUE" type="checkbox" value="NONE">
+                                               <strong>NO ISSUES:</strong>
+                                               Cannot draw for this image
+                                           </label>
+                                          </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+
+                                                    <div class="input-group ">
+                                                        <span class="input-group-addon">
+                                                            <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px;">
+                                                                <label style="margin-top: 0px; margin-bottom: 0px;">
+                                                                    <input name="Q_ISSUE" type="checkbox" value="OTH">
+                                                                    Provide your reason:
+                                                                </label>
+                                                            </div>
+                                                        </span>
+                                                        <input name="Q_ISSUE_OTH" type="text"
+                                                               placeholder="Input your reason for not drawing for this imagee"
+                                                               title="Input your reason for not drawing for this image"
+                                                               class="form-control">
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div> <!---------- Step: Draw polygon ---------->
+
+
+
+                                </div>
+                                <!--- end all tasks column --->
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <label style="margin-bottom: 5px">
+            Do you have any suggestions, feedback, or general comments for us?
+            <span class="text-muted">(optional)</span>
+        </label>
+
+        <textarea name="WORKER_COMMENTS" 
+        style="font-size:18px" class="form-control  input-lg" rows="2"></textarea>
         
 
+        <p><input type='submit' id='submitButton' value='Submit' /></p>
 
-            <br>
-            <br>
+        <script src="static/js/QA_annotations.js"></script>
+        <script src="static/js/Image_related.js"></script>
 
-            <label style="margin-bottom: 5px">
-                Do you have any suggestions, feedback, or general comments for us?
-                <span class="text-muted">(optional)</span>
-            </label>
-    
-            <textarea name="WORKER_COMMENTS" class="form-control" rows="4"></textarea>
-            
 
-            <p><input type='submit' id='submitButton' value='Submit' /></p>
 
-            <script src="static/js/QA_annotations.js"></script>
-            <script src="static/js/Image_related.js"></script>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </form>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <script src="static/js/Whole_HTML.js"></script>

@@ -6,9 +6,9 @@ with open(path,'r',encoding='utf-8') as json_file:
     image_ids_MoreThanTwoQuestionMarkers=[]
     for data in datas: 
         if data["question"].count("?")>1:
-            # if data["question"].split("?")[0]!=data["question"].split("?")[1][1:]:
-                # print(data["question"])
-                # print(data["image"],"\n")
+            if data["question"].split("?")[0]!=data["question"].split("?")[1][1:]:
+                print(data["question"])
+                print(data["image"],"\n")
             count+=1
             image_ids_MoreThanTwoQuestionMarkers.append(data["image"])
 print(count)
