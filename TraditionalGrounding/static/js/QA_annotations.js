@@ -1,7 +1,8 @@
 
 var searchParams = new URLSearchParams(window.location.search);
-var img_id = searchParams.get("img1");
-var dataset=img_id.split("_")
+var input = searchParams.get("groupindex");
+var dataset=input.split("_")[0]
+var group_id=input.split("_")[1]
 var answer_element=document.getElementById("Answers")
 var task1forsubmit3=document.getElementById("task1forsubmit3")
 function getUnique(array){
@@ -17,20 +18,32 @@ function getUnique(array){
 
 $.ajax({
     type:'get',
-    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/VizWizMTurk/static/QA_annotations/"+dataset[1]+"_randomized.json",
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/VizWizMTurk/static/QA_annotations/"+dataset+"_grouped.json",
     dataType:'json',
     success:function(data){
 
-        for (k=0;k<data.length;k++){
-            if (data[k]["image"]==img_id){
-                var Answers=data[k]["answers"]
-                var question=data[k]["question"]
-                }
-        }
+        // for (k=0;k<data.length;k++){
+            // if (data[k]["image"]==img_id){
+                // var Answers=data[k]["answers"]
+                // var question=data[k]["question"]
+                // }
+            var Answers=[]
+            var questios=[]
+            for (j=0; j<5;j++){
+                Answers.append(data[group_id]["answers"][0])
+                questions.append(data[group_id]["question"])
+            }
 
-
-        document.getElementById("answer").innerHTML="Answer: "+Answers[0]
-        document.getElementById("question").innerHTML="Question: "+question
+        document.getElementById("answer1").innerHTML="Answer: "+Answers[0]
+        document.getElementById("question1").innerHTML="Question: "+questions[0]
+        document.getElementById("answer2").innerHTML="Answer: "+Answers[1]
+        document.getElementById("question2").innerHTML="Question: "+questions[1]
+        document.getElementById("answer3").innerHTML="Answer: "+Answers[2]
+        document.getElementById("question3").innerHTML="Question: "+questions[2]
+        document.getElementById("answer4").innerHTML="Answer: "+Answers[3]
+        document.getElementById("question4").innerHTML="Question: "+questions[3]
+        document.getElementById("answer5").innerHTML="Answer: "+Answers[4]
+        document.getElementById("question5").innerHTML="Question: "+questions[4]
     }
 })
 
