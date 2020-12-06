@@ -48,6 +48,16 @@
                                 <!-- task details -->
                                 <div class="collapse in" id="dtlPane">
                                     <div class="alert alert-warning motivation">
+                                            <ul>
+
+                                                    <?php for($i=1;$i<=5;$i++){ ?>
+                                                    
+                                                    <li>Menu Item <?php echo $i; ?></li>
+                                                    
+                                                    <?php } ?>
+                                                    
+                                            </ul>
+
                                             <br><strong>Motivation:</strong> We aim to build a smart system that can automatically answer visual questions from blind people. The images and questions you will see are from visually impaired people and the answer are from crowd workers. To improve the performance of our artificial intelligence algorithm, we need your help to visually around each answer. This helps the model learn which region of the image it should pay attention in order to get the answer.
                                             <br><br>
                                             <strong>We ask you to: </strong>
@@ -115,8 +125,6 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
 
-
-                                    <!-- <section> -->
                                             <!-------- main content ---------->
                                             <div class="row">
                     
@@ -135,6 +143,14 @@
                     
                                                         <h3 class="text-secondary" id="question1"></h3>
                                                         <h3 class="text-secondary" id="answer1"></h3>
+                                                        <h3 class="text-secondary" id="question2"></h3>
+                                                        <h3 class="text-secondary" id="answer2"></h3>
+                                                        <h3 class="text-secondary" id="question3"></h3>
+                                                        <h3 class="text-secondary" id="answer3"></h3>
+                                                        <h3 class="text-secondary" id="question4"></h3>
+                                                        <h3 class="text-secondary" id="answer4"></h3>
+                                                        <h3 class="text-secondary" id="question5"></h3>
+                                                        <h3 class="text-secondary" id="answer5"></h3>
                                                         <div id="selectareas"></div>
                     
                                                         <input type="hidden" id="task1forsubmit" name="task1forsubmit">
@@ -372,7 +388,6 @@
                     
                                             
                     
-                                    <!-- </section> -->
                                     <!-- end section 1-->
                     
                                 

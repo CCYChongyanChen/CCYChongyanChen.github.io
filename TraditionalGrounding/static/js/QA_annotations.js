@@ -18,7 +18,7 @@ function getUnique(array){
 
 $.ajax({
     type:'get',
-    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/VizWizMTurk/static/QA_annotations/"+dataset+"_grouped.json",
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGrounding/static/QA_annotations/"+dataset+"_grouped.json",
     dataType:'json',
     success:function(data){
 
@@ -28,22 +28,22 @@ $.ajax({
                 // var question=data[k]["question"]
                 // }
             var Answers=[]
-            var questios=[]
+            var questions=[]
             for (j=0; j<5;j++){
-                Answers.append(data[group_id]["answers"][0])
-                questions.append(data[group_id]["question"])
+                Answers.push(data[group_id][j]["answers"][0]);
+                questions.push(data[group_id][j]["question"]);
             }
 
         document.getElementById("answer1").innerHTML="Answer: "+Answers[0]
         document.getElementById("question1").innerHTML="Question: "+questions[0]
-        document.getElementById("answer2").innerHTML="Answer: "+Answers[1]
-        document.getElementById("question2").innerHTML="Question: "+questions[1]
-        document.getElementById("answer3").innerHTML="Answer: "+Answers[2]
-        document.getElementById("question3").innerHTML="Question: "+questions[2]
-        document.getElementById("answer4").innerHTML="Answer: "+Answers[3]
-        document.getElementById("question4").innerHTML="Question: "+questions[3]
-        document.getElementById("answer5").innerHTML="Answer: "+Answers[4]
-        document.getElementById("question5").innerHTML="Question: "+questions[4]
+        // document.getElementById("answer2").innerHTML="Answer: "+Answers[1]
+        // document.getElementById("question2").innerHTML="Question: "+questions[1]
+        // document.getElementById("answer3").innerHTML="Answer: "+Answers[2]
+        // document.getElementById("question3").innerHTML="Question: "+questions[2]
+        // document.getElementById("answer4").innerHTML="Answer: "+Answers[3]
+        // document.getElementById("question4").innerHTML="Question: "+questions[3]
+        // document.getElementById("answer5").innerHTML="Answer: "+Answers[4]
+        // document.getElementById("question5").innerHTML="Question: "+questions[4]
     }
 })
 
