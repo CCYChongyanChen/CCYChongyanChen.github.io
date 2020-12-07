@@ -4,7 +4,7 @@
     <head>
     
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-  
+    <title>VizWiz-Visual Grounding</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -58,16 +58,71 @@
                                             <br>
                                             <br>
                                                 
-                                                
-                                            <strong>Task examples </strong>
                                             
-                                                Example 1 Example 2
+                                            
+                                            <details>
+                                                <summary><strong>Click to see task examples </strong></summary>
+                                                <ol>
+                                                    <img src="static/images/howgood1.png" width="400" height="300">
+                                                    <img src="static/images/howgood2.png" width="500" height="290">
+                                                </ol>
+                                            </details>
                 
-                                            <br>
-                                            <br>
                                                 
-                                            
-                                            <strong>Difficult examples for step 3</strong>
+                                            <details>
+                                                    <summary><strong>Click to see difficult examples </strong></summary>
+                                                    <ol>
+                                                            <ul class="nav nav-tabs">
+                                                                    <li class="active"><a data-toggle="tab" href="#e1">Image with hole</a></li>
+                                                                    <li><a data-toggle="tab" href="#e2">Text related</a></li>
+                                                                    <li><a data-toggle="tab" href="#e3">Whole Image</a></li>
+                                                                    <li><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
+                                                                    <li><a data-toggle="tab" href="#e5">Occulusion</a></li>
+                                                                  </ul>
+                                                                  
+                                                                  <div class="tab-content">
+                                                                    <div id="e1" class="tab-pane fade in active">
+                                                                      <h3>Image with hole</h3> 
+                                                                       If the object has a hole, you just need to draw the outside boundary
+                                                                      <br>
+                                                                      <img src="static/images/imagewithhole.png" width="600" height="400">
+                                                                    </div>
+                                                                    <div id="e2" class="tab-pane fade">
+                                                                      <h3>Text related</h3>
+                                                                       when the answer is related to text, please pay more attention to the question to identify if the object is mentioned in the question. 
+                                                                      If the object is not mentioned in the question, they may ask “what is this?”. In this case, answer may use text to describe the object and you should ground the object. See the example on the left. 
+                                                                      If the object is mentioned in the question, see the example on the middle and right, you should ground the specific text. 
+                                                                      <br>
+                                                                      <img src="static/images/text.png" width="1000" height="500">
+                                                                    </div>
+                                                                    <div id="e3" class="tab-pane fade">
+                                                                      <h3>Whole Image</h3>
+                                                                      Draw a rectangle to ground the whole picture as the target region if the answer is referring to the whole image. Usually, this happens when the camera is too close to the object.
+                                                                      <br>
+                                                                      <img src="static/images/wholeimage.png" width="550" height="650">
+                                                                    </div>
+                                                                    
+                                                                    <div id="e4" class="tab-pane fade">
+                                                                            <h3>Complex Boundary</h3>
+                                                                            <p>  Please try you best to trace the boundary of the object as tightly as possible. Only when the boundary is too complex that you may not need to perfectly trace the boundary.
+                                                                                   </p> 
+                                                                                   <br>
+                                                                                   <img src="static/images/howgood1.png" width="700" height="500"><br>
+                                                                                   <img src="static/images/howgood2.png" width="800" height="390">
+                                                                          </div>
+                                                                    
+                                                                    <div id="e5" class="tab-pane fade">
+                                                                        <h3>Occulusion</h3>
+                                                                        Please do not include the invisible part. 
+                                                                        <br>
+                                                                        <img src="static/images/invisiblepart1.png" width="800" height="500"><br>
+                                                                        <img src="static/images/invisiblepart2.png" width="800" height="490">
+                                                                    </div>
+                                                                    </div>
+                                                        </ul>
+                                                    </ol>
+
+                                            </details>
                                             <br>
                                             <br>PLEASE NOTE: It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task.
                                             <br>IMPORTANT: Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.                 
