@@ -8,6 +8,16 @@
     $('.nav-tabs > .active').prev('li').find('a').trigger('click');
   });
 
+
+
+  $('.ExamplebtnNext').click(function(){
+    $('.Examplenav-tabs > .active').next('li').find('a').trigger('click');
+  });
+  
+    $('.ExamplebtnPrevious').click(function(){
+    $('.Examplenav-tabs > .active').prev('li').find('a').trigger('click');
+  });
+
   
   $('#hideDtl').click(function()
   {-
@@ -32,3 +42,11 @@
       // as user has shown details, delete cookie to keep it shown
       document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
   });
+
+
+//   $("#example-basic").steps({
+//     headerTag: "h3",
+//     bodyTag: "section",
+//     transitionEffect: "slideLeft",
+//     autoFocus: true
+// });

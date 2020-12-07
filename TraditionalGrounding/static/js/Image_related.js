@@ -150,19 +150,19 @@ canvas.addEventListener('click', function(evt) {
   }, false);
 
 // draw line
-function draw_canvas(canvas,xycoordinates){
-    var ctx=canvas.getContext("2d");
+function draw_canvas(Canvas,Xycoo){
+    var ctx=Canvas.getContext("2d");
     ctx.lineWidth = 3;
     ctx.strokeStyle = "#F0C132";
     var i;
-    clearCanvas(canvas);
+    clearCanvas(Canvas);
     ctx.beginPath();
-    for (i=0;i<xycoordinates.length;i++){
+    for (i=0;i<Xycoo.length;i++){
         
         if (i==0){
-            ctx.moveTo(xycoordinates[i].x,xycoordinates[i].y);
+            ctx.moveTo(Xycoo[i].x,Xycoo[i].y);
         } else {
-            ctx.lineTo(xycoordinates[i].x,xycoordinates[i].y);
+            ctx.lineTo(Xycoo[i].x,Xycoo[i].y);
         }
     }
     
@@ -173,8 +173,8 @@ function draw_canvas(canvas,xycoordinates){
 
 
     
-    for (i=0;i<xycoordinates.length;i++){
-        drawCircle(ctx,xycoordinates[i].x,xycoordinates[i].y,closeEnough);
+    for (i=0;i<Xycoo.length;i++){
+        drawCircle(ctx,Xycoo[i].x,Xycoo[i].y,closeEnough);
     }
     }
 
@@ -186,9 +186,9 @@ function draw_canvas(canvas,xycoordinates){
 
 
 // clear canvas and set finishFlag=False
-function clearCanvas(canvas){
-    var context= canvas.getContext('2d');
-    context.clearRect(0, 0, canvas.width, canvas.height);
+function clearCanvas(Canvas){
+    var context= Canvas.getContext('2d');
+    context.clearRect(0, 0, Canvas.width, Canvas.height);
     return false;
 }
 
@@ -219,12 +219,22 @@ function UnDo(){
             draw_canvas(canvas,xycoordinates);
             finishFlag=false;
         }
+        else {
+            xycoordinates.pop();
+            draw_canvas(canvas,xycoordinates);
+            xyToStoredxy()
+        }
     }
     if (activate_tab=="TAB2"){
         if (xycoordinates2.length>0){
             xycoordinates2.pop();
             draw_canvas(canvas2,xycoordinates2);
             finishFlag2=false;
+        }
+        else {
+            xycoordinates2.pop();
+            draw_canvas(canvas2,xycoordinates2);
+            xyToStoredxy()
         }
     }
     if (activate_tab=="TAB3"){
@@ -233,6 +243,11 @@ function UnDo(){
             draw_canvas(canvas3,xycoordinates3);
             finishFlag3=false;
         }
+        else {
+            xycoordinates3.pop();
+            draw_canvas(canvas3,xycoordinates3);
+            xyToStoredxy()
+        }
     }
     if (activate_tab=="TAB4"){
         if (xycoordinates4.length>0){
@@ -240,12 +255,22 @@ function UnDo(){
             draw_canvas(canvas4,xycoordinates4);
             finishFlag4=false;
         }
+        else {
+            xycoordinates4.pop();
+            draw_canvas(canvas4,xycoordinates4);
+            xyToStoredxy()
+        }
     }
     if (activate_tab=="TAB5"){
         if (xycoordinates5.length>0){
             xycoordinates5.pop();
             draw_canvas(canvas5,xycoordinates5);
             finishFlag5=false;
+        }
+        else {
+            xycoordinates5.pop();
+            draw_canvas(canvas5,xycoordinates5);
+            xyToStoredxy()
         }
     }
 
@@ -290,19 +315,19 @@ function reply_click(clicked_id)
 function DeleteAllThenInit(i){
     //delete xy, storedxy, n,canvas,button according to xycoord list
     if (i==1){xycoordinates=[];
-        xyToStoredxy(xycoordinates);
+        xyToStoredxy();
         finishFlag=clearCanvas(canvas);}
     if (i==2){xycoordinates2=[];
-        xyToStoredxy(xycoordinates2);
+        xyToStoredxy();
         finishFlag2=clearCanvas(canvas2);}
     if (i==3){xycoordinates3=[];
-        xyToStoredxy(xycoordinates3);
+        xyToStoredxy();
         finishFlag3=clearCanvas(canvas3);}
     if (i==4){xycoordinates4=[];
-        xyToStoredxy(xycoordinates4);
+        xyToStoredxy();
         finishFlag4=clearCanvas(canvas4);}
     if (i==5){xycoordinates5=[];
-        xyToStoredxy(xycoordinates5);
+        xyToStoredxy();
         finishFlag5=clearCanvas(canvas5);}
 }
 
@@ -320,7 +345,7 @@ function finishOne(canvas, xycoo,fFlag){
         ctx.closePath();
         ctx.stroke();
         
-        xyToStoredxy(xycoo);
+        xyToStoredxy();
         return true;
     };
 
@@ -328,7 +353,7 @@ function finishOne(canvas, xycoo,fFlag){
 }
 
 //========================================================================================
-function xyToStoredxy(xycoordinates){ 
+function xyToStoredxy(){ 
     // alert(JSON.stringify(xycoordinates));
     document.getElementById("xycoorcommonAnswer").innerHTML=JSON.stringify(xycoordinates);  //xycorr->stored
     document.getElementById("xycoorcommonAnswer2").innerHTML=JSON.stringify(xycoordinates2);
