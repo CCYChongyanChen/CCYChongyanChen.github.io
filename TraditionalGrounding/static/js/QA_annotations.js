@@ -14,6 +14,7 @@ $.ajax({
             for (j=0; j<5;j++){
                 document.getElementById("answer"+(j+1)).innerHTML="Answer: "+data[group_id][j]["answers"][0];
                 document.getElementById("question"+(j+1)).innerHTML="Question: "+data[group_id][j]["question"];
+                document.getElementById("image"+(j+1)).src="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[group_id][j]["image"];
 
                 }
 }}
