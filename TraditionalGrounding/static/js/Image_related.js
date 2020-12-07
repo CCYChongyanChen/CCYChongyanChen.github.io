@@ -1,15 +1,10 @@
-// var searchParams = new URLSearchParams(window.location.search);
-// var imageURLvalue = "https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+searchParams.get("img1");
-// document.getElementById("IMAGE").src=imageURLvalue;
 
+var activate_tab="TAB1";
 var xycoordinates = [];
 var xycoordinates2 = [];
 var xycoordinates3 = [];
 var xycoordinates4 = [];
 var xycoordinates5 = [];
-// var clickTimeId;
-var newLineFlag=0;
-// var magnifyFlag=false;
 var finishFlag=false;
 var finishFlag2=false;
 var finishFlag3=false;
@@ -17,7 +12,6 @@ var finishFlag4=false;
 var finishFlag5=false;
 
 var closeEnough=5;
-var answerID_p = document.getElementById('xycoorcommonAnswer');
 // init canvas
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -43,17 +37,8 @@ canvas4.addEventListener('mousemove', mouseMove, false);
 var canvas5 = document.getElementById("myCanvas5");
 var ctx5 = canvas.getContext("2d");
 canvas5.addEventListener('mousemove', mouseMove, false);
-//   load static image to canvas
-// var imagecanvas = document.getElementById("canvas");
-// var imagectx = imagecanvas.getContext("2d");
 
-// var imageObj = new Image();
 
-// imageObj.onload = function() {
-//   h_w=scaleimage(imageObj, imagecanvas);
-//   imagectx.drawImage(imageObj, 0, 0, h_w.width,h_w.height);
-// };
-// imageObj.src = imageURLvalue;
 
 
 
@@ -61,36 +46,6 @@ canvas5.addEventListener('mousemove', mouseMove, false);
 
 
 //=======================basic============================================================
-// draw a small rectangular
-
-// function Mouseoutfunction(){
-//     zoom.style.display = "none";
-// }
-
-// function writeMessage(canvas, message) {
-//     var context = canvas.getContext('2d');
-//     context.clearRect(0, 0, canvas.width, canvas.height);
-//     context.font = '18pt Calibri';
-//     context.fillStyle = 'black';
-//     context.fillText(message, 10, 25);
-//   }
-
-
-// function MouseMovefunction(e){
-//     var zoom = document.getElementById("zoom");
-//     var zoomCtx = zoom.getContext("2d");
-//     var mousePos = getMousePos(canvas, e);
-//     // zoomCtx.fillStyle = "white";
-//     zoom.style.border="1px black solid";
-//     zoom.style.boxShadow="5px 5px 10 px #1e1e1e";
-//     zoomCtx.clearRect(0,0, zoom.width, zoom.height);
-//     zoomCtx.fillStyle = "transparent";
-//     zoomCtx.fillRect(0,0, zoom.width, zoom.height);
-//     zoomCtx.drawImage(imagecanvas, mousePos.x, mousePos.y, 200, 100, 0,0, 400, 200);
-//     zoom.style.top = e.pageY -900+ "px"
-//     zoom.style.left = e.pageX - 200 + "px"
-//     zoom.style.display = "block";
-// }
 function mouseMove(e) {
     canvas.style.cursor = "crosshair";
     canvas2.style.cursor = "crosshair";
@@ -130,7 +85,7 @@ canvas.addEventListener('click', function(evt) {
     if (finishFlag==false){
     var mousePos = getMousePos(canvas, evt);
         if(xycoordinates.length>2 && checkCloseEnough(mousePos.x, xycoordinates[0].x) && checkCloseEnough(mousePos.y, xycoordinates[0].y)){
-            finishOne(canvas, xycoordinates);
+            finishFlag=finishOne(canvas, xycoordinates, finishFlag);
         }
         else{xycoordinates.push(mousePos);
         draw_canvas(canvas,xycoordinates);
@@ -144,7 +99,7 @@ canvas.addEventListener('click', function(evt) {
     if (finishFlag2==false){
     var mousePos = getMousePos(canvas2, evt);
         if(xycoordinates2.length>2 && checkCloseEnough(mousePos.x, xycoordinates2[0].x) && checkCloseEnough(mousePos.y, xycoordinates2[0].y)){
-            finishOne(canvas2, xycoordinates2);
+            finishFlag2=finishOne(canvas2, xycoordinates2, finishFlag2);
         }
         else{xycoordinates2.push(mousePos);
         draw_canvas(canvas2,xycoordinates2);
@@ -159,7 +114,7 @@ canvas.addEventListener('click', function(evt) {
     if (finishFlag3==false){
     var mousePos = getMousePos(canvas3, evt);
         if(xycoordinates3.length>2 && checkCloseEnough(mousePos.x, xycoordinates3[0].x) && checkCloseEnough(mousePos.y, xycoordinates3[0].y)){
-            finishOne(canvas3, xycoordinates3);
+            finishFlag3=finishOne(canvas3, xycoordinates3, finishFlag3);
         }
         else{xycoordinates3.push(mousePos);
         draw_canvas(canvas3,xycoordinates3);
@@ -172,7 +127,7 @@ canvas.addEventListener('click', function(evt) {
     if (finishFlag4==false){
     var mousePos = getMousePos(canvas4, evt);
         if(xycoordinates4.length>2 && checkCloseEnough(mousePos.x, xycoordinates4[0].x) && checkCloseEnough(mousePos.y, xycoordinates4[0].y)){
-            finishOne(canvas4, xycoordinates4);
+            finishFlag4=finishOne(canvas4, xycoordinates4, finishFlag4);
         }
         else{xycoordinates4.push(mousePos);
         draw_canvas(canvas4,xycoordinates4);
@@ -185,7 +140,7 @@ canvas.addEventListener('click', function(evt) {
     if (finishFlag5==false){
     var mousePos = getMousePos(canvas5, evt);
         if(xycoordinates5.length>2 && checkCloseEnough(mousePos.x, xycoordinates5[0].x) && checkCloseEnough(mousePos.y, xycoordinates5[0].y)){
-            finishOne(canvas5, xycoordinates5);
+            finishFlag5=finishOne(canvas5, xycoordinates5, finishFlag5);
         }
         else{xycoordinates5.push(mousePos);
         draw_canvas(canvas5,xycoordinates5);
@@ -224,35 +179,6 @@ function draw_canvas(canvas,xycoordinates){
     }
 
 
-//==============================================Scale/Magnify=============================
-
-// function Magnify(){
-//     if (magnifyFlag==false){
-
-//         magnifyFlag=true;
-//         canvas.addEventListener("mousemove", MouseMovefunction);
-//         canvas.addEventListener("mouseout", Mouseoutfunction);}
-//     else{magnifyFlag=false;
-//         canvas.removeEventListener("mousemove",MouseMovefunction);
-//         canvas.removeEventListener("mouseout",Mouseoutfunction);
-//     }
-// }
-
-// // scale image
-// function scaleimage (sourceimage, imagecanvas){
-//     var wrh = sourceimage.width / sourceimage.height;
-//     var newWidth = imagecanvas.width;
-//     var newHeight = newWidth / wrh;
-//     if (newHeight > imagecanvas.height) {
-//         newHeight = imagecanvas.height;
-//         newWidth = newHeight * wrh;
-//     }
-//     return {height: newHeight, width:newWidth};
-    
-// }
-
-
-
 
 
 
@@ -263,22 +189,72 @@ function draw_canvas(canvas,xycoordinates){
 function clearCanvas(canvas){
     var context= canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
-    finishFlag=false;
+    return false;
 }
 
 
-
-
-// change xycoor, clear canvas, finishFlag=false, draw canvas according to xycoor
-function UnDo(){
-    if (xycoordinates.length>0){
-        xycoordinates.pop();
-        draw_canvas(canvas,xycoordinates);
+function THIS(){
+    if (activate_tab=="TAB1"){
+        return canvas, xycoordinates
+    }
+    if (activate_tab=="TAB2"){
+        return canvas2, xycoordinates2
+    }
+    if (activate_tab=="TAB3"){
+        return canvas3, xycoordinates3
+    }
+    if (activate_tab=="TAB4"){
+        return canvas4, xycoordinates4
+    }
+    if (activate_tab=="TAB5"){
+        return canvas5, xycoordinates5
     }
 }
 
+// change xycoor, clear canvas, finishFlag=false, draw canvas according to xycoor
+function UnDo(){
+    if (activate_tab=="TAB1"){
+        if (xycoordinates.length>0){
+            xycoordinates.pop();
+            draw_canvas(canvas,xycoordinates);
+            finishFlag=false;
+        }
+    }
+    if (activate_tab=="TAB2"){
+        if (xycoordinates2.length>0){
+            xycoordinates2.pop();
+            draw_canvas(canvas2,xycoordinates2);
+            finishFlag2=false;
+        }
+    }
+    if (activate_tab=="TAB3"){
+        if (xycoordinates3.length>0){
+            xycoordinates3.pop();
+            draw_canvas(canvas3,xycoordinates3);
+            finishFlag3=false;
+        }
+    }
+    if (activate_tab=="TAB4"){
+        if (xycoordinates4.length>0){
+            xycoordinates4.pop();
+            draw_canvas(canvas4,xycoordinates4);
+            finishFlag4=false;
+        }
+    }
+    if (activate_tab=="TAB5"){
+        if (xycoordinates5.length>0){
+            xycoordinates5.pop();
+            draw_canvas(canvas5,xycoordinates5);
+            finishFlag5=false;
+        }
+    }
 
 
+
+}
+
+
+var currentflag=false;
 
 // Undo  using ctrl+z
 //   Finish one label using ENTER
@@ -293,41 +269,72 @@ window.addEventListener("keydown", function(event){
 
 
 
-
+function reply_click(clicked_id)
+{   activate_tab=clicked_id;
+    if (clicked_id=="TAB1"){
+        currentflag=finishFlag;
+    }
+    if (clicked_id=="TAB2"){
+        currentflag=finishFlag2;}
+    if (clicked_id=="TAB3"){
+        currentflag=finishFlag3;
+    }
+    if (clicked_id=="TAB4"){
+        currentflag=finishFlag4;}
+    if (clicked_id=="TAB5"){
+        currentflag=finishFlag5;}
+    // alert(activate_tab);
+}
 //used by button only
 //xycoor should only be changed if finished or delete all 
-function DeleteAllThenInit(){
+function DeleteAllThenInit(i){
     //delete xy, storedxy, n,canvas,button according to xycoord list
-    xycoordinates=[];
-    xyToStoredxy();
-    clearCanvas(canvas);
+    if (i==1){xycoordinates=[];
+        xyToStoredxy(xycoordinates);
+        finishFlag=clearCanvas(canvas);}
+    if (i==2){xycoordinates2=[];
+        xyToStoredxy(xycoordinates2);
+        finishFlag2=clearCanvas(canvas2);}
+    if (i==3){xycoordinates3=[];
+        xyToStoredxy(xycoordinates3);
+        finishFlag3=clearCanvas(canvas3);}
+    if (i==4){xycoordinates4=[];
+        xyToStoredxy(xycoordinates4);
+        finishFlag4=clearCanvas(canvas4);}
+    if (i==5){xycoordinates5=[];
+        xyToStoredxy(xycoordinates5);
+        finishFlag5=clearCanvas(canvas5);}
 }
 
-function finishOne(canvas, xycoordinates){
-    if (finishFlag==false){
+function finishOne(canvas, xycoo,fFlag){
+    if (fFlag==false){
         var ctx=canvas.getContext("2d");
-        if (xycoordinates.length<2){
-            xycoordinates.pop();
+        if (xycoo.length<2){
+            xycoo.pop();
             alert("your cannot finish for drawing less than 3 points");
+            return false;
         }
-        else{
-            
-            ctx.strokeStyle = "#F0C132";
-            ctx.lineTo(xycoordinates[0].x,xycoordinates[0].y);
-            ctx.closePath();
-            ctx.stroke();
-            finishFlag=true;
-            xyToStoredxy();
-        };
+    else{
+        ctx.strokeStyle = "#F0C132";
+        ctx.lineTo(xycoo[0].x,xycoo[0].y);
+        ctx.closePath();
+        ctx.stroke();
+        
+        xyToStoredxy(xycoo);
+        return true;
+    };
 
     }
 }
 
 //========================================================================================
-function xyToStoredxy(){ 
+function xyToStoredxy(xycoordinates){ 
     // alert(JSON.stringify(xycoordinates));
-    document.getElementById('xycoorcommonAnswer').innerHTML=JSON.stringify(xycoordinates);  //xycorr->stored
-  
+    document.getElementById("xycoorcommonAnswer").innerHTML=JSON.stringify(xycoordinates);  //xycorr->stored
+    document.getElementById("xycoorcommonAnswer2").innerHTML=JSON.stringify(xycoordinates2);
+    document.getElementById("xycoorcommonAnswer3").innerHTML=JSON.stringify(xycoordinates3);
+    document.getElementById("xycoorcommonAnswer4").innerHTML=JSON.stringify(xycoordinates4);
+    document.getElementById("xycoorcommonAnswer5").innerHTML=JSON.stringify(xycoordinates5);
 }
 
 

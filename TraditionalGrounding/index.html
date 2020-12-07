@@ -98,8 +98,8 @@
 
 
         
-        <div class="myDIV"><button class="glyphicon glyphicon-question-sign" aria-hidden="true"></button></div>
-        <div class="hide">I am shown when someone hovers over the div above.</div>
+        <!-- <div class="myDIV"><button class="glyphicon glyphicon-question-sign" aria-hidden="true"></button></div>
+        <div class="hide">I am shown when someone hovers over the div above.</div> -->
 
 
         <!-- panel-heading -->
@@ -107,11 +107,11 @@
         
             <div class="container">
             <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab1" data-toggle="tab">Image 1</a></li>
-                    <li><a href="#tab2" data-toggle="tab">Image 2</a></li>
-                    <li><a href="#tab3" data-toggle="tab">Image 3</a></li>
-                    <li><a href="#tab4" data-toggle="tab">Image 4</a></li>
-                    <li><a href="#tab5" data-toggle="tab">Image 5</a></li>
+                    <li class="active"><a href="#tab1" id="TAB1" data-toggle="tab" onClick="reply_click(this.id)">Image 1</a></li>
+                    <li><a href="#tab2" data-toggle="tab" id="TAB2" onClick="reply_click(this.id)">Image 2</a></li>
+                    <li><a href="#tab3" data-toggle="tab" id="TAB3" onClick="reply_click(this.id)">Image 3</a></li>
+                    <li><a href="#tab4" data-toggle="tab" id="TAB4" onClick="reply_click(this.id)">Image 4</a></li>
+                    <li><a href="#tab5" data-toggle="tab" id="TAB5" onClick="reply_click(this.id)">Image 5</a></li>
             </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
@@ -151,7 +151,7 @@
                                                             <canvas id="myCanvas" width="400" height="500" 
                                                             style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                                         </div>
-                                                        <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
+                                                        <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit(1)">Clear</button>
                                                         <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
                                                         </div>
                     
@@ -414,7 +414,7 @@
                                                                     <canvas id="myCanvas2" width="400" height="500" 
                                                                     style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                                             </div>
-                                                            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
+                                                            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit(2)">Clear</button>
                                                             <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
                                                             </div>
                         
@@ -620,7 +620,7 @@
                                                     <!--- end all tasks column --->
                         
                         
-                                                    <p id ="xycoorcommonAnswer"></p>
+                                                    <p id ="xycoorcommonAnswer2"></p>
                         
                         
                                                     
@@ -671,7 +671,7 @@
                                                                                         <canvas id="myCanvas3" width="400" height="500" 
                                                                                         style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                                                                     </div>
-                                                                                    <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
+                                                                                    <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit(3)">Clear</button>
                                                                                     <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
                                                                                     </div>
                                                 
@@ -877,7 +877,7 @@
                                                                             <!--- end all tasks column --->
                                                 
                                                 
-                                                                            <p id ="xycoorcommonAnswer"></p>
+                                                                            <p id ="xycoorcommonAnswer3"></p>
                                                 
                                                 
                                                                             
@@ -924,7 +924,7 @@
                                                                                             <canvas id="myCanvas4" width="400" height="500" 
                                                                                             style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                                                                     </div>
-                                                                                    <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
+                                                                                    <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit(4)">Clear</button>
                                                                                     <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
                                                                                     </div>
                                                 
@@ -1130,7 +1130,7 @@
                                                                             <!--- end all tasks column --->
                                                 
                                                 
-                                                                            <p id ="xycoorcommonAnswer"></p>
+                                                                            <p id ="xycoorcommonAnswer4"></p>
                                                 
                                                 
                                                                             
@@ -1177,7 +1177,7 @@
                                                                     <canvas id="myCanvas5" width="400" height="500" 
                                                                     style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                                             </div>
-                                                            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
+                                                            <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit(5)">Clear</button>
                                                             <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
                                                             </div>
                         
@@ -1383,7 +1383,7 @@
                                                     <!--- end all tasks column --->
                         
                         
-                                                    <p id ="xycoorcommonAnswer"></p>
+                                                    <p id ="xycoorcommonAnswer5"></p>
                         
                         
                                                     
