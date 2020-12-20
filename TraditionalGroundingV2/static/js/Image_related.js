@@ -1,7 +1,4 @@
 
-var activate_tab="TAB1";
-var xycoordinates = [];
-var finishFlag=false;
 
 var closeEnough=5;
 // init canvas
@@ -18,7 +15,7 @@ function mouseMove(e) {
 
 function drawCircle(ctx,x,y, radius) {
     ctx.fillStyle = "#111111";
-    ctx.strokeStyle = "#ffffff"
+    ctx.strokeStyle = "#ffffff";
     ctx.beginPath();
     ctx.arc(x,y, radius, 0, 2 * Math.PI);
     ctx.fill();
@@ -44,24 +41,35 @@ function checkCloseEnough(p1, p2) {
 
 canvas.addEventListener('click', function(evt) {
     // magnifyFlag=false;
-    if (finishFlag==false){
-    var mousePos = getMousePos(canvas, evt);
-        if(xycoordinates.length>2 && checkCloseEnough(mousePos.x, xycoordinates[0].x) && checkCloseEnough(mousePos.y, xycoordinates[0].y)){
-            finishFlag=finishOne(canvas, xycoordinates, finishFlag);
-        }
-        else{xycoordinates.push(mousePos);
-        draw_canvas(canvas,xycoordinates);
-        }
-    // smallRec(canvas,mousePos);
+    if (detectStep12()==false){
+        alert("You must finish Step 1 and 2 before Step 3!")
     }
+    else{
+        if (finishFlags['finishFlag'+activate_tab]==false){
+            var mousePos = getMousePos(canvas, evt);
+            if(XY_names['xy'+activate_tab].length>2 && checkCloseEnough(mousePos.x, XY_names['xy'+activate_tab][0].x) && checkCloseEnough(mousePos.y, XY_names['xy'+activate_tab][0].y)){
+                
+                finishOne(canvas);
+            }
+            else{
+                XY_names['xy'+activate_tab].push(mousePos);
+                draw_canvas();
+            }
+            // smallRec(canvas,mousePos);
+        }
+    }
+
   }, false);
+
+
 // draw line
-function draw_canvas(Canvas,Xycoo){
-    var ctx=Canvas.getContext("2d");
+function draw_canvas(){
+    var ctx=canvas.getContext("2d");
     ctx.lineWidth = 3;
     ctx.strokeStyle = "#F0C132";
     var i;
-    clearCanvas(Canvas);
+    var Xycoo=XY_names['xy'+activate_tab];
+    clearCanvas();
     ctx.beginPath();
     for (i=0;i<Xycoo.length;i++){
         
@@ -73,17 +81,28 @@ function draw_canvas(Canvas,Xycoo){
     }
     
     ctx.stroke();
-    // ctx.fillStyle="red";
-    // ctx.fill();
-    // ctx.globalAlpha=0.5;
 
 
     
     for (i=0;i<Xycoo.length;i++){
         drawCircle(ctx,Xycoo[i].x,Xycoo[i].y,closeEnough);
     }
+
+    if (finishFlags['finishFlag'+activate_tab]==true){
+        ctx.strokeStyle = "#F0C132";
+        ctx.lineTo(XY_names['xy'+activate_tab][0].x,XY_names['xy'+activate_tab][0].y);
+        ctx.closePath();
+        ctx.stroke();
+        // 
+        // ctx.fillStyle="red";
+        // ctx.fill();
+        // ctx.globalAlpha=0.5;
     }
 
+
+
+
+    }
 
 
 
@@ -91,101 +110,29 @@ function draw_canvas(Canvas,Xycoo){
 //===========================================undo/delete/finish=======================================
 
 
-// clear canvas and set finishFlag=False
-function clearCanvas(Canvas){
-    var context= Canvas.getContext('2d');
-    context.clearRect(0, 0, Canvas.width, Canvas.height);
-    return false;
+// clear canvas. Remember to set finishFlag=False
+function clearCanvas(){
+    var context= canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 
-function THIS(){
-    if (activate_tab=="TAB1"){
-        return canvas, xycoordinates
-    }
-    if (activate_tab=="TAB2"){
-        return canvas2, xycoordinates2
-    }
-    if (activate_tab=="TAB3"){
-        return canvas3, xycoordinates3
-    }
-    if (activate_tab=="TAB4"){
-        return canvas4, xycoordinates4
-    }
-    if (activate_tab=="TAB5"){
-        return canvas5, xycoordinates5
-    }
-}
 
 // change xycoor, clear canvas, finishFlag=false, draw canvas according to xycoor
 function UnDo(){
-    if (activate_tab=="TAB1"){
-        if (xycoordinates.length>0){
-            xycoordinates.pop();
-            draw_canvas(canvas,xycoordinates);
-            finishFlag=false;
-        }
-        else {
-            xycoordinates.pop();
-            draw_canvas(canvas,xycoordinates);
-            xyToStoredxy()
-        }
+    if (XY_names['xy'+activate_tab].length>0){
+        XY_names['xy'+activate_tab].pop();
+        finishFlags['finishFlag'+activate_tab]=false;
+        draw_canvas();
     }
-    if (activate_tab=="TAB2"){
-        if (xycoordinates2.length>0){
-            xycoordinates2.pop();
-            draw_canvas(canvas2,xycoordinates2);
-            finishFlag2=false;
-        }
-        else {
-            xycoordinates2.pop();
-            draw_canvas(canvas2,xycoordinates2);
-            xyToStoredxy()
-        }
+    else {
+        // XY_names['xy'+activate_tab].pop();
+        // draw_canvas();
+        // xyToStoredxy();
+        DeleteAllThenInit();
     }
-    if (activate_tab=="TAB3"){
-        if (xycoordinates3.length>0){
-            xycoordinates3.pop();
-            draw_canvas(canvas3,xycoordinates3);
-            finishFlag3=false;
-        }
-        else {
-            xycoordinates3.pop();
-            draw_canvas(canvas3,xycoordinates3);
-            xyToStoredxy()
-        }
-    }
-    if (activate_tab=="TAB4"){
-        if (xycoordinates4.length>0){
-            xycoordinates4.pop();
-            draw_canvas(canvas4,xycoordinates4);
-            finishFlag4=false;
-        }
-        else {
-            xycoordinates4.pop();
-            draw_canvas(canvas4,xycoordinates4);
-            xyToStoredxy()
-        }
-    }
-    if (activate_tab=="TAB5"){
-        if (xycoordinates5.length>0){
-            xycoordinates5.pop();
-            draw_canvas(canvas5,xycoordinates5);
-            finishFlag5=false;
-        }
-        else {
-            xycoordinates5.pop();
-            draw_canvas(canvas5,xycoordinates5);
-            xyToStoredxy()
-        }
-    }
-
-
-
 }
 
-
-var currentflag=false;
 
 // Undo  using ctrl+z
 //   Finish one label using ENTER
@@ -194,57 +141,43 @@ window.addEventListener("keydown", function(event){
         UnDo();
       }
     else if (event.keyCode == 13) {   
-        finishOne(canvas, xycoordinates);
+        finishOne();
        }
    },false);
 
-
+// xycoordinate_names['xycoordinatesTAB'+i]={}; 
 //used by button only
 //xycoor should only be changed if finished or delete all 
-function DeleteAllThenInit(i){
+function DeleteAllThenInit(){
     //delete xy, storedxy, n,canvas,button according to xycoord list
-    if (i==1){xycoordinates=[];
-        xyToStoredxy();
-        finishFlag=clearCanvas(canvas);}
-    if (i==2){xycoordinates2=[];
-        xyToStoredxy();
-        finishFlag2=clearCanvas(canvas2);}
-    if (i==3){xycoordinates3=[];
-        xyToStoredxy();
-        finishFlag3=clearCanvas(canvas3);}
-    if (i==4){xycoordinates4=[];
-        xyToStoredxy();
-        finishFlag4=clearCanvas(canvas4);}
-    if (i==5){xycoordinates5=[];
-        xyToStoredxy();
-        finishFlag5=clearCanvas(canvas5);}
+    XY_names['xy'+activate_tab]=[];
+    // xyToStoredxy();
+    clearCanvas();
+    finishFlags['finishFlag'+activate_tab]=false;
 }
+    
 
-function finishOne(canvas, xycoo,fFlag){
-    if (fFlag==false){
+function finishOne(){
+    if (finishFlags['finishFlag'+activate_tab]==false){
         var ctx=canvas.getContext("2d");
-        if (xycoo.length<2){
-            xycoo.pop();
-            alert("your cannot finish for drawing less than 3 points");
-            return false;
-        }
-    else{
-        ctx.strokeStyle = "#F0C132";
-        ctx.lineTo(xycoo[0].x,xycoo[0].y);
-        ctx.closePath();
-        ctx.stroke();
-        
-        xyToStoredxy();
-        return true;
-    };
+        // if (XY_names['xy'+activate_tab].length<2){
+        //     XY_names['xy'+activate_tab].pop();
+        //     alert("your cannot finish for drawing less than 3 points");
+        //     finishFlags['finishFlag'+activate_tab]=false; //not yet finished
+        // }
+        // else{
+            ctx.strokeStyle = "#F0C132";
+            ctx.lineTo(XY_names['xy'+activate_tab][0].x,XY_names['xy'+activate_tab][0].y);
+            ctx.closePath();
+            ctx.stroke();
+            // xyToStoredxy();
+            finishFlags['finishFlag'+activate_tab]=true; //finished
+        // };
 
     }
 }
 
 //========================================================================================
-function xyToStoredxy(){ 
-    // alert(JSON.stringify(xycoordinates));
-    document.getElementById("xycoorcommonAnswer").innerHTML=JSON.stringify(xycoordinates);  
-}
-
-
+// function xyToStoredxy(){ 
+//     document.getElementById("xycoorcommonAnswer").innerHTML=JSON.stringify(XY_names['xy'+activate_tab]);  
+// }

@@ -6,7 +6,7 @@ var activate_tab = "TAB1";
 var tabnumber=5;
 
 var useranswer_names = {};
-var xycoordinate_names = {};
+var XY_names = {};
 var QA_names={};
 var ele = document.getElementsByTagName('input'); 
 
@@ -14,11 +14,16 @@ var searchParams = new URLSearchParams(window.location.search);
 var input = searchParams.get("groupindex");
 var dataset=input.split("_")[0]
 var group_id=input.split("_")[1]
+var finishFlags={};
+var finishStep12={};
+finishFlags['finishFlagTAB'+i]=false;
 
 for (var i =1; i < tabnumber+1; i++){
-    xycoordinate_names['xycoordinates'+i]=[]; 
+    XY_names['xyTAB'+i]=[]; 
     useranswer_names['useranswersTAB'+i]={};
     QA_names['qaTAB'+i]={};
+    finishFlags['finishFlagTAB'+i]=false;
+    finishStep12['finishStep12TAB'+i]=false;
 }
 
 
@@ -31,10 +36,6 @@ loadQApairs=$.ajax({
     dataType:'json',
     success:function(data){
             for (j=1; j<tabnumber+1;j++){
-                console.log(data[group_id][j-1])
-                // document.getElementById("answer"+(j+1)).innerHTML="Answer: "+data[group_id][j]["answers"][0];
-                // document.getElementById("question"+(j+1)).innerHTML="Question: "+data[group_id][j]["question"];
-                // document.getElementById("image"+(j+1)).src="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[group_id][j]["image"];
                 QA_names['qaTAB'+j]["Answer"]=data[group_id][j-1]["answers"][0];
                 QA_names['qaTAB'+j]["Question"]=data[group_id][j-1]["question"];
                 QA_names['qaTAB'+j]["Imgsrc"]="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[group_id][j-1]["image"];
@@ -61,9 +62,10 @@ function find_activated_tab(clicked_id)
     StorePreviousAnswers();
     activate_tab=clicked_id;
     ClearAll();
+    draw_canvas();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
-    console.log(QA_names);
+    // console.log(QA_names);
 }
 
 
@@ -87,8 +89,15 @@ function StorePreviousAnswers() {
                 useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
             }
         }
-        
 
+        if(ele[i].type=="checkbox") { 
+            if(ele[i].checked) {
+                useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
+            }
+            else{
+                useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Draw';
+            }
+        }
         else if(ele[i].type=="text") { 
             useranswer_names['useranswers'+activate_tab][ele[i].name]  = ele[i].value;
             }
@@ -99,7 +108,7 @@ function StorePreviousAnswers() {
 function ClearAll() { 
     for(i = 0; i < ele.length; i++) { 
           
-        if(ele[i].type=="radio") { 
+        if(ele[i].type=="radio" || ele[i].type=="checkbox") { 
             ele[i].checked=false;
         }
         
@@ -109,6 +118,7 @@ function ClearAll() {
             }
 
     } 
+    clearCanvas();
 }
 
 function DisplayCurrentAnswers(){
@@ -127,6 +137,14 @@ function DisplayCurrentAnswers(){
                     ele[i].checked=true;
                 }
             }
+            else if (ele[i].type=="checkbox"){
+                if(tmpvalue=="Draw"){
+                    ele[i].checked=false;
+                }
+                else{ele[i].checked=true;}
+                
+            }
+
             else if(ele[i].type=="text") { 
                 ele[i].value=useranswer_names['useranswers'+activate_tab][ele[i].name] ;
                 }
