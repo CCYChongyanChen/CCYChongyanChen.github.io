@@ -10,7 +10,19 @@ canvas.addEventListener('mousemove', mouseMove, false);
 
 //=======================basic============================================================
 function mouseMove(e) {
-    canvas.style.cursor = "crosshair";
+    if (Step3Flag==true){
+        canvas.style.cursor = "crosshair";
+        var mousePos = getMousePos(canvas, e);
+        if(finishFlags['finishFlag'+activate_tab]==false && XY_names['xy'+activate_tab].length>2 && checkCloseEnough(mousePos.x, XY_names['xy'+activate_tab][0].x) && checkCloseEnough(mousePos.y, XY_names['xy'+activate_tab][0].y)){
+            draw_canvas(style="#791E94");
+        }
+        else{
+            draw_canvas();
+        }
+    }
+    else{
+        canvas.style.cursor = "not-allowed";
+    }
 }
 
 function drawCircle(ctx,x,y, radius) {
@@ -41,8 +53,8 @@ function checkCloseEnough(p1, p2) {
 
 canvas.addEventListener('click', function(evt) {
     // magnifyFlag=false;
-    if (detectStep12()==false){
-        alert("You must finish Step 1 and 2 before Step 3!")
+    if (Step3Flag==false){
+        
     }
     else{
         if (finishFlags['finishFlag'+activate_tab]==false){
@@ -63,10 +75,10 @@ canvas.addEventListener('click', function(evt) {
 
 
 // draw line
-function draw_canvas(){
+function draw_canvas(style="#F0C132"){
     var ctx=canvas.getContext("2d");
     ctx.lineWidth = 3;
-    ctx.strokeStyle = "#F0C132";
+    ctx.strokeStyle = style;
     var i;
     var Xycoo=XY_names['xy'+activate_tab];
     clearCanvas();
@@ -166,7 +178,7 @@ function finishOne(){
         //     finishFlags['finishFlag'+activate_tab]=false; //not yet finished
         // }
         // else{
-            ctx.strokeStyle = "#F0C132";
+            ctx.strokeStyle = "#791E94";
             ctx.lineTo(XY_names['xy'+activate_tab][0].x,XY_names['xy'+activate_tab][0].y);
             ctx.closePath();
             ctx.stroke();
