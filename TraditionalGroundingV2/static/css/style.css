@@ -5,13 +5,10 @@
  }
 
  button.link{
-     background:none;
-     border:none;
- }
+    background:none;
+    border:none;
+}
 
- /* #ReportProblemDIV {
-     margin-top:20px;
-} */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
     padding: 16px;
@@ -32,20 +29,44 @@ color: red;
     border: none;
     outline: none;
     padding: 10px 16px;
-    background-color: #ccc;
+    background-color: #FDD692;
     cursor: pointer;
     font-size: 18px;
   }
-  
-  /* Style the active class, and buttons on mouse-over */
-.active, .btn:hover {
-background-color: white;
-color: black;
-}
 
+.btnNext,.btnPrevious,.btnsubmit{
+    float:right;
+    margin-top:5px;
+    margin-right: 5px;
+
+}
+  /* Style the active class, and buttons on mouse-over */
+.btn:hover {
+background-color: #EC7357;
+color: white;
+}
+.active {
+    background-color: white;
+    color: black;
+    }
 div.border-around{
     border: 2px solid #ccc;
     border-radius: 3px;
     padding-top: 5px;
     padding-bottom: 15px;
+}
+
+#TAB1,#TAB2,#TAB3,#TAB4,#TAB5{ 
+    background-color: fffcf0;
+}
+
+.viewer{
+        height: 700px;
+        width: 100%;
+        border: 1px solid #deecee;
+        background:white;
+}
+.text-secondary {
+    margin-left: 10px;
+    color:#754F44;
 }

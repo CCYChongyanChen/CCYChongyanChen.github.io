@@ -9,6 +9,7 @@ var useranswer_names = {};
 var XY_names = {};
 var QA_names={};
 var ele = document.getElementsByTagName('input'); 
+var Step3Flag=false;
 
 var searchParams = new URLSearchParams(window.location.search);
 var input = searchParams.get("groupindex");
