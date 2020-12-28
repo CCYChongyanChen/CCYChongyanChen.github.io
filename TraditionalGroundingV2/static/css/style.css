@@ -1,30 +1,4 @@
 
-.magnifyglass{
-    border:1px black solid;
-    box-shadow: 5px 5px 10px #1e1e1e;
- }
-
- button.link{
-    background:none;
-    border:none;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    background-color: #f1f1f1;
-}
-
-
-.hide {
-    display: none;
-  }
-      
-.moreInfo:hover + .hide {
-display: block;
-color: red;
-}
-
 .btn {
     border: none;
     outline: none;
@@ -40,15 +14,26 @@ color: red;
     margin-right: 5px;
 
 }
-  /* Style the active class, and buttons on mouse-over */
+
 .btn:hover {
-background-color: #EC7357;
-color: white;
+    background-color: #EC7357;
+    color: white;
 }
-.active {
-    background-color: white;
-    color: black;
-    }
+.btnsCenterContainer{
+    display:flex;
+    margin: 0 auto;
+    width: 50%;
+    
+}
+.btn-secondary{
+    margin-top:10px;
+    /* margin:0 auto;
+    display:block; */
+    
+    flex:1;  
+    margin-left:10px;  
+    
+}
 div.border-around{
     border: 2px solid #ccc;
     border-radius: 3px;
@@ -56,17 +41,69 @@ div.border-around{
     padding-bottom: 15px;
 }
 
-#TAB1,#TAB2,#TAB3,#TAB4,#TAB5{ 
-    background-color: fffcf0;
-}
+/* #TAB1,#TAB2,#TAB3,#TAB4,#TAB5{ 
+    background-color: #fffcf0;
+} */
 
 .viewer{
+        margin: 0 auto;
         height: 700px;
         width: 100%;
         border: 1px solid #deecee;
-        background:white;
+        background:rgb(253, 251, 253);
 }
 .text-secondary {
-    margin-left: 10px;
+
+    margin-left:20px;
     color:#754F44;
 }
+
+.noHover{
+    cursor: not-allowed;
+    background-color: lightgrey;
+}
+.noHover:hover{
+    background:lightgrey;
+    color:black
+}
+a.glyphicon:hover{
+    cursor: help;
+    color:blue;
+    background-color:white;
+}
+.nav>li>a:hover{
+    background-color: #FDD692;
+}
+/* .nav>li:active>a{
+    
+    color:green;
+    background-color: yellow;
+} */
+
+ul.controlImg>li>a.noHover{
+    pointer-events: none;
+}
+.examples{
+
+    color: black;
+    background-color: white;
+}
+
+
+
+/* CANVAS */
+#canvaswrapper{
+    /* position:relative; */
+    margin-left: 20px;
+    width:500px; 
+    height:500px;
+}
+img.coveredImage{
+    position: absolute; 
+    left: 0; 
+    top: 0;
+    z-index: 0;
+    user-select: none;
+}
+/* canvas.myCanvas{
+    position: absolute; left: 0; top: 0; z-index: 1; } */
