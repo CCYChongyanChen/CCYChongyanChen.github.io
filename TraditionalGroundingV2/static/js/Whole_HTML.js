@@ -1,6 +1,7 @@
 
-
+$(document).ready(function() {
  $('.btnNext').click(function(){
+
     $('.nav-tabs > .active').next('li').find('a').trigger('click');
   });
   
@@ -14,7 +15,7 @@
     $('.Examplenav-tabs > .active').next('li').find('a').trigger('click');
   });
   
-    $('.ExamplebtnPrevious').click(function(){
+  $('.ExamplebtnPrevious').click(function(){
     $('.Examplenav-tabs > .active').prev('li').find('a').trigger('click');
   });
 
@@ -50,3 +51,6 @@
 //     transitionEffect: "slideLeft",
 //     autoFocus: true
 // });
+
+
+});

@@ -10,7 +10,6 @@ var XY_names = {};
 var QA_names={};
 var ele = document.getElementsByTagName('input'); 
 var Step3Flag=false;
-
 var searchParams = new URLSearchParams(window.location.search);
 var input = searchParams.get("groupindex");
 var dataset=input.split("_")[0]
@@ -60,12 +59,14 @@ $.when(loadQApairs).done(function(){
 
 function find_activated_tab(clicked_id)
 {   
+    
     StorePreviousAnswers();
     activate_tab=clicked_id;
     ClearAll();
     draw_canvas();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
+    ControlStep3();
     // console.log(QA_names);
 }
 

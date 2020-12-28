@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/style.css">
     
-    <!-- jQuery steps CSS -->
-    <link rel="stylesheet" href="static/css/jquery.steps.css"/>
     <!-- jQuery library -->
     <script src="static/js/jquery.min.js"></script>
     <!-- <script src="static/js/jquery.js"></script>  -->
-    <script src="static/js/jquery.steps.js"></script>
     <script type="text/javascript" src="static/QA_annotations/test.json"></script>
     <!-- Latest compiled JavaScript -->
     <script src="static/js/bootstrap.min.js"></script>
@@ -79,7 +76,7 @@
                                                                     <li><a data-toggle="tab" href="#e5">Occulusion</a></li>
                                                                   </ul>
                                                                   
-                                                                  <div class="tab-content">
+                                                                  <div class="tab-content examples">
                                                                     <div id="e1" class="tab-pane fade in active">
                                                                       <h3>Image with hole</h3> 
                                                                        If the object has a hole, you just need to draw the outside boundary
@@ -160,7 +157,7 @@
         <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'><input type='hidden' value='' name='assignmentId' id='assignmentId'/>
         
             <div class="container">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs controlImg">
                     <li class="active"><a href="#tab1" id="TAB1" data-toggle="tab" onClick="find_activated_tab(this.id)">Image 1</a></li>
                     <li><a href="#tab2" data-toggle="tab" id="TAB2" onClick="find_activated_tab(this.id)">Image 2</a></li>
                     <li><a href="#tab3" data-toggle="tab" id="TAB3" onClick="find_activated_tab(this.id)">Image 3</a></li>
@@ -186,13 +183,15 @@
 
                                     <input type="hidden" id="task1forsubmit" name="task1forsubmit">
 
-                                    <div  id="canvaswrapper" style="position:relative;width:500px; height:500px;">
+                                    <div id="canvaswrapper" style="position:relative;width:500px; height:500px;">
                                         <img class="coveredImage" id="image" src="" width="400" height="500" style="position: absolute; left: 0; top: 0; z-index: 0; user-select: none;">
                                         <canvas id="myCanvas" width="400" height="500" 
                                         style="position: absolute; left: 0; top: 0; z-index: 1; "></canvas>
                                     </div>
+                                    <div class="btnsCenterContainer">
                                     <button type="button" class="btn btn-secondary" onclick="DeleteAllThenInit()">Clear</button>
                                     <button type="button" class="btn btn-secondary" onclick="UnDo()" data-toggle="tooltip"  data-placement="top" title="ctrl+z">UnDo</button>
+                                    </div>
                                 </div>
 
 
@@ -366,7 +365,7 @@
                                                                                         <span class="input-group-addon">
                                                                                             <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px;">
                                                                                                 <label style="margin-top: 0px; margin-bottom: 0px;">
-                                                                                                    <input name="Q_ISSUE" type="checkbox" value="CANNOT_DRAW" class="Step3" >
+                                                                                                    <input name="NODRAW" id="nodraw" type="checkbox" value="CANNOT_DRAW" class="Step3" >
                                                                                                     Cannot draw:
                                                                                                 </label>
                                                                                             </div>
@@ -399,27 +398,27 @@
 
 
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab1">
-                        <a class="btn btn-default btnNext" >Next</a>
+                    <div class="tab-pane btndiv active" id="tab1">
+                        <button type="button" class="btn btnNext" id = "btnNext1">Next</button>
                     </div>
-                    <div class="tab-pane" id="tab2">
-                        <a class="btn btn-default btnNext" >Next</a>
-                        <a class="btn btn-default btnPrevious" >Previous</a>
+                    <div class="tab-pane btndiv" id="tab2">
+                        <button type="button" class="btn btnNext">Next</button>
+                        <button type="button" class="btn btnPrevious" >Previous</button>
                     </div>
-                    <div class="tab-pane" id="tab3">
-                        <a class="btn btn-default btnNext" >Next</a>
-                        <a class="btn btn-default btnPrevious" >Previous</a>
+                    <div class="tab-pane btndiv" id="tab3">
+                        <button type="button" class="btn btnNext" >Next</button>
+                        <button type="button" class="btn btnPrevious" >Previous</button>
                     </div>
-                    <div class="tab-pane" id="tab4">
-                        <a class="btn btn-default btnNext" >Next</a>
-                        <a class="btn btn-default btnPrevious" >Previous</a>
+                    <div class="tab-pane btndiv" id="tab4">
+                        <button type="button" class="btn btnNext" >Next</button>
+                        <button type="button" class="btn btnPrevious" >Previous</button>
                     </div>
-                    <div class="tab-pane" id="tab5">
+                    <div class="tab-pane btndiv" id="tab5">
 
-                        <button type="button" class="btn btn-default waves-effect waves-light btnsubmit" data-toggle="modal" data-target="#centralModalLg">Submit</button>
+                        <button type="button" class="btn waves-effect waves-light btnsubmit" data-toggle="modal" data-target="#centralModalLg">Submit</button>
                         
                         
-                        <a class="btn btn-default btnPrevious" >Previous</a>
+                        <button type="button" class="btn btnPrevious" >Previous</button>
                     </div>
                 </div>
 

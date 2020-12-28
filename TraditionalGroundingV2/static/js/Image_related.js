@@ -10,7 +10,7 @@ canvas.addEventListener('mousemove', mouseMove, false);
 
 //=======================basic============================================================
 function mouseMove(e) {
-    if (Step3Flag==true){
+    if (Step3Flag==true && (!$('#nodraw:checked').length>0)){
         canvas.style.cursor = "crosshair";
         var mousePos = getMousePos(canvas, e);
         if(finishFlags['finishFlag'+activate_tab]==false && XY_names['xy'+activate_tab].length>2 && checkCloseEnough(mousePos.x, XY_names['xy'+activate_tab][0].x) && checkCloseEnough(mousePos.y, XY_names['xy'+activate_tab][0].y)){
@@ -53,7 +53,7 @@ function checkCloseEnough(p1, p2) {
 
 canvas.addEventListener('click', function(evt) {
     // magnifyFlag=false;
-    if (Step3Flag==false){
+    if (Step3Flag==false || $('#nodraw:checked').length>0){
         
     }
     else{
