@@ -1,6 +1,7 @@
 
 
 var closeEnough=5;
+var UpdateCloseEnough=false;
 // init canvas
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -10,17 +11,41 @@ canvas.addEventListener('mousemove', mouseMove, false);
 
 //=======================basic============================================================
 function mouseMove(e) {
+    //Can draw
+    var finished = finishFlags['finishFlag'+activate_tab]
     if (Step3Flag==true && (!$('#nodraw:checked').length>0)){
-        canvas.style.cursor = "crosshair";
-        var mousePos = getMousePos(canvas, e);
-        if(finishFlags['finishFlag'+activate_tab]==false && XY_names['xy'+activate_tab].length>2 && checkCloseEnough(mousePos.x, XY_names['xy'+activate_tab][0].x) && checkCloseEnough(mousePos.y, XY_names['xy'+activate_tab][0].y)){
-            draw_canvas(style="#791E94");
+        if (finished){
+            //undate once more time to get it changed to yellow
+            if (UpdateCloseEnough==true){
+                draw_canvas();
+                canvas.style.cursor = "auto";}
+            else{
+                canvas.style.cursor = "auto";
+            }
         }
+
         else{
-            draw_canvas();
+            canvas.style.cursor = "crosshair";
+            var mousePos = getMousePos(canvas, e);
+            // not finished && Close Enough
+            tmpFlag= finished==false && XY_names['xy'+activate_tab].length>2 && checkCloseEnough(mousePos.x, XY_names['xy'+activate_tab][0].x) && checkCloseEnough(mousePos.y, XY_names['xy'+activate_tab][0].y)
+            if(UpdateCloseEnough==false && tmpFlag)
+                {
+                draw_canvas(style="#791E94");
+                UpdateCloseEnough=true;
+                } 
+            
+            //not finished && not closed enough
+            else if (!tmpFlag)
+            {
+                draw_canvas();
+                UpdateCloseEnough=false;
+            }
         }
     }
+    // Cannot draw
     else{
+
         canvas.style.cursor = "not-allowed";
     }
 }
@@ -151,9 +176,11 @@ function UnDo(){
 window.addEventListener("keydown", function(event){
     if (event.ctrlKey && event.key == 'z') {
         UnDo();
+        ControlNext();
       }
     else if (event.keyCode == 13) {   
         finishOne();
+        ControlNext();
        }
    },false);
 
@@ -171,13 +198,16 @@ function DeleteAllThenInit(){
 
 function finishOne(){
     if (finishFlags['finishFlag'+activate_tab]==false){
-        var ctx=canvas.getContext("2d");
+
+            var ctx=canvas.getContext("2d");
         // if (XY_names['xy'+activate_tab].length<2){
         //     XY_names['xy'+activate_tab].pop();
         //     alert("your cannot finish for drawing less than 3 points");
         //     finishFlags['finishFlag'+activate_tab]=false; //not yet finished
         // }
         // else{
+            
+            XY_names['xy'+activate_tab].push(XY_names['xy'+activate_tab][0]);
             ctx.strokeStyle = "#791E94";
             ctx.lineTo(XY_names['xy'+activate_tab][0].x,XY_names['xy'+activate_tab][0].y);
             ctx.closePath();

@@ -15,6 +15,7 @@
 
 }
 
+body {font-size: 18px;}
 .btn:hover {
     background-color: #EC7357;
     color: white;
@@ -62,9 +63,18 @@ div.border-around{
     cursor: not-allowed;
     background-color: lightgrey;
 }
+
 .noHover:hover{
     background:lightgrey;
     color:black
+}
+div.noHover{
+    color: grey;
+    background-color: rgba(150, 150, 150, 0.2);
+}
+div.noHover:hover{
+    color: grey;
+    background-color: rgba(150, 150, 150, 0.2);
 }
 a.glyphicon:hover{
     cursor: help;
