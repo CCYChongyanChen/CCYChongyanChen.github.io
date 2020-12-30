@@ -63,10 +63,11 @@ function find_activated_tab(clicked_id)
     StorePreviousAnswers();
     activate_tab=clicked_id;
     ClearAll();
-    draw_canvas();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
+    ControlCanvas();
     ControlStep3();
+    ControlNext();
     // console.log(QA_names);
 }
 
