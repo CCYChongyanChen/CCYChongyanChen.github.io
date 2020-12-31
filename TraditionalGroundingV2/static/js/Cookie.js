@@ -21,11 +21,9 @@ function setCookie(cname, cvalue, exdays) {
   }
   
   function checkCookie() {
-    var hide = getCookie("Hide");
+    var hide = getCookie("DtlHide");
     if (hide == 'true') {
         $('#dtlPane').collapse('hide');
-    } else  {
-        setCookie("Hide", 'true', 365);
     }
   }
 
