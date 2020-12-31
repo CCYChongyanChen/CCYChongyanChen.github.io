@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   
   $('#hideDtl').click(function()
-  {-
+  {
       $('#dtlPane').collapse('hide');
   });
 
