@@ -62,6 +62,6 @@ $(document).ready(function() {
 $('#submitbtn').click(function()
 {
     ('#hiddenXY').val(XY_names);
-    ("#hiddenAnswer").val(useranswer_anmes);
+    ("#hiddenAnswer").val(useranswer_names);
 
 });
