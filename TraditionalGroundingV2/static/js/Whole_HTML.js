@@ -30,7 +30,7 @@ $(document).ready(function() {
   {
       // as user has hidden details, set cookie to keep it hidden
       // so it never comes back within 30 mins
-      var date = new Date(); var delay_mins = 30;
+      var date = new Date(); var delay_mins = 60;
       date.setTime(date.getTime() + (delay_mins * 60 * 1000));
       document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
   });
@@ -52,5 +52,16 @@ $(document).ready(function() {
 //     autoFocus: true
 // });
 
+
+});
+
+
+
+
+
+$('#submitbtn').click(function()
+{
+    ('#hiddenXY').val(XY_names);
+    ("#hiddenAnswer").val(useranswer_anmes);
 
 });
