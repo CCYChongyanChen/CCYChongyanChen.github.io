@@ -34,7 +34,7 @@
                             <button type="button" id="showDtl"
                                     data-toggle="collapse" data-target="#dtlPane"
                                     class="btn btn-default btn-sm center-block" >
-                                Hide / Show Details
+                                Hide / Show Instructions
                             </button>
             
                             <!-- task details -->
@@ -43,24 +43,23 @@
         
                                         <br><h2>Motivation:</h2> 
                                         <p>
-                                        We aim to build a smart system that can automatically answer visual questions from blind people. The images and questions you will see are from visually impaired people and the answer are from crowd workers.
+                                        We aim to build a smart system that can automatically answer visual questions from blind people. 
+                                        The images and questions you will see are from visually impaired people and the answer are from crowd workers.
                                         </p>
                                          <!-- To improve the performance of our artificial intelligence algorithm, we need your help to visually around each answer. This helps the model learn which region of the image it should pay attention in order to get the answer. -->
                                         <br>
                                         <h2>We ask you to: </h2>
-                                            Carefully review the question, image, and the answer provided, and then finish step 1, step2, and step 3 (if provided).
-                                            <br><strong>Step 1:</strong> indicate if there is more than one question
+                                            Carefully review the question, image, and the answer provided, and then finish step 1, step2, and if provided, step 3.
+                                            <br><strong>Step 1:</strong> indicate if there is more than one question asked.
                                             <br><strong>Step 2:</strong> indicate if the answer is referring to more than one region/object.
-                                             Draw ONE closed polygon to ground region that the answer is referring to by clicking the image. Click the first point again to finish one drawing.
-                                            <br><strong>Step 3:</strong> Step 3 will only be activated if you select two "No" for Step 1 and 2. finishing step 1 and step 2. 
-                                            For step 3, draw ONE closed polygon to ground region that the answer is referring to by clicking the image. Click the first point again to finish one drawing.
-                                            You can use keyboard shortcut: Ctrl+Z to Undo, Enter to finish.  
-                                       
-                                           
+                                
+                                            <br><strong>Step 3:</strong> Step 3 will only be activated if you select two "No" for Step 1 and 2.
+                                            <br>For step 3, either draw ONE closed polygon to ground region that the answer is referring to by clicking the image.                  
                                             Or You may select "cannot draw" option and indicate the reason why you cannot ground the answer for this image. 
         
                                         <br>
                                         <br>
+                                        <h2>Examples:</h2>
                                         <details>
                                             <summary><strong>Click to see step 3's general examples </strong></summary>
                                             <ol>
@@ -117,17 +116,17 @@
                                                               
                                                               <div class="tab-content examples">
                                                                 <div id="e1" class="tab-pane fade">
-                                                                  <h3>Image with hole</h3> 
+                                                                  <br>
                                                                    If the object has a hole, you just need to draw the outside boundary
                                                                   <br>
-                                                                  
-
-                                                                  Question: What is this?
                                                                   <br>
-                                                                  Answer: laundry detergent
+
                                                                   <div class="row">
                                                                         <div class="col-sm-6 col-md-4">
                                                                           <div class="thumbnail">
+                                                                                Question: What is this?
+                                                                                <br>
+                                                                                Answer: laundry detergent
                                                                             <img src="static/images/imagewithhole1.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
@@ -140,6 +139,9 @@
                                                                                
                                                                         <div class="col-sm-6 col-md-4">
                                                                                 <div class="thumbnail">
+                                                                                        Question: What is this?
+                                                                                        <br>
+                                                                                        Answer: laundry detergent
                                                                                   <img src="static/images/imagewithhole2.png" alt="...">
                                                                                   <div class="caption">
                                                                                         <h3>
@@ -167,10 +169,12 @@
 
 
                                                                 <div id="e2" class="tab-pane fade in active">
-                                                                  <h3>Text related</h3>
-                                                                   when the answer is related to text, please pay more attention to the question to identify if the object is mentioned in the question. 
-                                                                  If the object is not mentioned in the question, they may ask “what is this?”. In this case, answer may use text to describe the object and you should ground the object. See the example on the left. 
-                                                                  If the object is mentioned in the question, see the example on the middle and right, you should ground the specific text. 
+                                                                  <br>
+                                                                   when the answer is related to text, please first identify if the object is mentioned in the question. 
+                                                                  <br>                                             
+                                                                  If not, see the example on the left. Usually, they may ask “what is this?”. In this case, text is used to describe the object and you should ground the object. 
+                                                                  <br>
+                                                                  If so, see the example on the middle and right, you should ground the specific text. 
                                                                   <br>
                                                                   
                                                                   <br>
@@ -188,7 +192,7 @@
                                                                                                 <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
                                                                                                 
                                                                                             </h3>
-                                                                                        <p>The question is asking what the object is (lotion). Thus you need to ground the whole object. 
+                                                                                        <p>The question is asking what the object is. Thus you need to ground the whole object. 
                                                                                             Note that the answer to this question is the same as the answer to the middle image,
                                                                                             while their grounded area are different.
 
@@ -211,7 +215,7 @@
                                                                                                     <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
                                                                                                     
                                                                                                 </h3>
-                                                                                            <p>The question has metioned what the object is (lotion). Thus you only need to ground the related text area.</p>
+                                                                                            <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
                                                                                        
                                                                                       </div>
                                                                                     </div>
@@ -228,7 +232,7 @@
                                                                                             <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
                                                                                            
                                                                                         </h3>
-                                                                              <p>The question has metioned what the object is (lotion). Thus you only need to ground the related text area.</p>
+                                                                              <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
                                                                             </div>
                                                                           </div>
                                                                         </div>
@@ -240,8 +244,9 @@
                                                                   <button type="button" class="btn ExamplebtnNext" >Next</button>
                                                                 </div>
                                                                 <div id="e3" class="tab-pane fade">
-                                                                  <h3>Whole Image</h3>
+                                                                    <br>
                                                                   Draw a rectangle to ground the whole picture as the target region if the answer is referring to the whole image. Usually, this happens when the camera is too close to the object.
+                                                                  <br>
                                                                   <br>
 
 
@@ -249,6 +254,9 @@
                                                                   <div class="row">
                                                                         <div class="col-sm-6 col-md-4">
                                                                           <div class="thumbnail">
+                                                                                Question: What is this?
+                                                                                <br>
+                                                                                Answer: CeraVe daily moisturizing lotion
                                                                             <img src="static/images/wholeimage.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
@@ -268,19 +276,19 @@
                                                                 </div>
                                                                 
                                                                 <div id="e4" class="tab-pane fade">
-                                                                    <h3>Complex Boundary</h3>
+                                                                    <br>
                                                                     <p>  Please try you best to trace the boundary of the object as tightly as possible. Only when the boundary is too complex that you may not need to perfectly trace the boundary.
                                                                     </p> 
                                                                     <br>
                                                                    
                                                
-                                                                    Question: What plant is this?
-                                                                    <br>
-                                                                    Answer: Dracaena sanderiana
                             
                                                                     <div class="row">
                                                                             <div class="col-sm-6 col-md-4">
                                                                               <div class="thumbnail">
+                                                                                Question: What plant is this?
+                                                                                <br>
+                                                                                Answer: Dracaena sanderiana
                                                                                 <img src="static/images/howgood21.png" alt="...">
                                                                                 <div class="caption">
                                                                                         <h3>
@@ -293,6 +301,9 @@
                                                                                    
                                                                             <div class="col-sm-6 col-md-4">
                                                                                     <div class="thumbnail">
+                                                                                        Question: What plant is this?
+                                                                                        <br>
+                                                                                        Answer: Dracaena sanderiana
                                                                                       <img src="static/images/howgood22.png" alt="...">
                                                                                       <div class="caption">
                                                                                             <h3>
@@ -305,6 +316,9 @@
                                                       
                                                                                   <div class="col-sm-6 col-md-4">
                                                                                         <div class="thumbnail">
+                                                                                            Question: What plant is this?
+                                                                                            <br>
+                                                                                            Answer: Dracaena sanderiana
                                                                                           <img src="static/images/howgood23.png" alt="...">
                                                                                           <div class="caption">
                                                                                                 <h3>
@@ -324,19 +338,19 @@
                                                                 </div>
                                                                 
                                                                 <div id="e5" class="tab-pane fade">
-                                                                    <h3>Occulusion</h3>
+                                                                    <br>
                                                                     Please do not include the invisible part. 
+                                                                    <br>
                                                                     <br>
 
 
 
-                                                                    
-                                                                  Question: What is this?
-                                                                  <br>
-                                                                  Answer: CeraVe daily moisturizing lotion for normal to dry skin
                                                                   <div class="row">
                                                                         <div class="col-sm-6 col-md-4">
                                                                           <div class="thumbnail">
+                                                                                Question: What is this?
+                                                                                <br>
+                                                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin
                                                                             <img src="static/images/invisiblepart11.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
@@ -347,9 +361,26 @@
                                                                             </div>
                                                                           </div>
                                                                         </div>
-                                                                               
+                                                                        <div class="col-sm-6 col-md-4">
+                                                                            <div class="thumbnail">
+                                                                                    Question: What is this?
+                                                                                    <br>
+                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin
+                                                                              <img src="static/images/invisiblepart21.png" alt="...">
+                                                                              <div class="caption">
+                                                                                <h3>
+                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
+                                                                                      
+                                                                                    </h3>
+                                                                                <p>In this case, it's acceptable to include the chopsticks. Otherwise you cannot use just one closed polygon to ground the image.</p>
+                                                                              </div>
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="col-sm-6 col-md-4">
                                                                                 <div class="thumbnail">
+                                                                                    Question: What is this?
+                                                                                    <br>
+                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin
                                                                                   <img src="static/images/invisiblepart12.png" alt="...">
                                                                                   <div class="caption">
                                                                                         <h3>
@@ -364,37 +395,6 @@
 
 
 
-                                                                
-                                                                Question: What is this?
-                                                                <br>
-                                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin
-                                                                <div class="row">
-                                                                      <div class="col-sm-6 col-md-4">
-                                                                        <div class="thumbnail">
-                                                                          <img src="static/images/invisiblepart21.png" alt="...">
-                                                                          <div class="caption">
-                                                                            <h3>
-                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
-                                                                                  
-                                                                                </h3>
-                                                                            <p>In this case, it's acceptable to include the chopsticks. Otherwise you cannot use just one closed polygon to ground the image.</p>
-                                                                          </div>
-                                                                        </div>
-                                                                      </div>
-                                                                             
-                                                                      <div class="col-sm-6 col-md-4">
-                                                                              <div class="thumbnail">
-                                                                                <img src="static/images/invisiblepart12.png" alt="...">
-                                                                                <div class="caption">
-                                                                                  <h3>
-                                                                                        <span class="glyphicon glyphicon-remove red" aria-hidden="true">  Bad</span>
-                                                                                      
-                                                                                    </h3>
-                                                                                <p>You should not include the hand for this image annotation</p>
-                                                                                </div>
-                                                                              </div>
-                                                                            </div>
-                                                              </div>
 
 
                                                                     
@@ -641,8 +641,10 @@
                                                         <h4 style="font-weight: bold; margin: 2px auto">
                                                             Step 3: Draw one closed polygon to ground region that each answer is referring to by clicking on the image.
                                                         </h4>
-                                                        <!-- <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
-                                                        for example, when the "></a> -->
+                                                        <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
+                                                        
+                                                        
+                                                        Step 3 will only be activated if you select two 'No' for Step 1 and 2. When drawing, you can use keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo, you can press the keborad shortcut 'Enter' or click the first point again to finish one drawing. "></a>
                                                         
 
                                                     </th>
