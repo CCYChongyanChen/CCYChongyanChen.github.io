@@ -4,8 +4,7 @@
 $( document ).ready(function() {
     // Handler for .ready() called.
     $(ControlStep3());//initial: disable step3
-    $(disableBtn(".btnNext"));
-    $(disableBtn(".btnsubmit"));
+    $(ControlNext());
   });
 
 
@@ -13,7 +12,6 @@ $ ('input[type=radio]').click(function(){ControlStep3();ControlCanvas();ControlN
 
 
 function checkStep3(){
-    Step3Flag=$('input[value=N]:checked').length>1;
     return ($('input[value=N]:checked').length>1);
 }
 
@@ -30,7 +28,8 @@ if (checkStep3()==true) {
 }
 
 function ControlCanvas(){
-    if (Step3Flag==true && $('#nodraw:checked').length==0){
+
+    if ($('input[value=N]:checked').length>1 && $('#nodraw:checked').length==0){
         draw_canvas();
     }
     else{
@@ -42,15 +41,19 @@ function ControlCanvas(){
 $('.image_wrap').click(function(){ControlNext()});
 $('#nodraw').click(function(){ControlNext();ControlCanvas()});
 function ControlNext(){
+    var activate_btnid=activate_tab.toLowerCase();
     if (($('input[value=Y]:checked').length>0 && $('input[type=radio]:checked').length>1) || $('#nodraw:checked').length>0 || finishFlags['finishFlag'+activate_tab]==true ){
-        enableBtn('.btndiv.active > .btnNext');
-        enableBtn('.btndiv.active > .btnsubmit');
+        
+        enableBtn('#'+activate_btnid+' > .btnNext');
+        $('#'+activate_tab).parent().removeClass("disabled");
+        console.log(activate_tab+"enable");
+        enableBtn('#'+activate_btnid+' > .btnsubmit');
     }
     else{
-        
-        disableBtn('.btndiv.active > .btnNext');
-        disableBtn('.btndiv.active > .btnsubmit');
-        
+        disableBtn('#'+activate_btnid+' >.btnNext');
+        $('#'+activate_tab).parent().addClass("disabled");
+        console.log(activate_tab+"disable");
+        disableBtn('#'+activate_btnid+' > .btnsubmit');
     }
 }
 

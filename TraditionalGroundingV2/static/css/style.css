@@ -93,10 +93,27 @@ a.glyphicon:hover{
 ul.controlImg>li>a.noHover{
     pointer-events: none;
 }
+
+
+/* Disable Tab starts*/
+.disabled{
+    /* background-color: rgba(150, 150, 150, 0.2); */
+    color:grey;
+    pointer-events: none;
+  
+}
+.disabled:hover{
+    background-color: white;
+    color:grey;
+    
+    
+}
+/* Disable Tab ends*/
+
 .examples{
 
     color: black;
-    background-color: white;
+    background-color: lightyellow;
 }
 
 
@@ -117,3 +134,12 @@ img.coveredImage{
 }
 /* canvas.myCanvas{
     position: absolute; left: 0; top: 0; z-index: 1; } */
+.green{
+    color:rgb(0, 221, 29);
+}
+.red{
+    color:red;
+}
+/* .thumbnail{
+    background-color:white;
+} */
