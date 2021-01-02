@@ -60,17 +60,18 @@
                                         <br>
                                         <br>
                                         <h2>Examples:</h2>
-                                        <details>
+                                        <!-- <details>
                                             <summary><strong>Click to see step 3's general examples </strong></summary>
                                             <ol>
-                                                
-                                                Question: What is this?
-                                                <br>
-                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
                                                 
                                                 <div class="row">
                                                         <div class="col-sm-6 col-md-4">
                                                           <div class="thumbnail">
+                                                              
+                                                            Question: What is this?
+                                                            <br>
+                                                            Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                
                                                             <img src="static/images/howgood11.png" alt="...">
                                                             <div class="caption">
                                                               <h3>
@@ -83,6 +84,11 @@
                                                                
                                                         <div class="col-sm-6 col-md-4">
                                                                 <div class="thumbnail">
+                                                                                        
+                                                                    Question: What is this?
+                                                                    <br>
+                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                                    
                                                                   <img src="static/images/howgood12.png" alt="...">
                                                                   <div class="caption">
                                                                         <h3>
@@ -98,17 +104,18 @@
 
 
                                             </ol>
-                                        </details>
+                                        </details> -->
             
                                         <details>
-                                                <summary><strong>Click to see step 3's difficult examples </strong></summary>
+                                                <summary><strong>Step 3 examples </strong></summary>
         
                                                 <ol>
                                                         <br>
                                                         Please view the 5 tabs to see the 5 difficult examples.
                                                         <ul class="nav nav-tabs Examplenav-tabs">
-                                                                <li class="active"><a data-toggle="tab" href="#e2">Text related</a></li>
-                                                                <li><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
+
+                                                                <li class="active"><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
+                                                                <li><a data-toggle="tab" href="#e2">Text related</a></li>
                                                                 <li><a data-toggle="tab" href="#e1">Image with hole</a></li>
                                                                 <li><a data-toggle="tab" href="#e3">Whole Image</a></li>
                                                                 <li><a data-toggle="tab" href="#e5">Occulusion</a></li>
@@ -168,7 +175,7 @@
 
 
 
-                                                                <div id="e2" class="tab-pane fade in active">
+                                                                <div id="e2" class="tab-pane fade">
                                                                   <br>
                                                                    when the answer is related to text, please first identify if the object is mentioned in the question. 
                                                                   <br>                                             
@@ -245,7 +252,7 @@
                                                                 </div>
                                                                 <div id="e3" class="tab-pane fade">
                                                                     <br>
-                                                                  Draw a rectangle to ground the whole picture as the target region if the answer is referring to the whole image. Usually, this happens when the camera is too close to the object.
+                                                                  Draw a rectangle to ground the whole picture as the target region if the answer is referring to the whole image. Usually, this happens when the camera is set too close to the object.
                                                                   <br>
                                                                   <br>
 
@@ -275,13 +282,49 @@
                                                                   <button type="button" class="btn ExamplebtnNext" >Next</button>
                                                                 </div>
                                                                 
-                                                                <div id="e4" class="tab-pane fade">
+                                                                <div id="e4" class="tab-pane fade in active">
                                                                     <br>
                                                                     <p>  Please try you best to trace the boundary of the object as tightly as possible. Only when the boundary is too complex that you may not need to perfectly trace the boundary.
                                                                     </p> 
                                                                     <br>
                                                                    
-                                               
+                                                                    <div class="row">
+                                                                            <div class="col-sm-6 col-md-4">
+                                                                              <div class="thumbnail">
+                                                                                  
+                                                                                Question: What is this?
+                                                                                <br>
+                                                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                                    
+                                                                                <img src="static/images/howgood11.png" alt="...">
+                                                                                <div class="caption">
+                                                                                  <h3>
+                                                                                          <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                        
+                                                                                        </h3>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                                   
+                                                                            <div class="col-sm-6 col-md-4">
+                                                                                    <div class="thumbnail">
+                                                                                                            
+                                                                                        Question: What is this?
+                                                                                        <br>
+                                                                                        Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                                                        
+                                                                                      <img src="static/images/howgood12.png" alt="...">
+                                                                                      <div class="caption">
+                                                                                            <h3>
+                                                                                                    <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad</span>
+                                                                                            
+                                                                                                </h3>
+                                                                                        <p>Please trace the boundar as tightly as you can</p>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                  </div>
+                                                      
+                                                                    </div>
                             
                                                                     <div class="row">
                                                                             <div class="col-sm-6 col-md-4">
@@ -525,10 +568,10 @@
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
                                                             Step 1: Is there more than one question asked?
+                                                            <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
+                                                            For example, question like 'what brand is this? what type of skin it is for?''"></a>
                                                         </h4>
                                                         
-                                                        <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
-                                                        For example, `what brand is this? what type of skin it is for?`"></a>
 
                                                     </th>
                                                 </tr>
@@ -579,9 +622,9 @@
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
                                                             Step 2: Does the answer have multi-focus?
+                                                            <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
+                                                            is the answer referring to more than one object or region?"></a>
                                                         </h4>
-                                                        <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
-                                                        is the answer is referring to more than one object or region?"></a>
                                                         
 
                                                     </th>
@@ -639,14 +682,18 @@
                                                 <tr>
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
-                                                            Step 3: Draw one closed polygon to ground region that each answer is referring to by clicking on the image.
+                                                            Step 3: Draw one closed polygon to ground region that the answer is referring to by clicking on the image.
+                                                        
+                                                            <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
+                                                        
+                                                        
+                                                            Step 3 will only be activated if you select two 'No' for Step 1 and 2. When drawing, you can press the keborad shortcut 'Enter' or click the first point again to finish one drawing. You can use keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo."></a>
+                                                            
+    
+                                                        
+                                                        
                                                         </h4>
-                                                        <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
-                                                        
-                                                        
-                                                        Step 3 will only be activated if you select two 'No' for Step 1 and 2. When drawing, you can use keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo, you can press the keborad shortcut 'Enter' or click the first point again to finish one drawing. "></a>
-                                                        
-
+                                 
                                                     </th>
                                                 </tr>
                                                 </thead>

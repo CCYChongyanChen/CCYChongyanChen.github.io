@@ -40,19 +40,37 @@ function ControlCanvas(){
 //===========================================CONTROL NEXT BUTTON================================
 $('.image_wrap').click(function(){ControlNext()});
 $('#nodraw').click(function(){ControlNext();ControlCanvas()});
+
+function DisableTab(){
+    
+    $(tabName).parent().addClass("disabled");
+}
+
 function ControlNext(){
     var activate_btnid=activate_tab.toLowerCase();
+    var currenttabID=(parseInt(activate_tab.slice(-1)[0]));
     if (($('input[value=Y]:checked').length>0 && $('input[type=radio]:checked').length>1) || $('#nodraw:checked').length>0 || finishFlags['finishFlag'+activate_tab]==true ){
         
         enableBtn('#'+activate_btnid+' > .btnNext');
-        $('#'+activate_tab).parent().removeClass("disabled");
-        console.log(activate_tab+"enable");
+        finishStep123["finishStep123"+activate_tab]=true;
+        var j =currenttabID;
+        while(finishStep123["finishStep123TAB"+j]==true){
+            $('#TAB'+j).parent().removeClass("disabled");
+            j++;
+        }
+        
         enableBtn('#'+activate_btnid+' > .btnsubmit');
+        
     }
     else{
         disableBtn('#'+activate_btnid+' >.btnNext');
-        $('#'+activate_tab).parent().addClass("disabled");
-        console.log(activate_tab+"disable");
+
+        for (i = currenttabID; i < tabnumber+1; i++) {
+            $('#TAB'+i).parent().addClass("disabled");
+            
+        }
+
+        finishStep123["finishStep123"+activate_tab]=false;
         disableBtn('#'+activate_btnid+' > .btnsubmit');
     }
 }

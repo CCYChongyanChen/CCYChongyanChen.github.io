@@ -16,6 +16,7 @@ var dataset=input.split("_")[0]
 var group_id=input.split("_")[1]
 var finishFlags={};
 var finishStep12={};
+var finishStep123={};
 finishFlags['finishFlagTAB'+i]=false;
 
 for (var i =1; i < tabnumber+1; i++){
@@ -24,6 +25,7 @@ for (var i =1; i < tabnumber+1; i++){
     QA_names['qaTAB'+i]={};
     finishFlags['finishFlagTAB'+i]=false;
     finishStep12['finishStep12TAB'+i]=false;
+    finishStep123['finishStep123TAB'+i]=false;
 }
 
 
@@ -66,7 +68,6 @@ function find_activated_tab(clicked_id)
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
     ControlCanvas();
-    console.log(activate_tab+"drawcanvas");
     ControlStep3();
     ControlNext();
     // console.log(QA_names);
@@ -95,12 +96,18 @@ function StorePreviousAnswers() {
         }
 
         if(ele[i].type=="checkbox") { 
-            if(ele[i].checked) {
-                useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
+            if ($('input[value=N]:checked').length!=2){
+                useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Not activated';
             }
-            else{
-                useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Draw';
-            }
+            else {
+                if(ele[i].checked) {
+                    useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
+                }
+
+                else{useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Draw';}
+
+            } 
+                
         }
         else if(ele[i].type=="text") { 
             useranswer_names['useranswers'+activate_tab][ele[i].name]  = ele[i].value;
@@ -142,7 +149,7 @@ function DisplayCurrentAnswers(){
                 }
             }
             else if (ele[i].type=="checkbox"){
-                if(tmpvalue=="Draw"){
+                if(tmpvalue=="Draw" ||tmpvalue=="Not activated"){
                     ele[i].checked=false;
                 }
                 else{ele[i].checked=true;}
