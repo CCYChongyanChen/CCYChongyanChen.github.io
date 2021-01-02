@@ -13,7 +13,7 @@ canvas.addEventListener('mousemove', mouseMove, false);
 function mouseMove(e) {
     //Can draw
     var finished = finishFlags['finishFlag'+activate_tab]
-    if (Step3Flag==true && (!$('#nodraw:checked').length>0)){
+    if ($('input[value=N]:checked').length>1 && (!$('#nodraw:checked').length>0)){
         if (finished){
             //undate once more time to get it changed to yellow
             if (UpdateCloseEnough==true){
@@ -78,7 +78,7 @@ function checkCloseEnough(p1, p2) {
 
 canvas.addEventListener('click', function(evt) {
     // magnifyFlag=false;
-    if (Step3Flag==false || $('#nodraw:checked').length>0){
+    if (($('input[value=N]:checked').length>1)==false || $('#nodraw:checked').length>0){
         
     }
     else{

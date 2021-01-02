@@ -66,6 +66,7 @@ function find_activated_tab(clicked_id)
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
     ControlCanvas();
+    console.log(activate_tab+"drawcanvas");
     ControlStep3();
     ControlNext();
     // console.log(QA_names);

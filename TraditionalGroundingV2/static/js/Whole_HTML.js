@@ -1,5 +1,7 @@
 
 $(document).ready(function() {
+
+
  $('.btnNext').click(function(){
 
     $('.controlImg> .active').next('li').find('a').trigger('click');
@@ -53,15 +55,15 @@ $(document).ready(function() {
 // });
 
 
-});
-
-
-
-
 
 $('#submitbtn').click(function()
 {
-    $('#hiddenXY').val(XY_names);
-    $("#hiddenAnswer").val(useranswer_names);
+    StorePreviousAnswers();//store for Image5
+    $('#hiddenXY').val(JSON.stringify(XY_names));
+    $("#hiddenAnswer").val(JSON.stringify(useranswer_names));
 
 });
+
+});
+
+
