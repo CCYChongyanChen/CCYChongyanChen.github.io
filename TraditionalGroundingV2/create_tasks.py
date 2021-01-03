@@ -35,9 +35,9 @@ mturk = boto3.client('mturk',
 )
 print ("I have $" + mturk.get_account_balance()['AvailableBalance'] + " in my Sandbox account")
 
-
-imgs=['VizWiz_val_00003942.jpg','VizWiz_val_00001174.jpg']
-groups=['train_1','train_2']
+groups=[]
+for i in range(1,5):
+    groups.append('train_'+str(i))
 HITIDs=[]
 with open ('hitID.txt','w') as w:
 
