@@ -35,6 +35,10 @@ function draw_canvas(style="#F0C132"){
     ctx.strokeStyle = style;
     var i;
     var Xycoo=XY_names['xy'+activate_tab];
+    
+    console.log(XY_names);
+    console.log(Xycoo);
+    console.log(activate_tab);
     clearCanvas();
     ctx.beginPath();
     for (i=0;i<Xycoo.length;i++){

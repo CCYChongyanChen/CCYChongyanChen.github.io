@@ -34,7 +34,7 @@ for (var i =1; i < tabnumber+1; i++){
 
 loadQApairs=$.ajax({
     type:'get',
-    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGrounding/static/QA_annotations/"+dataset+"_grouped.json",
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/static/QA_annotations/"+dataset+"_grouped.json",
     dataType:'json',
     success:function(data){
             for (j=1; j<tabnumber+1;j++){
@@ -47,13 +47,32 @@ loadQApairs=$.ajax({
 
 }}
 )
+loadResults=$.ajax({
+    type:'get',
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/results.json",
+    dataType:'json',
+    success:function(data){
+            for (j=1; j<tabnumber+1;j++){
+                if (data[input]["Ready"]=="Yes"){                
+                    useranswer_names['useranswersTAB'+j]=data[input]['useranswersTAB'+j];
+                    XY_names['xyTAB'+j]=data[input]['xyTAB'+j];
+                    
+                    }
 
-$.getJSON("results.json", function(json) {
-    console.log(json); // this will show the info it in firebug console
-});
+                }
+                
+
+}}
+)
 
 $.when(loadQApairs).done(function(){
     DisplayCurrentQApairs();
+}
+
+)
+
+$.when(loadResults).done(function(){
+    draw_canvas();
 }
 
 )

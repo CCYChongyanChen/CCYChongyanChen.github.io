@@ -61,11 +61,14 @@ $.when(loadQApairs).done(function(){
 
 function find_activated_tab(clicked_id)
 {   
-    
+    StorePreviousAnswers();
     activate_tab=clicked_id;
     ClearAll();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
+    ControlCanvas();
+    ControlStep3();
+    ControlNext();
     // console.log(QA_names);
 }
 
@@ -78,7 +81,7 @@ function DisplayCurrentQApairs(){
 }
 
 
-function DisplayAnswers() { 
+function StorePreviousAnswers() { 
     for(i = 0; i < ele.length; i++) { 
           
         if(ele[i].type=="radio") { 
