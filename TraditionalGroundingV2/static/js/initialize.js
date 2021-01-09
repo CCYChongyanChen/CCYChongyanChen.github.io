@@ -167,20 +167,7 @@ function DisplayCurrentAnswers(){
 }
 
 
-function showInterval(){
-    var sjc = ((endTime.getTime()-startTime.getTime())/1000);
-    if(sjc <= 0){
-        alert("start time later then end time!"); 
-    }else{
-        document.getElementById("interval").value = sjc + "s";   
-    }
-  }
 
 
 
 
-
-  function updateEndTime(){
-	var date = new Date();
-    endTime = date;
-}

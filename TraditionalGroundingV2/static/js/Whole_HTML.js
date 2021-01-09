@@ -61,6 +61,10 @@ $('#submitbtn').click(function()
     StorePreviousAnswers();//store for Image5
     $('#hiddenXY').val(JSON.stringify(XY_names));
     $("#hiddenAnswer").val(JSON.stringify(useranswer_names));
+    var date= new Date();
+    endTime=date;
+    var sjc = ((endTime.getTime()-startTime.getTime())/1000);
+    $("#usetime").val(JSON.stringify(sjc));
 
 });
 
