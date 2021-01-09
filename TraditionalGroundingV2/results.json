@@ -1,134 +1,18 @@
 {
     "train_1": {
-        "Hit_id": "3RHLQY6EDUKGGGCO8MGSDUOSATB4DN",
-        "Ready": "Yes",
-        "UseTime": null,
-        "comments": null,
-        "useranswersTAB1": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB2": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB3": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB4": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB5": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "xyTAB1": [
-            {
-                "x": 302.0125732421875,
-                "y": 194.9625244140625
-            },
-            {
-                "x": 284.0125732421875,
-                "y": 253.9625244140625
-            },
-            {
-                "x": 100.0125732421875,
-                "y": 254.9625244140625
-            },
-            {
-                "x": 104.0125732421875,
-                "y": 168.9625244140625
-            },
-            {
-                "x": 303.0125732421875,
-                "y": 140.9625244140625
-            },
-            {
-                "x": 302.0125732421875,
-                "y": 194.9625244140625
-            }
-        ],
-        "xyTAB2": [],
-        "xyTAB3": [
-            {
-                "x": 100.0125732421875,
-                "y": 223.362548828125
-            },
-            {
-                "x": 126.0125732421875,
-                "y": 294.362548828125
-            },
-            {
-                "x": 203.0125732421875,
-                "y": 317.362548828125
-            },
-            {
-                "x": 184.0125732421875,
-                "y": 240.362548828125
-            },
-            {
-                "x": 138.0125732421875,
-                "y": 209.362548828125
-            },
-            {
-                "x": 100.0125732421875,
-                "y": 223.362548828125
-            }
-        ],
-        "xyTAB4": [
-            {
-                "x": 184.0125732421875,
-                "y": 10.362548828125
-            },
-            {
-                "x": 143.0125732421875,
-                "y": 145.362548828125
-            },
-            {
-                "x": 171.0125732421875,
-                "y": 487.362548828125
-            },
-            {
-                "x": 380.0125732421875,
-                "y": 490.362548828125
-            },
-            {
-                "x": 381.0125732421875,
-                "y": 48.362548828125
-            },
-            {
-                "x": 190.0125732421875,
-                "y": 9.362548828125
-            },
-            {
-                "x": 184.0125732421875,
-                "y": 10.362548828125
-            }
-        ],
-        "xyTAB5": []
+        "Hit_id": "33EEIIWHK8N9Z2Z8X4NZMJV46SXQVQ",
+        "Ready": "No"
     },
     "train_2": {
-        "Hit_id": "3AQN9REUTGWWENQ8XT4ZTJSZ5UADYH",
+        "Hit_id": "34KYK9TV2SO634GFKRL4G7GYLO2SBB",
         "Ready": "Yes",
-        "UseTime": null,
-        "comments": "n",
+        "UseTime": "25.699",
+        "comments": "no feedback",
         "useranswersTAB1": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "CANNOT_DRAW",
-            "NoDrawReason": "nothing to draw"
+            "MULTI_FOCUS_DETECT": "Y",
+            "MULTI_QUESTION_DETECT": "Y",
+            "NoDraw": "Not activated",
+            "NoDrawReason": ""
         },
         "useranswersTAB2": {
             "MULTI_FOCUS_DETECT": "N",
@@ -143,389 +27,83 @@
             "NoDrawReason": ""
         },
         "useranswersTAB4": {
-            "MULTI_FOCUS_DETECT": "Y",
+            "MULTI_FOCUS_DETECT": "N",
             "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Not activated",
+            "NoDraw": "Draw",
             "NoDrawReason": ""
         },
         "useranswersTAB5": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
+            "MULTI_FOCUS_DETECT": "N",
+            "MULTI_QUESTION_DETECT": "N",
+            "NoDraw": "Draw",
             "NoDrawReason": ""
         },
         "xyTAB1": [],
         "xyTAB2": [],
         "xyTAB3": [],
-        "xyTAB4": [],
-        "xyTAB5": []
-    },
-    "train_3": {
-        "Hit_id": "34OWYT6U3XXYLXYMHVDULZFLOQX9IQ",
-        "Ready": "Yes",
-        "UseTime": null,
-        "comments": null,
-        "useranswersTAB1": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB2": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB3": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB4": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB5": {
-            "MULTI_FOCUS_DETECT": "Y",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "xyTAB1": [],
-        "xyTAB2": [],
-        "xyTAB3": [],
-        "xyTAB4": [],
-        "xyTAB5": []
-    },
-    "train_4": {
-        "Hit_id": "3NZ1E5QA60H5X2I48V8WNW6674UB5S",
-        "Ready": "Yes",
-        "UseTime": null,
-        "comments": null,
-        "useranswersTAB1": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "Y",
-            "NoDraw": "Not activated",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB2": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB3": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB4": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB5": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "xyTAB1": [],
-        "xyTAB2": [
-            {
-                "x": 316.0125732421875,
-                "y": 180.362548828125
-            },
-            {
-                "x": 192.0125732421875,
-                "y": 231.362548828125
-            },
-            {
-                "x": 197.0125732421875,
-                "y": 276.362548828125
-            },
-            {
-                "x": 312.0125732421875,
-                "y": 277.362548828125
-            },
-            {
-                "x": 341.0125732421875,
-                "y": 256.362548828125
-            },
-            {
-                "x": 316.0125732421875,
-                "y": 180.362548828125
-            }
-        ],
-        "xyTAB3": [
-            {
-                "x": 94.0125732421875,
-                "y": 87.362548828125
-            },
-            {
-                "x": 76.0125732421875,
-                "y": 138.362548828125
-            },
-            {
-                "x": 388.0125732421875,
-                "y": 120.362548828125
-            },
-            {
-                "x": 353.0125732421875,
-                "y": 55.362548828125
-            },
-            {
-                "x": 94.0125732421875,
-                "y": 87.362548828125
-            }
-        ],
         "xyTAB4": [
             {
-                "x": 131.0125732421875,
-                "y": 65.362548828125
+                "x": 291.0125732421875,
+                "y": 6.362548828125
             },
             {
-                "x": 125.0125732421875,
-                "y": 466.362548828125
+                "x": 344.0125732421875,
+                "y": 94.362548828125
             },
             {
-                "x": 267.0125732421875,
-                "y": 474.362548828125
+                "x": 329.0125732421875,
+                "y": 486.362548828125
             },
             {
-                "x": 292.0125732421875,
-                "y": 70.362548828125
-            },
-            {
-                "x": 131.0125732421875,
-                "y": 65.362548828125
-            }
-        ],
-        "xyTAB5": [
-            {
-                "x": 390.0125732421875,
-                "y": 23.362548828125
-            },
-            {
-                "x": 387.0125732421875,
-                "y": 483.362548828125
-            },
-            {
-                "x": 5.0125732421875,
-                "y": 474.362548828125
-            },
-            {
-                "x": 12.0125732421875,
-                "y": 23.362548828125
-            },
-            {
-                "x": 390.0125732421875,
-                "y": 23.362548828125
-            }
-        ]
-    },
-    "train_5": {
-        "Hit_id": "3CZH926SIDUL8MQO4HRCJC6DA5C4EG",
-        "Ready": "Yes",
-        "UseTime": null,
-        "comments": null,
-        "useranswersTAB1": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB2": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB3": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB4": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "useranswersTAB5": {
-            "MULTI_FOCUS_DETECT": "N",
-            "MULTI_QUESTION_DETECT": "N",
-            "NoDraw": "Draw",
-            "NoDrawReason": ""
-        },
-        "xyTAB1": [
-            {
-                "x": 88.0125732421875,
-                "y": 181.362548828125
-            },
-            {
-                "x": 99.0125732421875,
-                "y": 72.362548828125
-            },
-            {
-                "x": 51.0125732421875,
-                "y": -0.637451171875
-            },
-            {
-                "x": 2.0125732421875,
-                "y": -0.637451171875
-            },
-            {
-                "x": 3.0125732421875,
-                "y": 217.362548828125
-            },
-            {
-                "x": 88.0125732421875,
-                "y": 181.362548828125
-            }
-        ],
-        "xyTAB2": [
-            {
-                "x": 270.0125732421875,
-                "y": 33.9625244140625
-            },
-            {
-                "x": 321.0125732421875,
-                "y": 316.9625244140625
-            },
-            {
-                "x": 399.0125732421875,
-                "y": 312.9625244140625
-            },
-            {
-                "x": 396.0125732421875,
-                "y": 84.9625244140625
-            },
-            {
-                "x": 262.0125732421875,
-                "y": 13.9625244140625
-            },
-            {
-                "x": 273.0125732421875,
-                "y": 38.9625244140625
-            },
-            {
-                "x": 270.0125732421875,
-                "y": 33.9625244140625
-            }
-        ],
-        "xyTAB3": [
-            {
-                "x": 393.0125732421875,
-                "y": 3.362548828125
-            },
-            {
-                "x": 393.0125732421875,
+                "x": 70.0125732421875,
                 "y": 489.362548828125
             },
             {
-                "x": 8.0125732421875,
-                "y": 491.362548828125
+                "x": 96.0125732421875,
+                "y": 83.362548828125
             },
             {
-                "x": 0.0125732421875,
-                "y": 1.362548828125
+                "x": 153.0125732421875,
+                "y": 0.362548828125
             },
             {
-                "x": 393.0125732421875,
-                "y": 3.362548828125
-            }
-        ],
-        "xyTAB4": [
-            {
-                "x": 126.0125732421875,
-                "y": 70.362548828125
-            },
-            {
-                "x": 74.0125732421875,
-                "y": 215.362548828125
-            },
-            {
-                "x": 87.0125732421875,
-                "y": 268.362548828125
-            },
-            {
-                "x": 24.0125732421875,
-                "y": 498.362548828125
-            },
-            {
-                "x": 255.0125732421875,
-                "y": 497.362548828125
-            },
-            {
-                "x": 248.0125732421875,
-                "y": 346.362548828125
-            },
-            {
-                "x": 197.0125732421875,
-                "y": 264.362548828125
-            },
-            {
-                "x": 160.0125732421875,
-                "y": 211.362548828125
-            },
-            {
-                "x": 179.0125732421875,
-                "y": 137.362548828125
-            },
-            {
-                "x": 164.0125732421875,
-                "y": 84.362548828125
-            },
-            {
-                "x": 126.0125732421875,
-                "y": 70.362548828125
+                "x": 291.0125732421875,
+                "y": 6.362548828125
             }
         ],
         "xyTAB5": [
             {
-                "x": 66.0125732421875,
-                "y": 162.362548828125
+                "x": 209.0125732421875,
+                "y": 36.362548828125
             },
             {
-                "x": 8.0125732421875,
-                "y": 190.362548828125
+                "x": 206.0125732421875,
+                "y": 497.362548828125
             },
             {
-                "x": 12.0125732421875,
-                "y": 220.362548828125
+                "x": 119.0125732421875,
+                "y": 497.362548828125
             },
             {
-                "x": 30.0125732421875,
-                "y": 231.362548828125
+                "x": 119.0125732421875,
+                "y": 24.362548828125
             },
             {
-                "x": 76.0125732421875,
-                "y": 240.362548828125
-            },
-            {
-                "x": 371.0125732421875,
-                "y": 222.362548828125
-            },
-            {
-                "x": 378.0125732421875,
-                "y": 175.362548828125
-            },
-            {
-                "x": 57.0125732421875,
-                "y": 163.362548828125
-            },
-            {
-                "x": 66.0125732421875,
-                "y": 162.362548828125
+                "x": 209.0125732421875,
+                "y": 36.362548828125
             }
         ]
+    },
+    "train_3": {
+        "Hit_id": "3E24UO25Q06LZ07RHJNNLMK5AYOO6P",
+        "Ready": "No"
+    },
+    "train_4": {
+        "Hit_id": "3AFT28WXLGI1SK2SJKWCIPAAJPJIOD",
+        "Ready": "No"
+    },
+    "train_5": {
+        "Hit_id": "37SOB9Z0STDEWWHCLP9XM24R52HL3Z",
+        "Ready": "No"
     }
 }
