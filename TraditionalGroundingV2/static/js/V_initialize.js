@@ -23,12 +23,28 @@ for (var i =1; i < tabnumber+1; i++){
     XY_names['xyTAB'+i]=[]; 
     useranswer_names['useranswersTAB'+i]={};
     QA_names['qaTAB'+i]={};
-    finishFlags['finishFlagTAB'+i]=false;
-    finishStep12['finishStep12TAB'+i]=false;
-    finishStep123['finishStep123TAB'+i]=false;
+    finishFlags['finishFlagTAB'+i]=true;
+    finishStep12['finishStep12TAB'+i]=true;
+    finishStep123['finishStep123TAB'+i]=true;
 }
 
 
+$(document).ready(function() {
+
+
+    $('.btnNext').click(function(){
+   
+       $('.controlImg> .active').next('li').find('a').trigger('click');
+     });
+     
+       $('.btnPrevious').click(function(){
+       $('.controlImg > .active').prev('li').find('a').trigger('click');
+     });
+
+   
+});
+     
+   
 //PLEASE NOTICE THAT: tab is indexed from 1 while QA pais are indexed from 1
 
 
@@ -72,7 +88,10 @@ $.when(loadQApairs).done(function(){
 )
 
 $.when(loadResults).done(function(){
-    draw_canvas();
+    if (useranswer_names['useranswers'+activate_tab]["NoDraw"]=="Draw"){
+        draw_canvas();
+    }
+    DisplayCurrentAnswers();
 }
 
 )
@@ -88,7 +107,7 @@ function find_activated_tab(clicked_id)
     ClearAll();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
-    // console.log(QA_names);
+    draw_canvas();
 }
 
 
@@ -99,40 +118,6 @@ function DisplayCurrentQApairs(){
     
 }
 
-
-function DisplayAnswers() { 
-    for(i = 0; i < ele.length; i++) { 
-          
-        if(ele[i].type=="radio") { 
-          
-            if(ele[i].checked) {
-                //storing answers
-                // Example: 
-                // useranswer_names['useranswersTAB1']['MULTI_FOCUS_DETECT']='N'
-                useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
-            }
-        }
-
-        if(ele[i].type=="checkbox") { 
-            if ($('input[value=N]:checked').length!=2){
-                useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Not activated';
-            }
-            else {
-                if(ele[i].checked) {
-                    useranswer_names['useranswers'+activate_tab][ele[i].name] = ele[i].value;
-                }
-
-                else{useranswer_names['useranswers'+activate_tab][ele[i].name] = 'Draw';}
-
-            } 
-                
-        }
-        else if(ele[i].type=="text") { 
-            useranswer_names['useranswers'+activate_tab][ele[i].name]  = ele[i].value;
-            }
-
-    } 
-}
 
 function ClearAll() { 
     for(i = 0; i < ele.length; i++) { 
