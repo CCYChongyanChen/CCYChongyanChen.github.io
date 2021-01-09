@@ -68,14 +68,17 @@ loadResults=$.ajax({
     url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/results.json",
     dataType:'json',
     success:function(data){
-            for (j=1; j<tabnumber+1;j++){
-                if (data[input]["Ready"]=="Yes"){                
+        if (data[input]["Ready"]=="Yes"){  
+
+                document.getElementById("hitid").innerHTML="HIT-ID: "+data[input]["Hit_id"] ;
+                document.getElementById("comment").innerHTML="Comment: "+data[input]["comments"] ;
+                for (j=1; j<tabnumber+1;j++){  
                     useranswer_names['useranswersTAB'+j]=data[input]['useranswersTAB'+j];
                     XY_names['xyTAB'+j]=data[input]['xyTAB'+j];
-                    
-                    }
-
+                
                 }
+
+            }
                 
 
 }}
@@ -107,7 +110,10 @@ function find_activated_tab(clicked_id)
     ClearAll();
     DisplayCurrentAnswers();
     DisplayCurrentQApairs();
-    draw_canvas();
+    
+    if (useranswer_names['useranswers'+activate_tab]["NoDraw"]=="Draw"){
+        draw_canvas();
+    }
 }
 
 
@@ -169,4 +175,6 @@ function DisplayCurrentAnswers(){
 }
 
 
-
+function next_href(){
+    location.href='./visualization.html?groupindex='+ dataset+"_"+(parseInt(group_id)+1);
+}

@@ -8,7 +8,7 @@
     font-size: 18px;
   }
 
-.btnNext,.btnPrevious,.btnsubmit{
+.btnNext,.btnPrevious,.btnsubmit,.btnNextGroup{
     float:right;
     margin-top:5px;
     margin-right: 5px;

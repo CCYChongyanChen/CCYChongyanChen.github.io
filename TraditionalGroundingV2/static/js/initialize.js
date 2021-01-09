@@ -4,7 +4,8 @@ var activate_tab = "TAB1";
 // var assignmentID = '';
 // var workerID = '';
 var tabnumber=5;
-
+var startTime = new Date();
+var endTime = "";
 var useranswer_names = {};
 var XY_names = {};
 var QA_names={};
@@ -18,6 +19,7 @@ var finishFlags={};
 var finishStep12={};
 var finishStep123={};
 finishFlags['finishFlagTAB'+i]=false;
+
 
 for (var i =1; i < tabnumber+1; i++){
     XY_names['xyTAB'+i]=[]; 
@@ -165,4 +167,20 @@ function DisplayCurrentAnswers(){
 }
 
 
+function showInterval(){
+    var sjc = ((endTime.getTime()-startTime.getTime())/1000);
+    if(sjc <= 0){
+        alert("start time later then end time!"); 
+    }else{
+        document.getElementById("interval").value = sjc + "s";   
+    }
+  }
 
+
+
+
+
+  function updateEndTime(){
+	var date = new Date();
+    endTime = date;
+}

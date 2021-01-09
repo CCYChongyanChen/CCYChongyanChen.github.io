@@ -818,7 +818,7 @@
                     </div>
                     <div class="tab-pane btndiv" id="tab5">
 
-                        <button type="button" class="btn waves-effect waves-light btnsubmit" data-toggle="modal" data-target="#centralModalLg" id= "submitbtn">Submit</button>
+                        <button type="button" class="btn waves-effect waves-light btnsubmit" data-toggle="modal" data-target="#centralModalLg" id= "submitbtn" onClick="updateEndTime()">Submit</button>
                         
                         
                         <button type="button" class="btn btnPrevious" >Previous</button>
@@ -855,10 +855,10 @@
             
              <input type='hidden' id= 'hiddenXY' name='hiddenXY' value='' />
              <input type='hidden' id= 'hiddenAnswer' name='hiddenAnswer' value='' />
-
+             <input type='hidden' id= 'hiddenAnswer' name='time' id="interval" value='' />
             <!--Footer-->
             <div class="modal-footer">
-                <button type="submit" class="btn" value="Submit" >Yes</button>
+                <button type="submit" class="btn" value="Submit" onClick="showInterval()">Yes</button>
               <button type="button" class="btn" data-dismiss="modal">Cancel</button>
             </div>
           </div>

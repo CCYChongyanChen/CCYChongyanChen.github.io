@@ -25,7 +25,9 @@
         <div class="container">
 
             <h1>Visualization</h1>
-        
+            <h4 class="text-secondary" id="hitid">HIT-ID:</h4>
+            <h4 class="text-secondary" id="usetime">Consumed Time:</h4>
+            <h4 class="text-secondary" id="comment">Comment:</h4>
         
         
         
@@ -301,7 +303,7 @@
                     </div>
                     <div class="tab-pane btndiv" id="tab5">
 
-                        <button type="button" class="btn waves-effect waves-light btnsubmit" data-toggle="modal" data-target="#centralModalLg" id= "submitbtn">Next Group</button>
+                        <button type="button" class="btn btnNextGroup" onClick=next_href()>Next Group</button>
                         
                         
                         <button type="button" class="btn btnPrevious" >Previous</button>
@@ -310,45 +312,7 @@
 
             </div>
             
-       <!-- Central Modal Large -->
-       <div class="modal fade" id="centralModalLg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <!--Content-->
-          <div class="modal-content">
-            <!--Header-->
-            <div class="modal-header">
-              <h4 class="modal-title w-100" id="myModalLabel">Submit the HIT?</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <!--Body-->
-            <div class="modal-body">
-              
-                <label style="margin-bottom: 5px">
-                    Do you have any suggestions, feedback, or general comments for us?
-                    <span class="text-muted">(optional)</span>
-                </label>
-        
-                <textarea name="WORKER_COMMENTS" 
-                style="font-size:18px" class="form-control  input-lg" rows="2"></textarea>
-                
-            </div>
 
-            
-             <input type='hidden' id= 'hiddenXY' name='hiddenXY' value='' />
-             <input type='hidden' id= 'hiddenAnswer' name='hiddenAnswer' value='' />
-
-            <!--Footer-->
-            <div class="modal-footer">
-                <button type="submit" class="btn" value="Submit" >Yes</button>
-              <button type="button" class="btn" data-dismiss="modal">Cancel</button>
-            </div>
-          </div>
-          <!--/.Content-->
-        </div>
-      </div>
-      <!-- Central Modal Large -->
 
         </form>
     
