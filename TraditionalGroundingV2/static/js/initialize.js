@@ -20,7 +20,6 @@ var finishStep12={};
 var finishStep123={};
 finishFlags['finishFlagTAB'+i]=false;
 
-checkCookie();
 
 for (var i =1; i < tabnumber+1; i++){
     XY_names['xyTAB'+i]=[]; 

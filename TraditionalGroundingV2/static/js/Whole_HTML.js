@@ -25,9 +25,9 @@ $(document).ready(function() {
   $('#hideDtl').click(function()
   {
       $('#dtlPane').collapse('hide');
-      var date = new Date(); var delay_mins = 60;
-      date.setTime(date.getTime() + (delay_mins * 60 * 1000));
-      document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
+    //   var date = new Date(); var delay_mins = 60;
+    //   date.setTime(date.getTime() + (delay_mins * 60 * 1000));
+    //   document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
     
 
   });
@@ -36,9 +36,8 @@ $(document).ready(function() {
   $('#showDtl').click(function()
   {
       $('#dtlPane').collapse('show');
-      // as user has shown details, delete cookie to keep it shown
-      document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
-      localStorage.DtlPane = "show";
+    //   document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+    //   localStorage.DtlPane = "show";
   });
 
 
@@ -49,9 +48,9 @@ $(document).ready(function() {
       // as user has hidden details, set cookie to keep it hidden
       // so it never comes back within 30 mins
 
-      var date = new Date(); var delay_mins = 60;
-      date.setTime(date.getTime() + (delay_mins * 60 * 1000));
-      document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
+    //   var date = new Date(); var delay_mins = 60;
+    //   date.setTime(date.getTime() + (delay_mins * 60 * 1000));
+    //   document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
 
       localStorage.DtlPane = "hide";
   });
@@ -59,7 +58,7 @@ $(document).ready(function() {
   $('#dtlPane').on('shown.bs.collapse', function ()
   {
         // as user has shown details, delete cookie to keep it shown
-        document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+        // document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
         localStorage.DtlPane = "show";
 
   });
