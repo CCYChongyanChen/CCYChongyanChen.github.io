@@ -22,6 +22,7 @@ function setCookie(cname, cvalue, exdays) {
   
   function checkCookie() {
     var hide = getCookie("DtlHide");
+    console.log(hide);
     if (hide == 'true') {
         $('#dtlPane').collapse('hide');
     }
