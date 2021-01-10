@@ -32,9 +32,12 @@ $(document).ready(function() {
   {
       // as user has hidden details, set cookie to keep it hidden
       // so it never comes back within 30 mins
+
       var date = new Date(); var delay_mins = 60;
       date.setTime(date.getTime() + (delay_mins * 60 * 1000));
       document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
+
+      localStorage.DtlPane = "hide";
   });
 
 
@@ -44,6 +47,8 @@ $(document).ready(function() {
       $('#dtlPane').collapse('hide');
       // as user has shown details, delete cookie to keep it shown
       document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+
+      localStorage.DtlPane = "show";
   });
 
 
