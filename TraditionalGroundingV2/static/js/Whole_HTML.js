@@ -51,6 +51,11 @@ $(document).ready(function() {
       localStorage.DtlPane = "show";
   });
 
+  $('#dtlPane').on('shown.bs.collapse', function ()
+  {
+      localStorage.DtlPane = "show";
+  });
+
 
 //   $("#example-basic").steps({
 //     headerTag: "h3",
