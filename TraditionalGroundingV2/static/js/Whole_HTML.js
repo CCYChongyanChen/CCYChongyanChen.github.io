@@ -25,7 +25,23 @@ $(document).ready(function() {
   $('#hideDtl').click(function()
   {
       $('#dtlPane').collapse('hide');
+      var date = new Date(); var delay_mins = 60;
+      date.setTime(date.getTime() + (delay_mins * 60 * 1000));
+      document.cookie = "DtlHide=true; expires=" + date.toGMTString() + "; path=/";
+    
+
   });
+
+  // delete cookie when user clicks show details
+  $('#showDtl').click(function()
+  {
+      $('#dtlPane').collapse('show');
+      // as user has shown details, delete cookie to keep it shown
+      document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+      localStorage.DtlPane = "show";
+  });
+
+
 
   // set cookie when details pane is hidden
   $('#dtlPane').on('hidden.bs.collapse', function ()
@@ -40,26 +56,14 @@ $(document).ready(function() {
       localStorage.DtlPane = "hide";
   });
 
-
-  // delete cookie when user clicks show details
-  $('#showDtl').click(function()
-  {
-      $('#dtlPane').collapse('show');
-      // as user has shown details, delete cookie to keep it shown
-      document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
-
-      localStorage.DtlPane = "show";
-  });
-
   $('#dtlPane').on('shown.bs.collapse', function ()
   {
-      
-        $('#dtlPane').collapse('show');
         // as user has shown details, delete cookie to keep it shown
         document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
         localStorage.DtlPane = "show";
 
   });
+
 
 
 
