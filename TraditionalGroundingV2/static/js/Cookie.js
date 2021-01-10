@@ -28,7 +28,4 @@ if('DtlPane' in localStorage && localStorage.DtlPane === "hide") {
 
 }
 
-$(document).ready(function(){
-    checkCookie();
-});
 
