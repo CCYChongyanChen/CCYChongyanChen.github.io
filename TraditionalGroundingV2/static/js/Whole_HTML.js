@@ -44,7 +44,7 @@ $(document).ready(function() {
   // delete cookie when user clicks show details
   $('#showDtl').click(function()
   {
-      $('#dtlPane').collapse('hide');
+      $('#dtlPane').collapse('show');
       // as user has shown details, delete cookie to keep it shown
       document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
 
@@ -53,16 +53,14 @@ $(document).ready(function() {
 
   $('#dtlPane').on('shown.bs.collapse', function ()
   {
-      localStorage.DtlPane = "show";
+      
+        $('#dtlPane').collapse('show');
+        // as user has shown details, delete cookie to keep it shown
+        document.cookie = "DtlHide=true; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+        localStorage.DtlPane = "show";
+
   });
 
-
-//   $("#example-basic").steps({
-//     headerTag: "h3",
-//     bodyTag: "section",
-//     transitionEffect: "slideLeft",
-//     autoFocus: true
-// });
 
 
 
