@@ -70,8 +70,8 @@ loadResults=$.ajax({
     success:function(data){
         if (data[input]["Ready"]=="Yes"){  
 
-                document.getElementById("usetime").innerHTML="Consumed Time: "+data[input]["Hit_id"] ;
-                document.getElementById("hitid").innerHTML="HIT-ID: "+data[input]["UseTime"] ;
+                document.getElementById("usetime").innerHTML="Consumed Time: "+data[input]["UseTime"] ;
+                document.getElementById("hitid").innerHTML="HIT-ID: "+data[input]["Hit_id"] ;
                 document.getElementById("comment").innerHTML="Comment: "+data[input]["comments"] ;
                 for (j=1; j<tabnumber+1;j++){  
                     useranswer_names['useranswersTAB'+j]=data[input]['useranswersTAB'+j];
