@@ -68,7 +68,7 @@ loadResults=$.ajax({
     url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/results.json",
     dataType:'json',
     success:function(data){
-        if (data[input]["Ready"]=="Yes"){  
+        if (data[input] && data[input]["Ready"]=="Yes"){  
 
                 document.getElementById("usetime").innerHTML="Consumed Time: "+data[input]["UseTime"] ;
                 document.getElementById("hitid").innerHTML="HIT-ID: "+data[input]["Hit_id"] ;

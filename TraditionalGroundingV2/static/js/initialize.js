@@ -3,7 +3,6 @@ var activate_tab = "TAB1";
 // var hitID = '';
 // var assignmentID = '';
 // var workerID = '';
-var tabnumber=5;
 var startTime = new Date();
 var endTime = "";
 var useranswer_names = {};
@@ -20,7 +19,13 @@ var finishStep12={};
 var finishStep123={};
 finishFlags['finishFlagTAB'+i]=false;
 
+if (dataset=="val" || dataset=="train" ||dataset=="test"){  
+    var tabnumber=5;          
+}
 
+else if (dataset=="qualification"){
+    var tabnumber=10;
+}
 for (var i =1; i < tabnumber+1; i++){
     XY_names['xyTAB'+i]=[]; 
     useranswer_names['useranswersTAB'+i]={};
@@ -36,16 +41,26 @@ for (var i =1; i < tabnumber+1; i++){
 
 loadQApairs=$.ajax({
     type:'get',
-    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGrounding/static/QA_annotations/"+dataset+"_grouped.json",
+    url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/static/QA_annotations/"+dataset+"_grouped.json",
     dataType:'json',
     success:function(data){
-            for (j=1; j<tabnumber+1;j++){
+            // if (dataset=="val" || dataset=="train" ||dataset=="test"){            
+                for (j=1; j<tabnumber+1;j++){
                 QA_names['qaTAB'+j]["Answer"]=data[group_id][j-1]["answers"][0];
                 QA_names['qaTAB'+j]["Question"]=data[group_id][j-1]["question"];
                 QA_names['qaTAB'+j]["Imgsrc"]="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[group_id][j-1]["image"];
 
                 }
-                
+            // }
+
+            // else if (dataset=="qualification"){
+
+            //     for (j=1; j<tabnumber+1;j++){
+            //         QA_names['qaTAB'+j]["Answer"]=data[0][j-1]["answers"][0];
+            //         QA_names['qaTAB'+j]["Question"]=data[0][j-1]["question"];
+            //         QA_names['qaTAB'+j]["Imgsrc"]="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[0][j-1]["image"];
+            // }}
+
 
 }}
 )
