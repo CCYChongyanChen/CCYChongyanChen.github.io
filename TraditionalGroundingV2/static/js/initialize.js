@@ -17,14 +17,37 @@ var group_id=input.split("_")[1]
 var finishFlags={};
 var finishStep12={};
 var finishStep123={};
-finishFlags['finishFlagTAB'+i]=false;
+var qualifications={};
+
 
 if (dataset=="val" || dataset=="train" ||dataset=="test"){  
-    var tabnumber=5;          
+    var tabnumber=5;       
+    var qualification_mode=false;
 }
 
 else if (dataset=="qualification"){
     var tabnumber=10;
+    var qualification_mode=true;
+    var gt_useranswer_names={};
+    var gt_XY_names={};
+
+    $.ajax({
+        type:'get',
+        url:"https://raw.githubusercontent.com/CCYChongyanChen/CCYChongyanChen.github.io/master/TraditionalGroundingV2/qualification_gt_results.json",
+        dataType:'json',
+        success:function(data){
+                for (j=1; j<tabnumber+1;j++){
+                    gt_useranswer_names['useranswersTAB'+j]=data[input]['useranswersTAB'+j];
+                    gt_XY_names['xyTAB'+j]=data[input]['xyTAB'+j];
+                }
+    
+    }}
+    )
+
+
+
+
+
 }
 for (var i =1; i < tabnumber+1; i++){
     XY_names['xyTAB'+i]=[]; 
@@ -33,6 +56,9 @@ for (var i =1; i < tabnumber+1; i++){
     finishFlags['finishFlagTAB'+i]=false;
     finishStep12['finishStep12TAB'+i]=false;
     finishStep123['finishStep123TAB'+i]=false;
+    if (qualification_mode==true)
+    {
+        qualifications["qualiTAB"+i]=false;}
 }
 
 
@@ -53,13 +79,7 @@ loadQApairs=$.ajax({
                 }
             // }
 
-            // else if (dataset=="qualification"){
-
-            //     for (j=1; j<tabnumber+1;j++){
-            //         QA_names['qaTAB'+j]["Answer"]=data[0][j-1]["answers"][0];
-            //         QA_names['qaTAB'+j]["Question"]=data[0][j-1]["question"];
-            //         QA_names['qaTAB'+j]["Imgsrc"]="https://ivc.ischool.utexas.edu/VizWiz_visualization_img/"+data[0][j-1]["image"];
-            // }}
+          
 
 
 }}

@@ -621,7 +621,15 @@
                     <li class="disabled"><a href="#tab10" data-toggle="tab" id="TAB10" onClick="find_activated_tab(this.id)">Image 10</a></li>
             </ul>
 
+            <div class="alert alert-danger alert-dismissible" class="qualiAlert" id="qualiFail" role="alert" style="display: none;">
+                <p id="TqualiFail"></p>
 
+              </div>
+              
+            <div class="alert alert-success alert-dismissible" class="qualiAlert" id="qualiPass" role="alert" style="display: none;">
+                <p id="TqualiPass">Congratulations! Your grounding for thsi image is successful!</p>
+
+              </div>
                 
                     <!-------- main content ---------->
                     <div class="row">
@@ -956,6 +964,7 @@
         
         <script src="static/js/Cookie.js"></script>
         <script src="static/js/initialize.js"></script>
+        <script src="static/js/qualification.js"></script>
         <script src="static/js/EnableDisable.js"></script>
         <script src="static/js/Image_related.js"></script>
         <script src="static/js/Whole_HTML.js"></script>

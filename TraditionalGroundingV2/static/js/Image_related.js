@@ -14,14 +14,17 @@ function mouseMove(e) {
     //Can draw
     var finished = finishFlags['finishFlag'+activate_tab]
     if ($('input[value=N]:checked').length>1 && (!$('#nodraw:checked').length>0)){
+        
         if (finished){
             //undate once more time to get it changed to yellow
             if (UpdateCloseEnough==true){
                 draw_canvas();
                 canvas.style.cursor = "auto";}
             else{
+
                 canvas.style.cursor = "auto";
             }
+
         }
 
         else{
@@ -75,6 +78,11 @@ function checkCloseEnough(p1, p2) {
 //====================================draw a path and draw canvas========================================
 // click to draw path
 
+function check_IOU(){
+    if (qualification_mode==true){
+        get_IOU();
+    }
+}
 
 canvas.addEventListener('click', function(evt) {
     // magnifyFlag=false;
@@ -90,7 +98,7 @@ canvas.addEventListener('click', function(evt) {
             }
             else{
                 XY_names['xy'+activate_tab].push(mousePos);
-                draw_canvas();
+                draw_canvas(); //not finished; drawing; push a new point into it.
             }
             // smallRec(canvas,mousePos);
         }
@@ -214,6 +222,7 @@ function finishOne(){
             ctx.stroke();
             // xyToStoredxy();
             finishFlags['finishFlag'+activate_tab]=true; //finished
+
         // };
 
     }
