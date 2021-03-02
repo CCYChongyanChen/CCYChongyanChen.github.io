@@ -10,7 +10,6 @@ def filter_Questions(readpath,writepath,randompath="",random_index_path="",rando
         subquestions_image_id_list=[]
         subquestions=[]
         print(len(datas))
-        print(len(datas)-557)
         for data in datas: 
             tmp_ann={}
             # "what is this? what is this?"->"what is this"
