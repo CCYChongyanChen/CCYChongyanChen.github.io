@@ -51,21 +51,23 @@
                                          <!-- To improve the performance of our artificial intelligence algorithm, we need your help to visually around each answer. This helps the model learn which region of the image it should pay attention in order to get the answer. -->
                                         <br>
                                         <h2>We ask you to: </h2>
-                                            Carefully review the question, image, and the answer provided, and then finish step 1, step2, and if provided, step 3.
-                                            <br><strong>Step 1:</strong> indicate if there is more than one question asked.
-                                            <br><strong>Step 2:</strong> indicate if the answer is referring to more than one region/object.
+                                            Carefully review the question, image, and the answer provided, and then finish step 1, step 2, and step 3 (if activated).
+                                            <br><strong>Step 1:</strong> Indicate if there are more than one question asked.
+                                            <br><strong>Step 2:</strong> Indicate if the answer is referring to more than one region/object.
                                 
-                                            <br><strong>Step 3:</strong> Step 3 will only be activated if you select two "No" for Step 1 and 2.
-                                            <br>For step 3, either draw ONE closed polygon to ground region that the answer is referring to by clicking the image.                  
-                                            Or You may select "cannot draw" option and indicate the reason why you cannot ground the answer for this image. 
+                                            <br><strong>Step 3:</strong> Step 3 will only be activated if you select two "No" for steps 1 and 2, which means there is just one question asked and the answer is referring to just one region/object.
+                                            <br>For step 3, either draw ONE closed polygon to segment the region/object that most prominentyly justify the answer.                  
+                                            Or select the "cannot draw" option and indicate the reason why you cannot ground the answerr for this image. 
         
                                             <br>
-                                            To finish drawing: move your cursor to the first point, when you see the polygon you drew turns purple, you can then click the first point again to finish.
+                                            How to draw: click the image to draw points one by one to form a polygon. No drag operation is needed.  
+                                            <br>
+                                            How to finish drawing: move your cursor to the first point (the polygon will turn purple when you cursor is on the first point you draw), and click the first point to finish.
 
                                             Or you can press the keborad shortcut 'Enter' to finish. 
-                                            <br> To make a change: You can use the keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo.
+                                            <br> How to undo a point: You can use the keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo.
                                             <br> 
-                                             After finished, you cannot draw anything. If you would like to make a change, you need to either click Clear button or Undo button or use the keyboard shortcut 'Ctrl+Z'.
+                                             After finishing, the cursor will be disabled. If you would like to make a change, either click Clear button or Undo button or use the keyboard shortcut 'Ctrl+Z' to enable the cursor.
     
                                         <br>
                                         <br>
@@ -144,28 +146,9 @@
                                         <details>
                                             <summary><strong>Step 2's examples </strong></summary>
                                             <ol>
-                                                    <h4>Step 2: Does the question-answer pair have multi-focus?</h4>
+                                                    <h4>Step 2: Is the answer referring to more than one object?</h4>
                                                 <div class="row">
                                                     
-                                                        <div class="col-sm-6 col-md-4">
-                                                          <div class="thumbnail">
-                                                              
-                                                            Question: What is this?
-                                                            <br>
-                                                            Answer: Rice Vinegar, garlic powder, and pepper.</p>
-                                                
-                                                            <img src="static/images/multifocus.png" alt="...">
-                                                            <div class="caption">
-                                                              <h3>
-                                                                  
-                                                                    <span class ="red">Yes</span>
-                                                                      <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
-                                                                    
-                                                                    </h3>
-                                                                    <p> The answer focus on multi-objects.</p>
-                                                            </div>
-                                                          </div>
-                                                        </div>
                                                                
                                                         <div class="col-sm-6 col-md-4">
                                                                 <div class="thumbnail">
@@ -181,20 +164,85 @@
                                                                                 <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
                                                                         
                                                                             </h3>
-                                                                    <p> It just refers to one object</p>
+                                                                    <p> It just refers to one object. </p>
                                                                   </div>
                                                                 </div>
                                                               </div>
 
 
+
+
+                                                              <div class="col-sm-6 col-md-4">
+                                                                <div class="thumbnail">
+                                                                                        
+                                                                    Question: What is this?
+                                                                    <br>
+                                                                    Answer: Mushroom. </p>
+                                                                    
+                                                                  <img src="static/images/mushroom.jpg" alt="...">
+                                                                  <div class="caption">
+                                                                        <h3>
+                                                                            <span class ="green">No</span>
+                                                                                <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
+                                                                        
+                                                                            </h3>
+                                                                    <p> It is referring the mushroom as a whole</p>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+                                                              <div class="col-sm-6 col-md-4">
+                                                                <div class="thumbnail">
+                                                                    
+                                                                  Question: What is this?
+                                                                  <br>
+                                                                  Answer: Rice Vinegar, garlic powder, and pepper.</p>
+                                                      
+                                                                  <img src="static/images/multifocus.png" alt="...">
+                                                                  <div class="caption">
+                                                                    <h3>
+                                                                        
+                                                                          <span class ="red">Yes</span>
+                                                                            <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
+                                                                          
+                                                                          </h3>
+                                                                          <p> The answer focus on multi-objects.</p>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+
+                                                              <div class="col-sm-6 col-md-4">
+                                                                <div class="thumbnail">
+                                                                                        
+                                                                    Question: How many mushrooms are there?
+                                                                    <br>
+                                                                    Answer: Around 60 </p>
+                                                                    
+                                                                  <img src="static/images/mushroom.jpg" alt="...">
+                                                                  <div class="caption">
+                                                                        <h3>
+                                                                            <span class ="red">Yes</span>
+                                                                                <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
+                                                                        
+                                                                            </h3>
+                                                                    <p> Usually, the answer to a counting question is referring to more than one object unless the counting answer is one.</p>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+
+
+
                                                               <div class="col-sm-6 col-md-4">
                                                                     <div class="thumbnail">
                                                                         
-                                                                      Question: What is this?
+                                                                      Question: How many bottles are there?
                                                                       <br>
-                                                                      Answer: parking lot.</p>
+                                                                      Answer: 5</p>
                                                           
-                                                                      <img src="static/images/multifocus2.jpg" alt="...">
+                                                                      <img src="static/images/counting.jpg" alt="...">
                                                                       <div class="caption">
                                                                         <h3>
                                                                             
@@ -202,8 +250,7 @@
                                                                                 <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
                                                                               
                                                                               </h3>
-                                                                              <p> Focus on multi-objects. Though just one answer is given, other possible answer can be building, residential communities, or balcony railing. 
-                                                                                  It's hard to know what exactly the asker wants to know.</p>
+                                                                              <p> The answer is referring to 5 objects instead of one. </p>
                                                                       </div>
                                                                     </div>
                                                                   </div>
@@ -219,7 +266,9 @@
         
                                                 <ol>
                                                         <br>
-                                                        Please view the 5 tabs to see the 5 different kinds of examples.
+                                                        Segment the region/object that most prominentyly justify the answer 
+                                                        <br> OR indicate you cannot segment for this image.
+                                                        <br> Please view the 5 tabs to see the 5 different kinds of examples.
                                                         <ul class="nav nav-tabs Examplenav-tabs">
 
                                                                 <li class="active"><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
@@ -245,7 +294,7 @@
                                                                             <img src="static/images/imagewithhole1.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
                                                                                         
                                                                                         </h3>
                                                                             </div>
@@ -287,7 +336,7 @@
                                                                   <br>
                                                                    when the answer is related to text, please first identify if the object is mentioned in the question. 
                                                                   <br>                                             
-                                                                  If not, see the example on the left. Usually, they may ask “what is this?”. In this case, text is used to describe the object and you should ground the object. 
+                                                                  If not, see the example on the left. Usually, they ask questions like “what is this?”. In this case, text is used to describe the object and you should ground the object. 
                                                                   <br>
                                                                   If so, see the example on the middle and right, you should ground the specific text. 
                                                                   <br>
@@ -304,7 +353,7 @@
                                                                                   <img src="static/images/invisiblepart11.png" alt="...">
                                                                                   <div class="caption">
                                                                                         <h3>
-                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
                                                                                                 
                                                                                             </h3>
                                                                                         <p>The question is asking what the object is. Thus you need to ground the whole object. 
@@ -321,13 +370,13 @@
 
                                                                               <div class="col-sm-6 col-md-4">
                                                                                     <div class="thumbnail">
-                                                                                            Question: What type of the lotion is this?
+                                                                                            Question: What type of the <strong>lotion</strong> is this?
                                                                                             <br>
                                                                                             Answer: CeraVe daily moisturizing lotion
                                                                                       <img src="static/images/text2.png" alt="...">
                                                                                       <div class="caption">
                                                                                             <h3>
-                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
                                                                                                     
                                                                                                 </h3>
                                                                                             <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
@@ -338,13 +387,13 @@
 
                                                                         <div class="col-sm-6 col-md-4">
                                                                           <div class="thumbnail">
-                                                                                Question: What's the brand of the lotion?
+                                                                                Question: What's the brand of the <strong>lotion</strong>?
                                                                                 <br>
                                                                                 Answer: CeraVe
                                                                             <img src="static/images/text1.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
+                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  correct segmentation</span>
                                                                                            
                                                                                         </h3>
                                                                               <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
@@ -375,7 +424,7 @@
                                                                             <img src="static/images/wholeimage.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
                                                                                            
                                                                                         </h3>
                                                                               <p>Draw a rectangle to ground the whole image</p>
@@ -407,7 +456,7 @@
                                                                                 <img src="static/images/howgood11.png" alt="...">
                                                                                 <div class="caption">
                                                                                   <h3>
-                                                                                          <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span>
+                                                                                          <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good segmentation</span>
                                                                                         
                                                                                         </h3>
                                                                                 </div>
@@ -424,7 +473,7 @@
                                                                                       <img src="static/images/howgood12.png" alt="...">
                                                                                       <div class="caption">
                                                                                             <h3>
-                                                                                                    <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad</span>
+                                                                                                    <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
                                                                                             
                                                                                                 </h3>
                                                                                         <p>Please trace the boundar as tightly as you can</p>
@@ -443,7 +492,7 @@
                                                                                 <img src="static/images/howgood21.png" alt="...">
                                                                                 <div class="caption">
                                                                                         <h3>
-                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Awesome!</span>
+                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Awesome segmentaion!</span>
                                                                                                
                                                                                         </h3>
                                                                                 </div>
@@ -458,7 +507,7 @@
                                                                                       <img src="static/images/howgood22.png" alt="...">
                                                                                       <div class="caption">
                                                                                             <h3>
-                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Acceptable</span>
+                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Acceptable segmentation</span>
                                                                                                   
                                                                                             </h3>
                                                                                       </div>
@@ -473,7 +522,7 @@
                                                                                           <img src="static/images/howgood23.png" alt="...">
                                                                                           <div class="caption">
                                                                                                 <h3>
-                                                                                                      <span class="glyphicon glyphicon-remove red" aria-hidden="true">   Bad</span>
+                                                                                                      <span class="glyphicon glyphicon-remove red" aria-hidden="true">  Unacceptable segmentation</span>
                                                                                                     
                                                                                               </h3>
                                                                                             <p>Please trace the boundary as tightly as possible</p>
@@ -505,7 +554,7 @@
                                                                             <img src="static/images/invisiblepart11.png" alt="...">
                                                                             <div class="caption">
                                                                                     <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
+                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
                                                                                           
                                                                                         </h3>
                                                                               <p>Avoid Occulusion if you can.</p>
@@ -520,7 +569,7 @@
                                                                               <img src="static/images/invisiblepart21.png" alt="...">
                                                                               <div class="caption">
                                                                                 <h3>
-                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good</span>
+                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
                                                                                       
                                                                                     </h3>
                                                                                 <p>In this case, it's acceptable to include the chopsticks. Otherwise you cannot use just one closed polygon to ground the image.</p>
@@ -535,7 +584,7 @@
                                                                                   <img src="static/images/invisiblepart12.png" alt="...">
                                                                                   <div class="caption">
                                                                                         <h3>
-                                                                                              <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad</span>
+                                                                                              <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
                                                                                              
                                                                                             </h3>
                                                                                             <p>You should not include the hand for this image annotation</p>
@@ -677,7 +726,7 @@
                                                         <h4 style="font-weight: bold; margin: 2px auto">
                                                             Step 1: Are there more than one question asked?
                                                             <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
-                                                            For example, question like 'what brand is this? what type of skin it is for?''"></a>
+                                                            For example, the answer to question like ''what brand is this? what type of skin it is for?'' is YES"></a>
                                                         </h4>
                                                         
 
@@ -694,7 +743,7 @@
                                                             <label>
                                                                 <input name="MULTI_QUESTION_DETECT" type="radio" value="Y">
                                                                 <strong>YES:</strong>
-                                                                More than one questions asked.
+                                                                More than one questions are asked.
                                                             </label>
                                                         </div>
                                                     </td>
@@ -706,7 +755,7 @@
                                                             <label>
                                                                 <input name="MULTI_QUESTION_DETECT" type="radio" value="N" >
                                                                 <strong>NO:</strong>
-                                                                Just one question asked.
+                                                                Just one question is asked.
                                                             </label>
                                                         </div>
                                                     </td>
@@ -729,7 +778,7 @@
                                                 <tr>
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
-                                                            Step 2: Does the answer have multi-focus?
+                                                            Step 2: Is the answer referring to multi-regions/objects?
                                                             <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
                                                             is the answer referring to more than one object or region?"></a>
                                                         </h4>
@@ -751,7 +800,7 @@
                                                                 <label>
                                                                     <input name="MULTI_FOCUS_DETECT" type="radio" value="Y" >
                                                                     <strong>YES:</strong>
-                                                                    The answer focus on multi-objects.
+                                                                    The answer is referrign to multi-objects.
                                                                 </label>
                                                             </div>
                                                         </td>
@@ -763,7 +812,7 @@
                                                                 <label>
                                                                     <input name="MULTI_FOCUS_DETECT" type="radio" value="N" >
                                                                     <strong>NO:</strong>
-                                                                    It just refers to one object.
+                                                                    The answer is referring to one object.
                                                                 </label>
                                                             </div>
                                                         </td>
@@ -790,12 +839,15 @@
                                                 <tr>
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
-                                                            Step 3: Draw one closed polygon to ground region that the answer is referring to by clicking on the image.
+                                                            Step 3: Draw one closed polygon to ground region that the answer is referring to. 
                                                         
                                                             <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
                                                         
                                                         
-                                                            Step 3 will only be activated if you select two 'No' for Step 1 and 2. When drawing, you can press the keyborad shortcut 'Enter' or click the first point again to finish one drawing. You can use keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo."></a>
+                                                            Step 3 will only be activated if you answered two 'No' to steps 1 and 2. How to draw: click the image to draw points one by one to form a polygon. No drag operation is needed.
+                                                            How to finish drawing: move your cursor to the first point (the polygon will turn purple when you cursor is on the first point you draw), and click the first point to finish. Or you can press the keborad shortcut 'Enter' to finish.
+                                                            How to undo a point: You can use the keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo.
+                                                            After finishing, the cursor will be disabled. If you would like to make a change, either click Clear button or Undo button or use the keyboard shortcut 'Ctrl+Z' to enable the cursor."></a>
                                                             
     
                                                         
