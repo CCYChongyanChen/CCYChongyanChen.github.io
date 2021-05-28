@@ -9,7 +9,6 @@ def filter_Questions(readpath,writepath,randompath="",random_index_path="",rando
         datas=json.load(json_file)
         subquestions_image_id_list=[]
         subquestions=[]
-        print(len(datas))
         for data in datas: 
             tmp_ann={}
             # "what is this? what is this?"->"what is this"
@@ -33,8 +32,8 @@ def filter_Questions(readpath,writepath,randompath="",random_index_path="",rando
     # save file - without "asking more than one question"
     with open(writepath,'w',encoding="utf-8") as json_file_w:
         json.dump(subquestions,json_file_w)
-        print(len(subquestions))
-        print(len(subquestions_image_id_list))
+        
+        print("filtered sub count= (un) - (left sub) = "+ str(len(datas)-len(subquestions))  +"=" +str(len(datas))+"-"+str(len(subquestions)))
     if randomFlag==True:
         with open(randompath,'w',encoding="utf-8") as json_file_random:
             index = [i for i in range(len(subquestions))]

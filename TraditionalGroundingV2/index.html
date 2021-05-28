@@ -6,7 +6,8 @@
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <title>VizWiz-Visual Grounding</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
-    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="static/css/style.css">
     
@@ -25,12 +26,10 @@
 
 
         <div class="container">
-
-
                 <!---------- header area ------------>
                 <div class="row">
                         <div class="col-lg-12">
-                            <!--h3 style="text-align: center"><?=$title?></h3-->
+                            <!--h4 style="text-align: center"><?=$title?></h4-->
                             <br/>
                             <!-- Button open collapse -->
                             <button type="button" id="showDtl"
@@ -43,589 +42,577 @@
                             <div class="collapse in" id="dtlPane">
                                 <div class="alert alert-warning motivation">
         
-                                        <br><h2>Motivation:</h2> 
+                                        <h4 class="title">MOTIVATION</h4> 
                                         <p>
                                         We aim to build a smart system that can automatically answer visual questions from blind people. 
                                         The images and questions you will see are from visually impaired people and the answer is from crowd workers.
                                         </p>
-                                         <!-- To improve the performance of our artificial intelligence algorithm, we need your help to visually around each answer. This helps the model learn which region of the image it should pay attention in order to get the answer. -->
                                         <br>
-                                        <h2>We ask you to: </h2>
-                                            Carefully review the question, image, and the answer provided, and then finish step 1, step 2, and step 3 (if activated).
-                                            <br><strong>Step 1:</strong> Indicate if there are more than one question asked.
-                                            <br><strong>Step 2:</strong> Indicate if the answer is referring to more than one region/object.
-                                
-                                            <br><strong>Step 3:</strong> Step 3 will only be activated if you select two "No" for steps 1 and 2, which means there is just one question asked and the answer is referring to just one region/object.
-                                            <br>For step 3, either draw ONE closed polygon to segment the region/object that most prominentyly justify the answer.                  
-                                            Or select the "cannot draw" option and indicate the reason why you cannot ground the answerr for this image. 
-        
-                                            <br>
-                                            How to draw: click the image to draw points one by one to form a polygon. No drag operation is needed.  
-                                            <br>
-                                            How to finish drawing: move your cursor to the first point (the polygon will turn purple when you cursor is on the first point you draw), and click the first point to finish.
-
-                                            Or you can press the keborad shortcut 'Enter' to finish. 
-                                            <br> How to undo a point: You can use the keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo.
-                                            <br> 
-                                             After finishing, the cursor will be disabled. If you would like to make a change, either click Clear button or Undo button or use the keyboard shortcut 'Ctrl+Z' to enable the cursor.
-    
-                                        <br>
-                                        <br>
-                                        <h2>Examples:</h2>
-
-
-
-                                        
-                                        <details>
-                                            <summary><strong>Step 1's examples </strong></summary>
-                                            <ol>
-                                                   <h4> Step 1: Are there more than one questions asked? </h4> 
-                                                <div class="row">
-                                                        <div class="col-sm-6 col-md-4">
-                                                          <div class="thumbnail">
-                                                              
-                                                            Question: Could you tell me the expiration date on this milk and is this lactose free?  
-                                                            <br>
-                                                            Answer: Feb 20 2021. Yes.</p>
-                                                
-                                                            <img src="static/images/multi_question1.jpg" alt="...">
-                                                            <div class="caption">
-                                                              <h3>
-                                                                    <span class = "red"> Yes</span>
-                                                                      <!-- <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span> -->
-                                                                    
-                                                                    </h3>
-                                                                    <p>More than one questions asked.</p>
-                                                            </div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
-                                                                    
-                                                                  Question: Can you answer this question? Is this lactose free?   
-                                                                  <br>
-                                                                  Answer: Yes. </p>
-                                                      
-                                                                  <img src="static/images/multi_question1.jpg" alt="...">
-                                                                  <div class="caption">
-                                                                    <h3>
-                                                                          <span class = "green"> No</span>
-                                                                            <!-- <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span> -->
-                                                                          
-                                                                          </h3>
-                                                                          <p>Though there are two question markers, only one question is needed to be answered.</p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-                                                        <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
+                                        <h4 class="title">TASK</h4>
+                                            <p>In this task, we ask you to carefully review the question, image, and the answer provided, and then finish step 1, step 2, step 3 (if activated), and step 4. There are examples to follow for each step.
+                                            </p>
+                                            <br><p><strong>Step 1: Indicate if there is more than one question asked.</strong>
+                                                                            <details>
+                                                                                    <summary><strong>Show step 1's examples </strong></summary>
+                                                                                    <ol>
+                                                                                        <div class="row">
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                <div class="thumbnail">
+                                                                                                    <p>Question: Could you tell me the expiration date on this milk and is this lactose free?  
+                                                                                                    <br>
+                                                                                                    Answer: Feb 20 2021. Yes.</p>
                                                                                         
-                                                                    Question: Is this a chair what color?
-                                                                    <br>
-                                                                    Answer: Yes. Black.</p>
-                                                                    
-                                                                  <img src="static/images/multi_question2.jpg" alt="...">
-                                                                  <div class="caption">
-                                                                        <h3>
-                                                                            
-                                                                            <span class = "red"> Yes</span>
-                                                                                <!-- <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad</span> -->
-                                                                        
-                                                                            </h3>
-                                                                            <p>More than one questions asked.</p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-                                  
-                                                </div>
-
-
-                                            </ol>
-                                        </details>
-                                        
-                                        <details>
-                                            <summary><strong>Step 2's examples </strong></summary>
-                                            <ol>
-                                                    <h4>Step 2: Is the answer referring to more than one object?</h4>
-                                                <div class="row">
-                                                    
-                                                               
-                                                        <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
-                                                                                        
-                                                                    Question: What is this?
-                                                                    <br>
-                                                                    Answer: Rice Vinegar. </p>
-                                                                    
-                                                                  <img src="static/images/onefocus1.jpg" alt="...">
-                                                                  <div class="caption">
-                                                                        <h3>
-                                                                            <span class ="green">No</span>
-                                                                                <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
-                                                                        
-                                                                            </h3>
-                                                                    <p> It just refers to one object. </p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-
-
-
-
-                                                              <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
-                                                                                        
-                                                                    Question: What is this?
-                                                                    <br>
-                                                                    Answer: Mushroom. </p>
-                                                                    
-                                                                  <img src="static/images/mushroom.jpg" alt="...">
-                                                                  <div class="caption">
-                                                                        <h3>
-                                                                            <span class ="green">No</span>
-                                                                                <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
-                                                                        
-                                                                            </h3>
-                                                                    <p> It is referring the mushroom as a whole</p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-
-                                                            </div>
-
-                                                            <div class="row">
-                                                              <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
-                                                                    
-                                                                  Question: What is this?
-                                                                  <br>
-                                                                  Answer: Rice Vinegar, garlic powder, and pepper.</p>
-                                                      
-                                                                  <img src="static/images/multifocus.png" alt="...">
-                                                                  <div class="caption">
-                                                                    <h3>
-                                                                        
-                                                                          <span class ="red">Yes</span>
-                                                                            <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
-                                                                          
-                                                                          </h3>
-                                                                          <p> The answer focus on multi-objects.</p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-
-                                                              <div class="col-sm-6 col-md-4">
-                                                                <div class="thumbnail">
-                                                                                        
-                                                                    Question: How many mushrooms are there?
-                                                                    <br>
-                                                                    Answer: Around 60 </p>
-                                                                    
-                                                                  <img src="static/images/mushroom.jpg" alt="...">
-                                                                  <div class="caption">
-                                                                        <h3>
-                                                                            <span class ="red">Yes</span>
-                                                                                <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
-                                                                        
-                                                                            </h3>
-                                                                    <p> Usually, the answer to a counting question is referring to more than one object unless the counting answer is one.</p>
-                                                                  </div>
-                                                                </div>
-                                                              </div>
-
-
-
-                                                              <div class="col-sm-6 col-md-4">
-                                                                    <div class="thumbnail">
-                                                                        
-                                                                      Question: How many bottles are there?
-                                                                      <br>
-                                                                      Answer: 5</p>
-                                                          
-                                                                      <img src="static/images/counting.jpg" alt="...">
-                                                                      <div class="caption">
-                                                                        <h3>
-                                                                            
-                                                                              <span class ="red">Yes</span>
-                                                                                <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
-                                                                              
-                                                                              </h3>
-                                                                              <p> The answer is referring to 5 objects instead of one. </p>
-                                                                      </div>
-                                                                    </div>
-                                                                  </div>
-                                  
-                                                </div>
-
-
-                                            </ol>
-                                        </details>
-            
-                                        <details>
-                                                <summary><strong>Step 3's examples </strong></summary>
-        
-                                                <ol>
-                                                        <br>
-                                                        Segment the region/object that most prominentyly justify the answer 
-                                                        <br> OR indicate you cannot segment for this image.
-                                                        <br> Please view the 5 tabs to see the 5 different kinds of examples.
-                                                        <ul class="nav nav-tabs Examplenav-tabs">
-
-                                                                <li class="active"><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
-                                                                <li><a data-toggle="tab" href="#e2">Text related</a></li>
-                                                                <li><a data-toggle="tab" href="#e1">Image with hole</a></li>
-                                                                <li><a data-toggle="tab" href="#e3">Whole Image</a></li>
-                                                                <li><a data-toggle="tab" href="#e5">Occulusion</a></li>
-                                                              </ul>
-                                                              
-                                                              <div class="tab-content examples">
-                                                                <div id="e1" class="tab-pane fade">
-                                                                  <br>
-                                                                   If the object has a hole, you just need to draw the outside boundary
-                                                                  <br>
-                                                                  <br>
-
-                                                                  <div class="row">
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                          <div class="thumbnail">
-                                                                                Question: What is this?
-                                                                                <br>
-                                                                                Answer: laundry detergent
-                                                                            <img src="static/images/imagewithhole1.png" alt="...">
-                                                                            <div class="caption">
-                                                                                    <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
-                                                                                        
-                                                                                        </h3>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                               
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                                <div class="thumbnail">
-                                                                                        Question: What is this?
-                                                                                        <br>
-                                                                                        Answer: laundry detergent
-                                                                                  <img src="static/images/imagewithhole2.png" alt="...">
-                                                                                  <div class="caption">
-                                                                                        <h3>
-                                                                                                <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Cannot draw like this</span>
-                                                                                                
-                                                                                            </h3>
-                                                                                    <p>Just One closed polygon is allowed.</p>
-                                                                                  </div>
-                                                                                </div>
-                                                                              </div>
-                                                                </div>
-                                                                  
-                                                                  
-                                                                  
-                                                                  <button type="button" class="btn ExamplebtnNext" >Next</button>
-                                                                </div>
-
-
-
-
-
-
-
-
-
-
-                                                                <div id="e2" class="tab-pane fade">
-                                                                  <br>
-                                                                   when the answer is related to text, please first identify if the object is mentioned in the question. 
-                                                                  <br>                                             
-                                                                  If not, see the example on the left. Usually, they ask questions like “what is this?”. In this case, text is used to describe the object and you should ground the object. 
-                                                                  <br>
-                                                                  If so, see the example on the middle and right, you should ground the specific text. 
-                                                                  <br>
-                                                                  
-                                                                  <br>
-                                                                  <div class="row">
-
-
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                                <div class="thumbnail">
-                                                                                    Question: What is this?
-                                                                                    <br>
-                                                                                    Answer: CeraVe daily moisturizing lotion
-                                                                                  <img src="static/images/invisiblepart11.png" alt="...">
-                                                                                  <div class="caption">
-                                                                                        <h3>
-                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
-                                                                                                
-                                                                                            </h3>
-                                                                                        <p>The question is asking what the object is. Thus you need to ground the whole object. 
-                                                                                            Note that the answer to this question is the same as the answer to the middle image,
-                                                                                            while their grounded area are different.
-
-                                                                                        </p>
-                                                                                   
-                                                                                  </div>
-                                                                                </div>
-                                                                              </div>
-
-
-
-                                                                              <div class="col-sm-6 col-md-4">
-                                                                                    <div class="thumbnail">
-                                                                                            Question: What type of the <strong>lotion</strong> is this?
-                                                                                            <br>
-                                                                                            Answer: CeraVe daily moisturizing lotion
-                                                                                      <img src="static/images/text2.png" alt="...">
-                                                                                      <div class="caption">
-                                                                                            <h3>
-                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
-                                                                                                    
-                                                                                                </h3>
-                                                                                            <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
-                                                                                       
-                                                                                      </div>
-                                                                                    </div>
-                                                                                  </div>
-
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                          <div class="thumbnail">
-                                                                                Question: What's the brand of the <strong>lotion</strong>?
-                                                                                <br>
-                                                                                Answer: CeraVe
-                                                                            <img src="static/images/text1.png" alt="...">
-                                                                            <div class="caption">
-                                                                                    <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  correct segmentation</span>
-                                                                                           
-                                                                                        </h3>
-                                                                              <p>The question has metioned what the object is. Thus you only need to ground the related text area.</p>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                               
-                                                  
-                                                                </div>
-                                                                  
-                                                                  <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
-                                                                  <button type="button" class="btn ExamplebtnNext" >Next</button>
-                                                                </div>
-                                                                <div id="e3" class="tab-pane fade">
-                                                                    <br>
-                                                                  Draw a rectangle to ground the whole picture as the target region if the answer is referring to the whole image. Usually, this happens when the camera is set too close to the object.
-                                                                  <br>
-                                                                  <br>
-
-
-                                                                  
-                                                                  <div class="row">
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                          <div class="thumbnail">
-                                                                                Question: What is this?
-                                                                                <br>
-                                                                                Answer: CeraVe daily moisturizing lotion
-                                                                            <img src="static/images/wholeimage.png" alt="...">
-                                                                            <div class="caption">
-                                                                                    <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
-                                                                                           
-                                                                                        </h3>
-                                                                              <p>Draw a rectangle to ground the whole image</p>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                               
-                                                                </div>
-
-                                                                  <br>
-                                                                  <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
-                                                                  <button type="button" class="btn ExamplebtnNext" >Next</button>
-                                                                </div>
-                                                                
-                                                                <div id="e4" class="tab-pane fade in active">
-                                                                    <br>
-                                                                    <p>  Please try you best to trace the boundary of the object as tightly as possible. Only when the boundary is too complex that you may not need to perfectly trace the boundary.
-                                                                    </p> 
-                                                                    <br>
-                                                                   
-                                                                    <div class="row">
-                                                                            <div class="col-sm-6 col-md-4">
-                                                                              <div class="thumbnail">
-                                                                                  
-                                                                                Question: What is this?
-                                                                                <br>
-                                                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
-                                                                    
-                                                                                <img src="static/images/howgood11.png" alt="...">
-                                                                                <div class="caption">
-                                                                                  <h3>
-                                                                                          <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good segmentation</span>
-                                                                                        
-                                                                                        </h3>
-                                                                                </div>
-                                                                              </div>
-                                                                            </div>
-                                                                                   
-                                                                            <div class="col-sm-6 col-md-4">
-                                                                                    <div class="thumbnail">
+                                                                                                    <img src="static/images/multi_question1.jpg"  alt="...">
+                                                                                                    <div class="caption">
+                                                                                                    <h4>
+                                                                                                            <span class = "red"> Yes</span>
+                                                                                                            <!-- <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span> -->
                                                                                                             
-                                                                                        Question: What is this?
-                                                                                        <br>
-                                                                                        Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
-                                                                                        
-                                                                                      <img src="static/images/howgood12.png" alt="...">
-                                                                                      <div class="caption">
-                                                                                            <h3>
-                                                                                                    <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
+                                                                                                            </h4>
+                                                                                                            <p>More than one questions asked.</p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                </div>
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                        <div class="thumbnail">
+                                                                                                        <p>Question: Can you answer this question? Is this lactose free?   
+                                                                                                        <br>
+                                                                                                        Answer: Yes. </p>
                                                                                             
-                                                                                                </h3>
-                                                                                        <p>Please trace the boundar as tightly as you can</p>
-                                                                                      </div>
-                                                                                    </div>
-                                                                                  </div>
-                                                      
-                                                                    </div>
-                            
-                                                                    <div class="row">
-                                                                            <div class="col-sm-6 col-md-4">
-                                                                              <div class="thumbnail">
-                                                                                Question: What plant is this?
-                                                                                <br>
-                                                                                Answer: Dracaena sanderiana
-                                                                                <img src="static/images/howgood21.png" alt="...">
-                                                                                <div class="caption">
-                                                                                        <h3>
-                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Awesome segmentaion!</span>
-                                                                                               
-                                                                                        </h3>
-                                                                                </div>
-                                                                              </div>
-                                                                            </div>
-                                                                                   
-                                                                            <div class="col-sm-6 col-md-4">
-                                                                                    <div class="thumbnail">
-                                                                                        Question: What plant is this?
-                                                                                        <br>
-                                                                                        Answer: Dracaena sanderiana
-                                                                                      <img src="static/images/howgood22.png" alt="...">
-                                                                                      <div class="caption">
-                                                                                            <h3>
-                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Acceptable segmentation</span>
-                                                                                                  
-                                                                                            </h3>
-                                                                                      </div>
-                                                                                    </div>
-                                                                                  </div>
-                                                      
-                                                                                  <div class="col-sm-6 col-md-4">
-                                                                                        <div class="thumbnail">
-                                                                                            Question: What plant is this?
-                                                                                            <br>
-                                                                                            Answer: Dracaena sanderiana
-                                                                                          <img src="static/images/howgood23.png" alt="...">
-                                                                                          <div class="caption">
-                                                                                                <h3>
-                                                                                                      <span class="glyphicon glyphicon-remove red" aria-hidden="true">  Unacceptable segmentation</span>
-                                                                                                    
-                                                                                              </h3>
-                                                                                            <p>Please trace the boundary as tightly as possible</p>
-                                                                                          </div>
+                                                                                                        <img src="static/images/multi_question1.jpg" alt="...">
+                                                                                                        <div class="caption">
+                                                                                                            <h4>
+                                                                                                                <span class = "green"> No</span>
+                                                                                                                    <!-- <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good</span> -->
+                                                                                                                
+                                                                                                                </h4>
+                                                                                                                <p>Though there are two question markers, only one question is needed to be answered.</p>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                        <div class="thumbnail">
+                                                                                                            
+                                                                                                            <p>Question: Is this a chair what color?
+                                                                                                            <br>
+                                                                                                            Answer: Yes. Black.</p>
+                                                                                                            
+                                                                                                        <img src="static/images/multi_question2.jpg" alt="...">
+                                                                                                        <div class="caption">
+                                                                                                                <h4>
+                                                                                                                    <span class = "red"> Yes</span>
+                                                                                                                    </h4>
+                                                                                                                    <p>More than one questions asked.</p>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                        
                                                                                         </div>
-                                                                                      </div>
-                                                                    </div>
-                                               
-                                               
-                                               
-                                                                    <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
-                                                                    <button type="button" class="btn ExamplebtnNext">Next</button>
-                                                                </div>
-                                                                
-                                                                <div id="e5" class="tab-pane fade">
-                                                                    <br>
-                                                                    Please do not include the invisible part. 
-                                                                    <br>
-                                                                    <br>
+                                        
+                                        
+                                                                                    </ol>
+                                                                                </details>
+                                                                            </p>
 
+                                            <br><p><strong>Step 2: Indicate if the answer is referring to more than one region/object in the image.</p></strong> 
+                                                                                <details>
+                                                                                        <summary><strong>Show step 2's examples </strong></summary>
+                                                                                        <ol>
+                                                                                            <div class="row">
+                                                                                                
+                                                                                                        
+                                                                                                    <div class="col-sm-6 col-md-4">
+                                                                                                            <div class="thumbnail">
+                                                                                                                                    
+                                                                                                                <p>Question: What is this?
+                                                                                                                <br>
+                                                                                                                Answer: Rice Vinegar. </p>
+                                                                                                                
+                                                                                                            <img src="static/images/onefocus1.jpg" alt="...">
+                                                                                                            <div class="caption">
+                                                                                                                    <h4>
+                                                                                                                        <span class ="green">No</span>
+                                                                                                                            <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
+                                                                                                                    
+                                                                                                                        </h4>
+                                                                                                                <p> It just refers to one object. </p>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                            
+                                            
+                                            
+                                            
+                                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                                            <div class="thumbnail">
+                                                                                                                                    
+                                                                                                                <p>Question: What is this?
+                                                                                                                <br>
+                                                                                                                Answer: Mushroom. </p>
+                                                                                                                
+                                                                                                            <img src="static/images/mushroom.jpg" alt="...">
+                                                                                                            <div class="caption">
+                                                                                                                    <h4>
+                                                                                                                        <span class ="green">No</span>
+                                                                                                                            <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
+                                                                                                                    
+                                                                                                                        </h4>
+                                                                                                                <p> It is referring the mushroom as a whole</p>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                            
+                                                                                                        </div>
+                                            
+                                                                                                        <div class="row">
+                                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                                            <div class="thumbnail">
+                                                                                                                
+                                                                                                            <p>Question: What is this?
+                                                                                                            <br>
+                                                                                                            Answer: Rice Vinegar, garlic powder, and pepper.</p>
+                                                                                                
+                                                                                                            <img src="static/images/multifocus.png" alt="...">
+                                                                                                            <div class="caption">
+                                                                                                                <h4>
+                                                                                                                    
+                                                                                                                    <span class ="red">Yes</span>
+                                                                                                                        <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
+                                                                                                                    
+                                                                                                                    </h4>
+                                                                                                                    <p> The answer focus on multi-objects.</p>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                            
+                                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                                            <div class="thumbnail">
+                                                                                                                                    
+                                                                                                                <p>Question: How many mushrooms are there?
+                                                                                                                <br>
+                                                                                                                Answer: Around 60 </p>
+                                                                                                                
+                                                                                                            <img src="static/images/mushroom.jpg" alt="...">
+                                                                                                            <div class="caption">
+                                                                                                                    <h4>
+                                                                                                                        <span class ="red">Yes</span>
+                                                                                                                            <!-- <span class="glyphicon glyphicon-remove green" aria-hidden="true">No</span> -->
+                                                                                                                    
+                                                                                                                        </h4>
+                                                                                                                <p> Usually, the answer to a counting question is referring to more than one object unless the counting answer is one.</p>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                            
+                                            
+                                            
+                                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                                                <div class="thumbnail">
+                                                                                                                    
+                                                                                                                <p>Question: How many bottles are there?
+                                                                                                                <br>
+                                                                                                                Answer: 5</p>
+                                                                                                    
+                                                                                                                <img src="static/images/counting.jpg" alt="...">
+                                                                                                                <div class="caption">
+                                                                                                                    <h4>
+                                                                                                                        
+                                                                                                                        <span class ="red">Yes</span>
+                                                                                                                            <!-- <span class="glyphicon glyphicon-option-horizontal red" aria-hidden="true"> Yes</span> -->
+                                                                                                                        
+                                                                                                                        </h4>
+                                                                                                                        <p> The answer is referring to 5 objects instead of one. </p>
+                                                                                                                </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                            
+                                                                                            </div>
+                                            
+                                            
+                                                                                        </ol>
+                                                                                    </details>
 
+                                            <br><p>If both Step 1 and Step 2 are "No", go to step 3. Otherwise, step 3 will not be activated, please skip step 3 and go to step 4.</p>
+                                            <br><p><strong>Step 3: You have two options for step 3: </strong></p>
+                                            <br>
+                                                 <div style="text-indent:2em;">
+                                                <p>Option (a): If the answer is not in the image, select the "cannot draw" option and indicate the reason why you cannot draw it.</p>
+                                                <p>Option (b): If the answer exists in the image, draw ONE closed polygon to segment the region/object that most prominently justifies the answer.</p>    
+                                                </div>
+                                            
+                                                <div style="padding-left: 2em;"><p> If you selected option (b), please follow the following instructions to draw the polygon:</p>
+                                                    <div style="padding-left: 2em;">
+                                                        <p>&#8226 How to draw: click the image to draw points one by one to form a polygon. No drag operation is needed.</p>
+                                                        <p>&#8226 
+                                                        How to finish drawing: move your cursor to the first point (the polygon will turn purple when your cursor is on the first point you draw), and click the first point to finish.
+                                                        Or you can press the keborad shortcut 'Enter' to finish.</p>
+                                                        <p>&#8226 How to undo a point: You can use the keyboard shortcut 'Ctrl+Z' or click the Undo button to Undo.</p>
+                                                        <p>&#8226 After finishing, the cursor will be disabled. If you would like to make a change, either click the Clear button or Undo button or use the keyboard shortcut 'Ctrl+Z' to enable the cursor.</p>
+                                                    
+                                                </div>
+                                                </div>
 
-                                                                  <div class="row">
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                          <div class="thumbnail">
-                                                                                Question: What is this?
+                                                <div style="padding-left:4em;">
+                                                        <details>
+                                                                <summary><strong>Show step 3 option (b)'s examples </strong></summary>
+                        
+                                                                <ol>
+                                                                       <p>Please view the 5 tabs to see the 5 different kinds of examples.</p>
+                                                                        <ul class="nav nav-tabs Examplenav-tabs">
+
+                                                                                <li class="active"><a data-toggle="tab" href="#e4">Complex Boundary</a></li>
+                                                                                <li><a data-toggle="tab" href="#e2">Text related</a></li>
+                                                                                <li><a data-toggle="tab" href="#e1">Image with hole</a></li>
+                                                                                <li><a data-toggle="tab" href="#e3">Whole Image</a></li>
+                                                                                <li><a data-toggle="tab" href="#e5">Occulusion</a></li>
+                                                                            </ul>
+                                                                            
+                                                                            <div class="tab-content examples">
+                                                                                <div id="e1" class="tab-pane fade">
                                                                                 <br>
-                                                                                Answer: CeraVe daily moisturizing lotion for normal to dry skin
-                                                                            <img src="static/images/invisiblepart11.png" alt="...">
-                                                                            <div class="caption">
-                                                                                    <h3>
-                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
-                                                                                          
-                                                                                        </h3>
-                                                                              <p>Avoid Occulusion if you can.</p>
-                                                                            </div>
-                                                                          </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                            <div class="thumbnail">
-                                                                                    Question: What is this?
-                                                                                    <br>
-                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin
-                                                                              <img src="static/images/invisiblepart21.png" alt="...">
-                                                                              <div class="caption">
-                                                                                <h3>
-                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
-                                                                                      
-                                                                                    </h3>
-                                                                                <p>In this case, it's acceptable to include the chopsticks. Otherwise you cannot use just one closed polygon to ground the image.</p>
-                                                                              </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-sm-6 col-md-4">
-                                                                                <div class="thumbnail">
-                                                                                    Question: What is this?
-                                                                                    <br>
-                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin
-                                                                                  <img src="static/images/invisiblepart12.png" alt="...">
-                                                                                  <div class="caption">
-                                                                                        <h3>
-                                                                                              <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
-                                                                                             
-                                                                                            </h3>
-                                                                                            <p>You should not include the hand for this image annotation</p>
-                                                                                  </div>
+                                                                                <p>
+                                                                                If the object (e.g., tyre, donut, ring) has a hole, you just need to draw the outside boundary
+                                                                                </p>
+
+                                                                                <div class="row">
+                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                        <div class="thumbnail">
+                                                                                                <p>Question: What is this?
+                                                                                                <br>
+                                                                                                Answer: laundry detergent</p>
+                                                                                            <img src="static/images/imagewithhole1.png" alt="...">
+                                                                                            <div class="caption">
+                                                                                                    <h4>
+                                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
+                                                                                                        
+                                                                                                        </h4>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        </div>
+                                                                                            
+                                                                                        <div class="col-sm-6 col-md-4">
+                                                                                                <div class="thumbnail">
+                                                                                                        <p>Question: What is this?
+                                                                                                        <br>
+                                                                                                        Answer: laundry detergent</p>
+                                                                                                <img src="static/images/imagewithhole2.png" alt="...">
+                                                                                                <div class="caption">
+                                                                                                        <h4>
+                                                                                                                <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Cannot draw like this</span>
+                                                                                                                
+                                                                                                            </h4>
+                                                                                                    <p>Just One closed polygon is allowed.</p>
+                                                                                                </div>
+                                                                                                </div>
+                                                                                            </div>
                                                                                 </div>
-                                                                              </div>
-                                                                </div>
+                                                                                
+                                                                                
+                                                                                
+                                                                                <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
+                                                                                <button type="button" class="btn ExamplebtnNext" >Next</button>
+                                                                                </div>
 
 
 
 
 
+
+
+
+
+
+                                                                                    <div id="e2" class="tab-pane fade">
+                                                                                    <br>
+                                                                                    <p>when the answer is related to text, please first identify if the object is mentioned in the question. </p>
+                                                                                    <p>If not, see the example on the left. Usually, they ask questions like “what is this?”. In this case, text is used to describe the object and you should draw the outline of the object. </p>
+                                                                                    <p>If so, see the example on the middle and right. You should draw outline around the related text. </p>
+                                                                                    
+                                                                                    <div class="row">
+
+
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                                    <div class="thumbnail">
+                                                                                                        <p>Question: What is this?
+                                                                                                        <br>
+                                                                                                        Answer: CeraVe daily moisturizing lotion</p>
+                                                                                                    <img src="static/images/invisiblepart11.png" alt="...">
+                                                                                                    <div class="caption">
+                                                                                                            <h4>
+                                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
+                                                                                                                    
+                                                                                                                </h4>
+                                                                                                            <p>The question is asking what the object is. Thus you need to draw the outline of the whole object. 
+                                                                                                                Note that the answer to this question is the same as the answer to the middle image,
+                                                                                                                while their annotated area are different.
+
+                                                                                                            </p>
+                                                                                                    
+                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                        <div class="thumbnail">
+                                                                                                                <p>Question: What type of the <strong>lotion</strong> is this?
+                                                                                                                <br>
+                                                                                                                Answer: CeraVe daily moisturizing lotion</p>
+                                                                                                        <img src="static/images/text2.png" alt="...">
+                                                                                                        <div class="caption">
+                                                                                                                <h4>
+                                                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true"> correct segmentation</span>
+                                                                                                                        
+                                                                                                                    </h4>
+                                                                                                                <p>The question has metioned what the object is. Thus you only need to draw outline around the related text area.</p>
+                                                                                                        
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                            <div class="thumbnail">
+                                                                                                    <p>Question: What's the brand of the <strong>lotion</strong>?
+                                                                                                    <br>
+                                                                                                    Answer: CeraVe</p>
+                                                                                                <img src="static/images/text1.png" alt="...">
+                                                                                                <div class="caption">
+                                                                                                        <h4>
+                                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true">  correct segmentation</span>
+                                                                                                            
+                                                                                                            </h4>
+                                                                                                <p>The question has metioned what the object is. Thus you only need to draw the outline of the related text area.</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                                
                                                                     
-                                                                    <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
-                                                                </div>
-                                                                </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                                                    </ul>
-                                                </ol>
-        
-                                        </details>
+                                                                                    </div>
+                                                                                    
+                                                                                    <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
+                                                                                    <button type="button" class="btn ExamplebtnNext" >Next</button>
+                                                                                    </div>
+                                                                                    <div id="e3" class="tab-pane fade">
+                                                                                    <br>
+                                                                                    <p>If the answer is referring to the whole image, draw a rectangle to ground the whole picture as the target region. Usually, this happens when the camera is set too close to the object.</p>
+                     
+                                                                                    <div class="row">
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                            <div class="thumbnail">
+                                                                                                    <p>Question: What is this?
+                                                                                                    <br>
+                                                                                                    Answer: CeraVe daily moisturizing lotion</p>
+                                                                                                <img src="static/images/wholeimage.png" alt="...">
+                                                                                                <div class="caption">
+                                                                                                        <h4>
+                                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Correct segmentation</span>
+                                                                                                            
+                                                                                                            </h4>
+                                                                                                <p>Draw a rectangle to include the whole image</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                                
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
+                                                                                    <button type="button" class="btn ExamplebtnNext" >Next</button>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div id="e4" class="tab-pane fade in active">
+                                                                                        <br>
+                                                                                        <p>  Please try your best to trace the boundary of the object as tightly as possible. Only when the boundary is too complex that you may not need to perfectly trace the boundary.
+                                                                                        </p> 
+                                                                                        <br>
+                                                                                    
+                                                                                        <div class="row">
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                <div class="thumbnail">
+                                                                                                    
+                                                                                                    <p>Question: What is this?
+                                                                                                    <br>
+                                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                                                        
+                                                                                                    <img src="static/images/howgood11.png" alt="...">
+                                                                                                    <div class="caption">
+                                                                                                    <h4>
+                                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Good segmentation</span>
+                                                                                                            
+                                                                                                            </h4>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                </div>
+                                                                                                    
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                        <div class="thumbnail">
+                                                                                                                                
+                                                                                                            <p>Question: What is this?
+                                                                                                            <br>
+                                                                                                            Answer: CeraVe daily moisturizing lotion for normal to dry skin.</p>
+                                                                                                            
+                                                                                                        <img src="static/images/howgood12.png" alt="...">
+                                                                                                        <div class="caption">
+                                                                                                                <h4>
+                                                                                                                        <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
+                                                                                                                
+                                                                                                                    </h4>
+                                                                                                            <p>Please trace the boundar as tightly as you can</p>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                        
+                                                                                        </div>
+                                                
+                                                                                        <div class="row">
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                <div class="thumbnail">
+                                                                                                    <p>Question: What plant is this?
+                                                                                                    <br>
+                                                                                                    Answer: Dracaena sanderiana
+                                                                                                    <img src="static/images/howgood21.png" alt="...">
+                                                                                                    <div class="caption">
+                                                                                                            <h4>
+                                                                                                                    <span class="glyphicon glyphicon-ok green" aria-hidden="true"> Awesome segmentaion!</span>
+                                                                                                                
+                                                                                                            </h4>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                </div>
+                                                                                                    
+                                                                                                <div class="col-sm-6 col-md-4">
+                                                                                                        <div class="thumbnail">
+                                                                                                            <p>Question: What plant is this?
+                                                                                                            <br>
+                                                                                                            Answer: Dracaena sanderiana</p>
+                                                                                                        <img src="static/images/howgood22.png" alt="...">
+                                                                                                        <div class="caption">
+                                                                                                                <h4>
+                                                                                                                        <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Acceptable segmentation</span>
+                                                                                                                    
+                                                                                                                </h4>
+                                                                                                        </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                        
+                                                                                                    <div class="col-sm-6 col-md-4">
+                                                                                                            <div class="thumbnail">
+                                                                                                                <p>Question: What plant is this?
+                                                                                                                <br>
+                                                                                                                Answer: Dracaena sanderiana</p>
+                                                                                                            <img src="static/images/howgood23.png" alt="...">
+                                                                                                            <div class="caption">
+                                                                                                                    <h4>
+                                                                                                                        <span class="glyphicon glyphicon-remove red" aria-hidden="true">  Unacceptable segmentation</span>
+                                                                                                                        
+                                                                                                                </h4>
+                                                                                                                <p>Please trace the boundary as tightly as possible</p>
+                                                                                                            </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                        </div>
+                                                                
+                                                                
+                                                                
+                                                                                        <button type="button" class="btn ExamplebtnNext">Next</button>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div id="e5" class="tab-pane fade">
+                                                                                        <br>
+                                                                                        <p>If something obscures the target object, please do not include that. Please only label for the visible part of the target object. </p>
+                                                                                        
+                                                                                    
+
+                                                                                    <div class="row">
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                            <div class="thumbnail">
+                                                                                                    <p>Question: What is this?
+                                                                                                    <br>
+                                                                                                    Answer: CeraVe daily moisturizing lotion for normal to dry skin</p>
+                                                                                                <img src="static/images/invisiblepart11.png" alt="...">
+                                                                                                <div class="caption">
+                                                                                                        <h4>
+                                                                                                                <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
+                                                                                                            
+                                                                                                            </h4>
+                                                                                                <p>Avoid Occulusion if you can.</p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                                <div class="thumbnail">
+                                                                                                        <p>Question: What is this?
+                                                                                                        <br>
+                                                                                                        Answer: CeraVe daily moisturizing lotion for normal to dry skin</p>
+                                                                                                <img src="static/images/invisiblepart21.png" alt="...">
+                                                                                                <div class="caption">
+                                                                                                    <h4>
+                                                                                                            <span class="glyphicon glyphicon-ok green" aria-hidden="true">  Good segmentation</span>
+                                                                                                        
+                                                                                                        </h4>
+                                                                                                    <p>In this case, it's acceptable to include the chopsticks. Otherwise you cannot use just one closed polygon to label for this image.</p>
+                                                                                                </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-sm-6 col-md-4">
+                                                                                                    <div class="thumbnail">
+                                                                                                        <p>Question: What is this?
+                                                                                                        <br>
+                                                                                                        Answer: CeraVe daily moisturizing lotion for normal to dry skin</p>
+                                                                                                    <img src="static/images/invisiblepart12.png" alt="...">
+                                                                                                    <div class="caption">
+                                                                                                            <h4>
+                                                                                                                <span class="glyphicon glyphicon-remove red" aria-hidden="true"> Bad segmentation</span>
+                                                                                                                
+                                                                                                                </h4>
+                                                                                                                <p>You should not include the hand for this image annotation</p>
+                                                                                                    </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                    </div>
+
+
+
+
+
+                                                                                        
+                                                                                        <button type="button" class="btn ExamplebtnPrevious" >Previous</button>
+                                                                                    </div>
+                                                                                    </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                                                        </ul>
+                                                                    </ol>
+                            
+                                                            </details>
+                                                        </div>
+                                        <br><p><strong> Step 4: Click next and go to the next image.</strong></p>
                                         <br>
-                                        <h3>PLEASE NOTE: </h3>      
-                                        You will annotate for five image-question pairs in one HIT.
-                                        <br> You cannot go to next page until you finish the current one.
-                                        <br> Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.                 
-                                        <br>It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task.
-        
+                                        
+                                    
+            
+
+                                        <br>
+                                        <h4 class="title">NOTE </h4>  
+                                        <ul>    
+                                        <li><p>You will annotate for five image-question pairs in one HIT.</p></li>
+                                        <li><p>You cannot go to next page until you finish the current one.</p></li>
+                                        <li><p> Please do not refresh the webpage once you have started working, as you will lose all your progress, and have to start at the beginning.  </p></li>              
+                                        <li><p>It is possible that some images could be meaningless, inappropriate, or offensive. We cannot control what pictures are taken. Kindly use your best judgement for this task. </p></li>   
+                                        </ul>
                                    
             
             
@@ -678,8 +665,8 @@
                                 
                                     <div class="viewer" >
 
-                                    <h3 class="text-secondary" id="question"></h3>
-                                    <h3 class="text-secondary" id="answer"></h3>
+                                    <h4 class="text-secondary" id="question"></h4>
+                                    <h4 class="text-secondary" id="answer"></h4>
 
                                     <input type="hidden" id="task1forsubmit" name="task1forsubmit">
 
@@ -839,7 +826,7 @@
                                                 <tr>
                                                     <th colspan="4" class="text-center" style="">
                                                         <h4 style="font-weight: bold; margin: 2px auto">
-                                                            Step 3: Draw one closed polygon to ground region that the answer is referring to. 
+                                                            Step 3: Draw one closed polygon to localize the region that the answer is referring to by clicking on the image. 
                                                         
                                                             <a class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip"  data-placement="top" title="
                                                         
