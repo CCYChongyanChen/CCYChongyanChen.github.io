@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Crowdsourcing Tutorial</title>
+  <meta name="description" content="Crowdsourcing Tutorial">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <h1>Summary</h1>
+    <h4>1.  Demo </h4>
+    <h4>2.	Introduction to AMTurk </h4>
+    <h4>3.	How to access to AMTurk via python? --Boto3</h4>
+    <h4>4.	How to host the annotation tool and images</h4>
+    <h4>5.	During and after data collection: Review results and conduct quality control</h4>
+    <h4>6.	My suggestions </h4>
+     
+     
+    
+    <h1>1.	Demo</h1>
+    Qualification:
+    https://visualgrounding.ischool.utexas.edu/qualification?groupindex=qualification_0
+    Main task:
+    https://visualgrounding.ischool.utexas.edu/index?groupindex=train_0
+    Visualization:
+    https://visualgrounding.ischool.utexas.edu/visualization?groupindex=test_1
+    （I haven’t upload the annotation results to server…The following picture is viewed in localhost）
+     
+     
+    
+    <h1>2.	Introduction to AMTurk</h1>
+    Amazon Mechanical Turk is a crowdsourcing website for businesses (researchers) to hire remotely located "crowdworkers" to perform discrete on-demand tasks that computers are currently unable to do.<br>
+    
+    You should read this documentation to get familiar with AMTurk: https://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/<br>
+    
+    (1)	Use ExternalQuestion if your task is complicated.<br>
+    Use AMTurk Interface or QuestionForm if your task is simple.<br>
+    https://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_ExternalQuestionArticle.html<br>
+     
+    (2)What will workers see?<br>
+    https://workersandbox.mturk.com/  <br>
+     
+    
+    <h1>3. How to access to AMTurk via python?Boto3</h1>
+    See BOTO3 s document: 
+    https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/mturk.html
+    
+    With Boto 3, you can <br>
+    (0)	Access to MTurk<br>
+    See python script environments.py <br>
+    If you are developing, use the enviroment sandbox.<br>
+    If you are in producting mode, use the enviroment live.<br>
+    
+     
+     
+    (1)	Check account balance <br>
+     
+    (2)	Create HITs<br>
+    See python script “create_tasks.py”<br>
+     
+    (3)	Delete HITs<br>
+     
+    (4)	Create Qualification<br>
+     
+    
+    (5)	Associate Qualification with worker<br>
+    See python script “associateQ.py”<br>
+     
+    (6)	See Results<br>
+     
+    (7)	Notify workers<br>
+    See python script “NotifyWorker.py”<br>
+     
+    ….
+    ANYTHING you do via AMTurk interface, you can do via Boto3 instead!<br>
+    
+    Other tips:<br>
+    (1)	Qualific、ation example<br>
+     
+    
+    
+     
+    
+    <h1>4. How to host the annotation tool and images</h1>
+    You can host it on any server, including GitHub and CU Boulder’s server. <br>
+    I would suggest to host it on the CU Boulder’s server<br>
+    
+    <h1>5. Review results and conduct quality control</h1>
+    To review the result, see “how to access AMTurk-see Results” section.<br>
+    
+    You can set up rules to conduct quality control, including:<br>
+    (1)	Results alignments among workers.
+    (2)	Monitor the time the worker spent on each HIT. <br>
+    (3)	If it is a segmentation task, you can calculate the number of points used to draw the segmentation and calculate the IoU overlap between workers to see the annotation agreement.<br>
+    
+    <h1>6. My suggestions</h1>
+    <p>1.	Launch the HITs in a scheduled interval. Write explicitly the scheduled interval in the task description. Otherwise, you will receive tons of request/emails asking when will you release more qualification/HITs.<br>
+    2.	No need to have many workers. <br>
+    Hire a small group & get familiar with each workers & only hire best workers. <br>
+    
+    Why?<br>
+    -	Based on my experience, 6 workers can finish 1000 HITs in one week. 9 workers can finish 1000 in 3 days. <br>
+    -	Small group is better because the workers would not finish HITs in a hurry. Otherwise, they always worry about when will the batch ends. <br>
+    -	Small group is better because you get time to "educate" each worker until they work well. Then you do not need to inspect every result and fully trust your worker. <br>
+    -	Control the quality of workers are much more effective than controlling the quality of HITs.<br>
+    
+    3.	Qualification: Approval rate > 95% or even 99%. I did my task with 95% and find that lots of workers have an approval rate>99%. Set it higher and you will feel easier and save much time…<br>
+    4.	Trick: <br>
+    -	AMTurk doesn’t offer contact info of workers….<br>
+    You can send an "invitation qualification” only to workers who emailed you…<br>
+    That means, only people email you can work on your HITs.<br>
+    It is super useful to have workers’ email and communicate with them…and they can ask you question if they are not certain about their results<br>
+    5.	Be selective when hiring workers! Be generous when approving the HITs! I didn’t reject any HITs…<br>
+    6.	Be aware of how your interface show in different browsers, e.g., image rotation<br>
+    7.	You can create a document collecting workers frequently asked questions and include tricky examples. Then forward the document to your workers. That also helps because you cannot include that much examples in your website’s instructions.<br>
+    8.	Instructions and guidance are always biased, computer vision is biased. <br>
+    9.	Qualification & exam is important! Performance increases after qualification and exam.<br>
+    I set qualification to teach workers the basic ideas of our task. During qualification, workers get notice whether they do correctly or incorrectly for each step and why.<br>
+    I set exam to examine their performance<br>
+    10.	How to write a description of the task, see other requester’s description, such as Qi Zhao. <br>
+    11.	Write the instructions in "normal people"'s language<br>
+    12.	I also think each student in Computer Vision should collect dataset at least once by any chance.<br>
+    13.	Don’t be panic if you find all your hits disappear, the reason could be: (1) all your HITs are taken by workers in a second! They use script to automatically accept tasks :（2）Your HITs reach the expiration date…You can update the expiration date via boto3.
+</p>
+  <!-- <script src="js/scripts.js"></script> -->
+</body>
+</html>
