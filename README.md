@@ -4,7 +4,7 @@ You can see the visual grounding task at https://chongyanchen.com/TraditionalGro
 The visualization results at https://chongyanchen.com/TraditionalGroundingV2/visualization.html?groupindex=train_7
 You can change the groupindex (e.g., train_1, val_100, test_3) to view more examples.
 
-For the latest version, please see this repository: https://github.com/CCYChongyanChen/VizWiz_VQA_Grounding/
+For the latest version, please see this repository:https://github.com/CCYChongyanChen/VizWizVQAGroundingCrowdSourcing
 
 All the required files are in the TraditionalGroundngV2 folder.  
 To publish the task on AMTurk, run create_tasks_.py  
