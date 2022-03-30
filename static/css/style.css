@@ -6,7 +6,7 @@ body {
 * {
   box-sizing: border-box
 }
-
+a{text-decoration:none;color:#1772d0;}
 /*NAVBAR*/
 .navbar {
   background-color: #1a535c; /*31b0d5*/
@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
 }
-
+heading{font-weight:bold;color:#1772d0;}
 .navbar a {
   font-weight: 200;
   color: white;
